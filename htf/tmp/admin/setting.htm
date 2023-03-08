@@ -1,0 +1,483 @@
+$leftforum
+$admintopad
+<tr bgcolor=$b colspan=2><td><br></td></tr>
+<form action="$basename" method="post">
+<input type=hidden name="action" value="unsubmit">
+<table width=95% align=center cellspacing=0 cellpadding=0 bgcolor=333333><p>快捷选项:</p><tr bgcolor=$b>
+<td><a href="#set1">[论坛关闭与开启]</a>--<a href="#set2">[基本设置]</a>--<a href="#set3">[动态目录控制]</a>--<a href="#set4">[核心功能设置]</a>--<a href="#set6">[注册选项]</a>--<a href="#set7">[发帖htf代码设定]</a><br><br><a href="#set8">[发贴与附件选项]</a>--<a href="#set9">[贴子奖惩选项]</a>--<a href="#set10">[首页细节设置]</a>--<a href="#set11">[浏览帖子设置]</a></td>
+</tr><tr bgcolor=$b>
+<td><br></td>
+</tr>
+<tr><td><table width=100% cellspacing=1 cellpadding=3>
+<tr><td class=head align=center colspan=2><a name="set1"></a>
+<a href="#top" class=bold><font color=#ffffff>启用论坛基本设置</font></a>
+</font></td></tr>
+<tr bgcolor=$b>
+<td>论坛状态：</td>
+<td>
+<input type=radio $bbsifopen_open value=1 name=config[1]> 开启 <input $bbsifopen_close type=radio value=0 name=config[1]> 关闭
+</td>
+</tr>
+<tr bgcolor=$b>
+<td>论坛关闭的原因：(支持html代码)<br>PS: 超级用户从本管理区登录后仍可以进入论坛操作</td>
+<td>
+<TEXTAREA name=config[2] rows=6 cols=50>$db_whybbsclose</TEXTAREA>
+</td>
+</tr>
+<tr bgcolor=$b>
+<td>允许最大在线人数(可以根据 UNIX 负载情况限制用户访问,设置0为无限制)：</td>
+<td><input size=35 value="$db_onlinelmt" name=config[44]></td>
+</tr>
+
+<tr bgcolor=$b>
+<td>注册提示窗(除登陆注册页面)：</td>
+<td>
+<input type=radio $regpopup_open value=1 name=config[53]> 显示 <input type=radio value=0 $regpopup_close name=config[53]> 关闭
+<br>
+</td></tr>
+<tr>
+<td class=head align=center colspan=2><a name="set2"></a>
+<a href="#top" class=bold><font color=#ffffff>论坛基本资料设置</font></a>
+</td>
+</tr>
+
+<tr bgcolor=$b>
+<td>论坛标题：</td>
+<td><input size=35 value="$db_bbsname" name=config[3]></td>
+</tr>
+<tr bgcolor=$b>
+<td>论坛地址：</td>
+<td><input size=35 value="$db_bbsurl" name=config[4]></td>
+</tr>
+<tr bgcolor=$b>
+<td>货币名称：</td>
+<td><input size=35 value="$db_moneyname" name=config[50]></td>
+</tr>
+<tr bgcolor=$b>
+<td>网站名称：</td>
+<td><input size=35 value="$db_wwwname" name=config[5]></td>
+</tr>
+<tr bgcolor=$b>
+<td>网站的URL：</td>
+<td><input size=35 value="$db_wwwurl" name=config[6]></td>
+</tr>
+<tr bgcolor=$b>
+<td>联系我们URL：(模版处,使用 $\db_ceoconnect  变量)</td>
+<td><input size=35 value="$db_ceoconnect" name=config[7]></td>
+</tr>
+<tr bgcolor=$b>
+<td>管理员信箱：</td>
+<td><input size=35 value="$db_ceoemail" name=config[8]></td>
+</tr>
+<tr bgcolor=$b>
+<td>回收站ID：(用一个已建好的版块目录作为回收站目录,输入forumid,默认为66!注：0代表取消回收站功能,直接删除帖子!)</td>
+<td><input size=35 value="$db_recycle" name=config[56]></td>
+</tr>
+
+<tr>
+<td class=head align=center colspan=2><a name="set3"></a>
+<a href="#top" class=bold><font color=#ffffff>
+论坛动态目录控制(如果发现不可更改,请确认目录可写入)</font></a>
+</td>
+</tr>
+<tr bgcolor=$b>
+<td>会员数据库路径：</td>
+<td><input size=35 value="$userpath" name=datebase[0]></td>
+</tr>
+<tr bgcolor=$b>
+<td>帖子数据库路径：</td>
+<td><input size=35 value="$dbpath" name=datebase[1]></td>
+</tr>
+<tr bgcolor=$b>
+<td>图片保存目录名：(必须为空间上的目录)</td>
+<td><input size=35 value="$picpath" name=datebase[2] $imgdisabled></td>
+</tr>
+<tr bgcolor=$b>
+<td>附件保存目录名：</td>
+<td><input size=35 value="$attachpath" name=datebase[3] $attdisabled></td>
+</tr>
+<tr bgcolor=$b>
+<td>短消息保存目录名：</td>
+<td><input size=35 value="$msgpath" name=datebase[4]></td>
+</tr>
+<tr bgcolor=$b>
+<td>是否自动不定期更改图片链：(小型论坛不推荐选是)</td>
+<td><input type=radio value=1 $autochange_open name=datebase[7]>是  <input type=radio value=0 $autochange_close name=datebase[7]>否 </td>
+</tr>
+<tr bgcolor=$b>
+<td>定时更改图片目录防止图片盗链：(如果上一选项选否,此项无效)</td>
+<td><select name=datebase[5]>
+<option value=4 $ifselected[4]>4</option>
+<option value=6 $ifselected[6]>6</option>
+<option value=8 $ifselected[8]>8</option>
+<option value=12 $ifselected[12]>12</option>
+<option value=20 $ifselected[20]>24</option>
+</select>(小时)
+</td>
+</tr>
+<tr bgcolor=$b>
+<td>使用跨台固定图片链：(不使用请写'N',小型论坛不推荐使用,请不要随意更改)</td>
+<td><input size=35 value="$db_http" name=datebase[6]></td>
+</tr>
+<tr>
+<td class=head align=center colspan=2><a name="set4"></a>
+<a href="#top" class=bold><font color=#ffffff>论坛通用核心功能设置</font></a>
+</td>
+</tr>
+
+<tr bgcolor=$b>
+<td>默认论坛风格：(论坛默认的界面风格,游客和使用默认风格的会员将以此风格显示)</td>
+<td><select name=config[63]>$choseskin</select></td>
+</tr>
+<tr bgcolor=$b>
+<td>请输入本地时间与论坛服务器的时间差 单位：<font color='#FF6633'>分钟</font></td>
+<td><input size=35 value="$db_cvtime" name=config[13]></td>
+</tr>
+<tr bgcolor=$b>
+<td>日期格式：<br>
+如 Y-m-j g:i A 代表 2005-12-30 12:00 PM 这样的格式,24小时制为Y-m-j G:i<font color='#FF6633'>分钟(second)</font></td>
+<td><input size=35 value="$db_tformat" name=config[26]></td>
+</tr>
+<tr bgcolor=$b>
+<td>搜索时主题个数的间隔为：[如果发生搜索超时现象请减小此数字]</td>
+<td><input size=35 value="$db_schpernum" name=config[25]></td>
+</tr>
+
+<tr bgcolor=$b>
+<td>是否记录会员在线时间并在版块内显示(非常影响速度)</td>
+<td><input type=radio value=1 $ifonlinetime_open name=config[54]>开启 <input type=radio value=0 $ifonlinetime_close name=config[54]>关闭 </td>
+</tr>
+<tr bgcolor=$b>
+<td>是否使用自动跳转(如果服务器为NT.如果关闭此选项而出现无法登陆.请开启)</td>
+<td><input type=radio value=1 $ifjump_open name=config[52]>开启 <input type=radio value=0 $ifjump_close name=config[52]>关闭 </td>
+</tr>
+<tr bgcolor=$b>
+<td>刷新预防时间(多少秒间刷新被视为恶意刷新,设为0则不做限制)：</td>
+<td><input size=35 value="$db_refreshtime" name=config[28]></td>
+</tr>
+
+<tr bgcolor=$b>
+<td>在线用户时限（多少分钟内有动作视为在线）：</td>
+<td><input size=35 value="$db_onlinetime" name=config[30]></td>
+</tr>
+<tr bgcolor=$b>
+<td>是否在页脚显示程序运行时间：</td>
+<td><input type=radio value=1 $footertime_open name=config[31]>开启 <input type=radio value=0 $footertime_close name=config[31]>关闭 </td>
+</tr>
+<tr bgcolor=$b>
+<td>是否开启ip验证：(可以加强论坛安全,选择开启将对登陆者ip进行验证.如果于上一此登陆ip前2位不同.将要求重新登陆)</td>
+<td><input type=radio value=1 $ipcheck_open name=config[93]>开启 <input type=radio value=0 $ipcheck_close name=config[93]>关闭 </td>
+</tr>
+
+<tr bgcolor=$b>
+<td>GZIP 压缩输出:(选择是将允许论坛通过 gzip 输出页面,可以很明显的降低带宽需求,但只有在客户端支持的情况下才可使用,并会加大服务器系统开销)</td>
+<td><input type=radio value=1 $obstart_open name=config[60]>是 &nbsp;&nbsp;<input type=radio value=0 $obstart_close name=config[60]>否 </td>
+</tr>
+<tr bgcolor=$b>
+<td>COOKIE有效目录 ,使一个空间放置多个论坛,都能访问! 
+（如果你论坛在bbs目录下可以设置为/bbs/ 或为 /）：</td>
+<td><input size=35 value="$ckpath" name=config[64]></td>
+</tr>
+<tr bgcolor=$b>
+<td>COOKIE有效域名 比如可能会有人使用 http://htf.1m.cn访问你的论坛这时你可以设置为 .htf.1m.cn 或留空</td>
+<td><input size=35 value="$ckdomain" name=config[65]></td>
+</tr>
+
+
+<tr>
+<td class=head align=center colspan=2>
+<a name="set6"></a>
+<a href="#top" class=bold><font color=#ffffff>会员注册控制</font></a>
+</td>
+</tr>
+<tr bgcolor=$b>
+<td>允许新用户注册：<br>(关闭后:除非<font color="red">拥有进入后台的权限</font>,将禁止其他人注册成为会员)</td>
+<td><input type=radio value=1 $allowregister_open name=config[72]>开启 <input type=radio value=0 $allowregister_close name=config[72]>关闭 </td>
+</tr>
+<tr bgcolor=$b>
+<td>注册时显示许可协议：(新用户注册时显示许可协议,同意后才能继续注册)</td>
+<td><input type=radio value=0 $reg_open name=config[73]>开启 <input type=radio value=1 $reg_close name=config[73]>关闭 </td>
+</tr>
+<tr bgcolor=$b>
+<td>注册许可协议内容编辑:[可以使用html代码]如:<br>&lt;font color=red&gt;你好&lt;/font&gt;&lt;a href=http://www.htf.1m.cn&gt;htf board&lt;/a&gt;代表:<font color=red>你好</font><a href=http://www.htf.1m.cn>htf board</a></td>
+<td>
+<TEXTAREA name=config[89] rows=6 cols=50>$db_rgpermit</TEXTAREA>
+</td>
+</tr>
+<tr bgcolor=$b>
+<td>注册时显示详细注册信息：(不开启将显示快速注册！)</td>
+<td><input type=radio value=1 $regdetail_open name=config[74]>开启 <input type=radio value=0 $regdetail_close name=config[74]>关闭 </td>
+</tr>
+<tr bgcolor=$b>
+<td>新用户注册需通过email激活用户：(选择“开启”将向用户注册 Email 发送一封验证邮件以确认邮箱的有效性,用户收到邮件并激活账号后才能拥有正常的权限)</td>
+<td><input type=radio value=1 $emailcheck_open name=config[75]>开启 <input type=radio value=0 $emailcheck_close name=config[75]>关闭 </td>
+</tr>
+<tr bgcolor=$b>
+<td>是否禁止同一IP在24小时内重复注册<br>---<font color="red"><b>(强烈建议您选择 是,这样可以避免恶意注册)</b></font></td> 
+<td><input type=radio value=Y $regallowsameip_open name=config[82]>是 <input type=radio value=N $regallowsameip_close name=config[82]>否 </td>
+</tr>
+
+<tr bgcolor=$b>
+<td>新用户注册发送电子邮件：(新用户注册后系统自动发送一封EMAIL)</td>
+<td><input type=radio value=1 $regsendemail_open name=config[71]>是 &nbsp;&nbsp;<input type=radio value=0 $regsendemail_close name=config[71]>否 </td>
+</tr>
+<tr bgcolor=$b>
+<td>新用户注册发送短消息：(新用户注册后系统自动发送一条欢迎短消息)</td>
+<td><input type=radio value=1 $regsendmsg_open name=config[79]>是 &nbsp;&nbsp;<input type=radio value=0 $regsendmsg_close name=config[79]>否 </td>
+</tr>
+<tr bgcolor=$b>
+<td>向新注册用户发送的欢迎短消息内容[可以使用html代码]:<br>(\$\rg_name为新注册用户的用户名,注册时自动赋值)</td>
+<td>
+<TEXTAREA name=config[88] rows=6 cols=50>$db_welcomemsg</TEXTAREA>
+</td>
+</tr>
+<tr bgcolor=$b>
+<td>新用户注册是否需要管理员在后台验证通过才能发贴:</td>
+<td><input type=radio value=1 $regifcheck_open name=config[59]>是 &nbsp;&nbsp;<input type=radio value=0 $regifcheck_close name=config[59]>否 </td>
+</tr>
+<tr bgcolor=$b>
+<td>注册会员在多少时间内不能发表文章(选择‘0’不做限制)</td>
+<td><select name=config[96]>
+<option value=0 $regcheck[0]>0</option>
+<option value=1 $regcheck[1]>1</option>
+<option value=6 $regcheck[6]>6</option>
+<option value=12 $regcheck[12]>12</option>
+<option value=24 $regcheck[24]>24</option>
+<option value=48 $regcheck[48]>48</option>
+</select>(小时)
+</td>
+</tr>
+
+<tr bgcolor=$b>
+<td>注册会员ID区分大小写(建议默认:否):</td>
+<td><input type=radio value=1 $rglower_open name=config[94]>是 &nbsp;&nbsp;<input type=radio value=0 $rglower_close name=config[94]>否 </td>
+</tr>
+<tr bgcolor=$b>
+<td>用户名最短长度:(用户在注册时的最小的用户名字符长度.)</td>
+<td><input size=35 value="$db_regminname" name=config[76]></td>
+</tr>
+<tr bgcolor=$b>
+<td>用户名最长长度:(系统稳定性考虑,请不要超过 12 字节.)</td>
+<td><input size=35 value="$db_regmaxname" name=config[77]></td>
+</tr>
+<tr bgcolor=$b>
+<td>注册时初始威望:(建议设置为1.)</td>
+<td><input size=35 value="$db_regrvrc" name=config[68]></td>
+</tr>
+<tr bgcolor=$b>
+<td>注册时初始财富:(建议设置为0.)</td>
+<td><input size=35 value="$db_regmoney" name=config[69]></td>
+</tr>
+<tr>
+<td class=head align=center colspan=2>
+<a name="set7"></a>
+<a href="#top" class=bold><font color=#ffffff>htf Code 细节控制</font></a>
+</td>
+</tr>
+<tr bgcolor=$b>
+<td>浏览帖子是否打开 htf IMG功能：</td>
+<td><input type=radio value=1 $postpic_open name=config[18]>开启 <input type=radio value=0 $postpic_close name=config[18]>关闭 </td>
+</tr>
+<tr bgcolor=$b>
+<td>浏览帖子是否打开 htf Flash功能：</td>
+<td><input type=radio value=1 $postflash_open name=config[19]>开启 <input type=radio value=0 $postflash_close name=config[19]>关闭 </td>
+</tr>
+<tr bgcolor=$b>
+<td>浏览帖子是否打开 htf (wmv,asf,ra,ram,rm)功能：</td>
+<td><input type=radio value=1 $postmpeg_open name=config[37]>开启 <input type=radio value=0 $postmpeg_close name=config[37]>关闭 </td>
+</tr>
+<tr bgcolor=$b>
+<td>浏览帖子是否打开 iframe功能：</td>
+<td><input type=radio value=1 $postiframe_open name=config[38]>开启 <input type=radio value=0 $postiframe_close name=config[38]>关闭 </td>
+</tr>
+<tr bgcolor=$b>
+<td>签名中是否打开 htf 代码功能：</td>
+<td><input type=radio value=1 $signhtfcode_open name=config[10]>开启 <input type=radio value=0 $signhtfcode_close name=config[10]>关闭 </td>
+</tr>
+<tr bgcolor=$b>
+<td>签名中是否打开 htf IMG功能：</td>
+<td><input type=radio value=1 $signpic_open name=config[11]>开启 <input type=radio value=0 $signpic_close name=config[11]>关闭 </td>
+</tr>
+<tr bgcolor=$b>
+<td>签名中是否打开 htf Flash功能：</td>
+<td><input type=radio value=1 $signflash_open name=config[12]>开启 <input type=radio value=0 $signflash_close name=config[12]>关闭 </td>
+</tr>
+<tr bgcolor=$b>
+<td>回复提示帖中 htf IMG功能：</td>
+<td><input type=radio value=1 $replypic_open name=config[22]>开启 <input type=radio value=0 $replypic_close name=config[22]>关闭 </td>
+</tr>
+<tr bgcolor=$b>
+<td>回复提示帖中 htf Flash功能：</td>
+<td><input type=radio value=1 $replyflash_open name=config[23]>开启 <input type=radio value=0 $replyflash_close name=config[23]>关闭 </td>
+</tr>
+<tr>
+<td class=head align=center colspan=2>
+<a name="set8"></a>
+<a href="#top" class=bold><font color=#ffffff>发贴功能与附件设置</font></a>
+</td>
+</tr>
+
+
+<tr bgcolor=$b>
+<td>上传附件大小上限(单位 k:1024 k=1 M)：</td>
+<td><input size=35 value="$db_uploadmaxsize" name=config[35]></td>
+</tr>
+<tr bgcolor=$b>
+<td>上传附件允许后缀(空格隔开)：</td>
+<td><input size=35 value="$db_uploadfiletype" name=config[36]></td>
+</tr>
+<tr bgcolor=$b>
+<td>post回复时显示提示旧帖数：</td>
+<td><input size=35 value="$db_showreplynum" name=config[21]></td>
+</tr>
+<tr bgcolor=$b>
+<td>投票选项个数控制：</td>
+<td><input size=35 value="$db_selcount" name=config[86]></td>
+</tr>
+<tr bgcolor=$b>
+<td>用户文章被回复是否发送邮件：</td>
+<td><input type=radio value=1 $replysendmail_open name=config[16]>是,发送 <input type=radio value=0 $replysendmail_close name=config[16]>否,不发送</td>
+</tr>
+<tr bgcolor=$b>
+<td>每篇文章的最大长度(字节)：</td>
+<td><input size=35 value="$db_postmax" name=config[17]></td>
+</tr>
+<tr bgcolor=$b>
+<td>每篇文章的最小长度(字节)：</td>
+<td><input size=35 value="$db_postmin" name=config[85]></td>
+</tr>
+<tr bgcolor=$b>
+<td>是否使用自动帖图</td>
+<td><input type=radio value=1 $autoimg_open name=config[84]>是 &nbsp;&nbsp;
+<input type=radio value=0 $autoimg_close name=config[84]>否 </td>
+</tr>
+<tr>
+<td class=head align=center colspan=2>
+<a name="set9"></a>
+<a href="#top" class=bold><font color=#ffffff>贴子奖惩选项</font></a>
+</td>
+</tr>
+<tr bgcolor=$b>
+<td>发一贴增加的威望：</td>
+<td><input size=35 value="$db_dtpostrvrc" name=config[40]></td>
+</tr>
+<tr bgcolor=$b>
+<td>回复十贴增加的威望：</td>
+<td><input size=35 value="$db_dtreplyrvrc" name=config[24]></td>
+</tr>
+<tr bgcolor=$b>
+<td>发一贴增加的财富：</td>
+<td><input size=35 value="$db_dtpostmoney" name=config[41]></td>
+</tr>
+<tr bgcolor=$b>
+<td>回复一贴增加的财富：</td>
+<td><input size=35 value="$db_dtreplymoney" name=config[92]></td>
+</tr>
+<tr bgcolor=$b>
+<td>精华一次增加的威望(同取消精华减少威望)：</td>
+<td><input size=35 value="$db_dtjhrvrc" name=config[42]></td>
+</tr>
+<tr bgcolor=$b>
+<td>精华一次增加的财富(同取消精华减少财富)：</td>
+<td><input size=35 value="$db_dtjhmoney" name=config[43]></td>
+</tr>
+<tr bgcolor=$b>
+<td>删除一贴减少的威望：</td>
+<td><input size=35 value="$db_dtdelrvrc" name=config[46]></td>
+</tr>
+<tr bgcolor=$b>
+<td>删除一贴减少的财富：</td>
+<td><input size=35 value="$db_dtdelmoney" name=config[47]></td>
+</tr>
+
+<tr>
+<td class=head align=center colspan=2>
+<a name="set10"></a>
+<a href="#top" class=bold><font color=#ffffff>论坛首页细节设置</font></a>
+</td>
+</tr>
+
+<tr bgcolor=$b>
+<td>是否显示友情<font color="red">链接</font>：</td>
+<td><input type=radio value=1 $indexlink_open name=config[61]>开启 <input type=radio value=0 $indexlink_close name=config[61]>关闭 </td>
+</tr>
+<tr bgcolor=$b>
+<td>是否<font color="red">滚动</font>显示<font color="red">友情链接</font>：(影响程序效率)：</td>
+<td><input type=radio value=1 $indexmqshare_open name=config[62]>开启 <input type=radio value=0 $indexmqshare_close name=config[62]>关闭 </td>
+</tr>
+<tr bgcolor=$b>
+<td>是否在首页显示今天<font color="red">生日会员</font>(影响速度)：</td>
+<td><input type=radio value=1 $indexshowbirth_open name=config[58]>开启 <input type=radio value=0 $indexshowbirth_close name=config[58]>关闭 </td>
+</tr>
+<tr bgcolor=$b>
+<td>是否在首页显示<font color="red">在线用户</font>(影响速度)：</td>
+<td><input type=radio value=1 $indexonline_open name=config[48]>开启 <input type=radio value=0 $indexonline_close name=config[48]>关闭 </td>
+</tr>
+<tr bgcolor=$b>
+<td>是否在首页显示<font color="red">在线游客</font>(影响速度)：</td>
+<td><input type=radio value=1 $showguest_open name=config[55]>是 &nbsp;&nbsp;<input type=radio value=0 $showguest_close name=config[55]> 否</td>
+</tr>
+<tr bgcolor=$b>
+<td>是否启用统计今日到访会员<font color="red">今日到访会员</font>(大型论坛建议关闭,影响速度)：</td>
+<td><input type=radio value=1 $today_open name=config[95]>是 &nbsp;&nbsp;<input type=radio value=0 $today_close name=config[95]> 否</td>
+</tr>
+<tr bgcolor=$b>
+<td>是否自定义首页各版块的<font color="red">图片logo</font>：(选择自定义:您必须修改提供各版块的图片logo地址,具体在setforum.php里修改.选择默认:只要在图片目录 /风格目录/forumlogo/ 下添加对应的图片!)</td>
+<td><input type=radio value=2 $indexfmlogo_status name=config[83]>自定义&nbsp;<input type=radio value=1 $indexfmlogo_open name=config[83]>默认&nbsp;<input type=radio value=0 $indexfmlogo_close name=config[83]>不使用 </td>
+</tr>
+<tr bgcolor=$b>
+<td>是否显示<font color="red">今日昨日发贴数</font>：</td>
+<td><input type=radio value=1 $todaypost_open name=config[80]>是 &nbsp;&nbsp;<input type=radio value=0 $todaypost_close name=config[80]>否 </td>
+</tr>
+
+
+
+<tr>
+<td class=head align=center colspan=2>
+<a name="set12"></a>
+<a href="#top" class=bold><font color=#ffffff>浏览各版块与帖子细节设置</font></a>
+</td>
+</tr>
+<tr bgcolor=$b>
+<td>分版块文章多少时间表示为新贴(3600=1小时)：</td>
+<td><input size=35 value="$db_newtime" name=config[9]></td>
+</tr>
+<tr bgcolor=$b>
+<td>论坛文章列表每页显示主题数：</td>
+<td><input size=35 value="$db_perpage" name=config[14]></td>
+</tr>
+
+<tr bgcolor=$b>
+<td>阅读一主题时每页显示帖子数：</td>
+<td><input size=35 value="$db_readperpage" name=config[15]></td>
+</tr>
+
+<tr bgcolor=$b>
+<td>是否在版块内显示在线用户：</td>
+<td><input type=radio value=1 $threadonline_open name=config[32]>开启 <input type=radio value=0 $threadonline_close name=config[32]>关闭 </td>
+</tr>
+<tr bgcolor=$b>
+<td>是否在阅读帖子时显示在线用户(影响程序效率)：</td>
+<td><input type=radio value=1 $showonline_open name=config[97]>开启 <input type=radio value=0 $showonline_close name=config[97]>关闭 </td>
+</tr>
+
+<tr bgcolor=$b>
+<td>是否在个分版块帖子里显示快速发表主题：(影响程序效率)：</td>
+<td><input type=radio value=1 $threadshowpost_open name=config[81]>开启 <input type=radio value=0 $threadshowpost_close name=config[81]>关闭 </td>
+</tr>	
+<tr bgcolor=$b>
+<td>是否在各分版块帖子导航里显示表情符：(影响程序效率)：</td>
+<td><input type=radio value=1 $threademotion_open name=config[70]>开启 <input type=radio value=0 $threademotion_close name=config[70]>关闭 </td>
+</tr>
+
+<tr bgcolor=$b>
+<td>是否在浏览帖子处显示会员IP来源：(选择关闭,普通会员将无权限查看发贴的IP来源)</td>
+<td><input type=radio value=1 $ipfrom_open name=config[91]>开启 <input type=radio value=0 $ipfrom_close name=config[91]>关闭 </td>
+</tr>
+<tr bgcolor='$a'>
+<td colspan=2 align=center ><input type=submit value="提 交"> <input type=reset value="重 置">
+</tr>
+</td></tr></table></td></tr>$adminbottomad</table>
+</form>
+</td></tr>
+</table></body></html>

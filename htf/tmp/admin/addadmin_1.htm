@@ -1,0 +1,11 @@
+
+<tr><form action=$basename method=POST><input type=hidden name=action value='edit'>
+<input type=hidden name=oldadmin value=$array[1]>
+<td height=26 width=25% align=center>
+<input type=text name=oldname size=12 value=$array[1]></td>
+<td height=26 width=25% align=center>
+<input type=text name=oldpwd size=12 value="已md5加密"></td>
+<td height=26 width=25%  align=center>
+<select name=adminpower><option value=0 $select>普通管理员</option><option value=1 $unselect>超级管理员</option></select></td>
+<td height=26 width=25%  align=center>
+<b><input type=submit name=Submit value=修改> <input type=button value=删除 onClick=location.href='$basename&action=del&newadmin=$array[1]' ></b></td></form></tr>

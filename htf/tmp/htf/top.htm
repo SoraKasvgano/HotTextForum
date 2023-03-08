@@ -1,0 +1,61 @@
+<!--
+<?php print <<<EOT
+-->
+$msg_guide
+<form method="post" action=$secondurl>
+<table width=$tablewidth border=0 cellspacing=0 cellpadding=0 align=center>
+<tr><td>
+<table width=100% border=0 cellspacing=1 cellpadding=3 $i_table>
+<td width="5%" class=head align="center">删</td>
+<td width="25%"class=head align="center">发布人</td>
+<td width="45%"class=head align="center">标题</td>
+<td width="25%"class=head align="center">时间</td></tr>
+$msginfo
+</table></td></tr></table>
+<input name=action type=hidden value=del>
+<br><center><input type=button name="chkall" value="全选" onclick="CheckAll(this.form)"><input type=submit name="delete" value=删除></form></center>
+$ifecho[addnew1]
+<center><form method="post" action=$secondurl>
+<input type=submit name="add" value="新增">
+</form></center>
+$ifecho[addnew2]
+<form method=post action=$basename>
+<table width=$tablewidth border=0 cellspacing=0 cellpadding=0 align=center>
+<tr><td>
+<table width=100% border=0 cellspacing=1 cellpadding=3 $i_table>
+<tr><td class=head colspan=2><a href="top.php" class=head>增加</a>或编辑置顶贴</td></tr>
+<tr><td width="21%" class='f_one' align=right>标题：</td>
+<td width="79%" class='f_one'>
+<input type="text" size="45" name="newtitle" value="$oldtitle"></td></tr>
+<tr><td width="21%" class='f_one' align=right>版块id：</td>
+<td width="79%" class='f_one'>
+<input type="text" size="45" name="forumid" value=$fid>
+</td></tr>
+<tr><td width="21%" class='f_one' align=right>帖子id：</td>
+<td width="79%" class='f_one'>
+<input type="text" size="45" name="atcid" value=$tid>
+</td></tr>
+
+<input name=action type=hidden value=$action>
+<input name=oldauthor type=hidden value=$oldauthor>
+<input name=oldatcid type=hidden value=$oldatcid>
+
+<input type=hidden value=$mid name=mid>
+<input type=hidden value=2 name=step>
+</table></td></tr></table>
+<br><center>
+<input type="submit" name="add" value="提交">
+</form>
+<script language=JavaScript>
+function CheckAll(form)
+{
+	for (var i=0;i<form.elements.length;i++)
+	{
+		var e = form.elements[i];
+		e.checked == true
+	}
+}
+</script>
+<!--
+EOT;
+?>-->

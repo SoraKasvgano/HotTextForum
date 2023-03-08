@@ -1,0 +1,147 @@
+<!--
+<?php print <<<EOT
+-->
+$msg_guide
+<!--
+EOT;
+$thread_online && include PrintEot($thread_online);
+$thread_children && include PrintEot($thread_children);
+print <<<EOT
+<!---->
+<table width=$tablewidth border=0 cellspacing=0 cellpadding=0 align=center>
+<tr><td align=left valign=middle width=60% >$fenye&nbsp;&nbsp;&nbsp;$trd_fatherlink </td>
+<td align=right><a href="post.php?fid=$fid"><img src="$imgpath/$stylepath/post.gif" border=0></a>
+<a href="post.php?action=vote&fid=$fid"><img src="$imgpath/$stylepath/vote.gif" border=0></a>
+</td></tr></table>
+<table cellspacing=1 cellpadding=0 width=$tablewidth align=center border=0 $i_table>$trd_adminhide
+<tr align=center>
+<td width=5% class=head><span class=bold>状态</span></td>
+<td width=56% class=head align=center><span class=bold>标&nbsp;&nbsp;题</span></td>
+<td width=10% class=head><span align=center>作 者</span></td>
+<td width=5% class=head><span align=center>回复</span></td>
+<td width=5% class=head><span align=center>人气</span></td>
+<td width=19% class=head><span align=center>最后发表</span></td></tr>
+$ifecho[trd_anc1]
+<TR align=middle class='t_one' height=30>
+<td width=5% align=center><img src="$imgpath/$stylepath/thread/anc.gif"></td>
+<td width=56% align=left class='t_two'>&nbsp站务公告:
+<a href="bulletin.php?action=1#0">$detail[2]</a></td>
+<td width=10% ><a href="usercp.php?action=show&username=$rawnotic">$detail[1]</a></td>
+<td width=10% class='t_one' colspan=2>站务公告</td>
+<td align=center width=19% class='t_one'>$detail[4]</td></TR>
+$ifecho[trd_anc2]
+<!-- 
+EOT;
+if($topdb!=null){
+foreach($topdb as $top){
+print <<<EOT
+<!--总置顶模版-->
+<tr align=middle class='t_one' height=30>
+<td width=5% align=center><img src=$imgpath/$stylepath/thread/bbstop.gif></td>
+<td width=56% align=left class='t_two'>&nbsp总置顶: 
+<a href=$top[atcid]>$top[title]</a></td>
+<td width=10% ><a href=usercp.php?action=show&username=$top[rawauthor]>$top[author]</a></td>
+<td width=10% class='t_one' colspan=2>总置顶</td>
+<td align=center width=19% class='t_one'>$top[settime]</td></tr>
+<!--
+EOT;
+}}
+foreach($threaddb as $thread) {
+print <<<EOT
+<!--thread模版-->
+<tr align=center class='t_two' height='33'><td width=5%>$thread[status]</td>
+<td width=56% class='t_one' align=left>&nbsp;$thread[adminbox]
+$thread[useriocn] 
+<a title='$thread[content]' href='topic.php?fid=$fid&tid=$thread[filename]&fpage=$page'>
+$thread[title]</a>
+$thread[titleadd] $thread[ispage] $thread[atcma]</td>
+<td width=10%>
+<a href='usercp.php?action=show&username=$thread[rawauthor]'>$thread[author]</a></td>
+<td width=5% bgcolor='$threadcolorone'>$thread[reply]</td>
+<td width=5% bgcolor='$threadcolorone'>$thread[hit]</td>
+<td width=19% class=smalltxt>&nbsp;
+<a href='topic.php?fid=$fid&tid=$thread[filename]&page=lastpost&fpage=$page#lastatc'>
+$thread[lstptime]</a>
+<br>
+von:<a href='usercp.php?action=show&username=$thread[rawlpauthor]'>$thread[lpauthor]</a></td></tr>
+<!--
+EOT;
+}print <<<EOT
+-->
+</table>
+<!--
+EOT;
+if($trd_check==1){print <<<EOT
+-->
+<table cellpadding=1 cellspacing=1 border=0 width=100% align=center><tr align=center><td>
+<input type=button value='$adminforum1' onclick=location.href='forum.php?fid=$fid&search=$search&page=$page&managemode=$concle&concle=$concle'>
+ 批量删除选项：
+<input type='button' name='chkall' value='全选' onclick='CheckAll(this.form)'>
+<input type='button' name='clear2' value='反选' onclick="CheckAll(this.form)">
+<input type="reset" name="Reset" value="重置">
+<input name=action type=radio value="digest">批量精华
+<input name=action type=radio value="undigest">取消精华
+<input name=action type=radio value="move">移动
+<input name=action type=radio value="copy">复制
+<input name=action type=radio value="del" checked>删除
+<input type="submit" name="hello" value="确认">
+</td></tr></form></table>
+<script language=JavaScript>
+function CheckAll(form)
+{
+	for (var i=0;i<form.elements.length;i++)
+	{
+		var e = form.elements[i];
+		e.checked == true ? e.checked = false : e.checked = true;
+	}
+}
+</script>
+<!--
+EOT;
+}print <<<EOT
+-->
+<br>
+<table cellspacing=0 cellpadding=0 width=$tablewidth align=center border=0 >
+<tr><td align=left>{$fenye}&nbsp; 此页{$db_perpage}个主题</span></td>
+<td align=right><a href="post.php?fid=$fid"><img src="$imgpath/$stylepath/post.gif" border=0></a>
+<a href="post.php?action=vote&fid=$fid"><img src="$imgpath/$stylepath/vote.gif" border=0></a>
+</td></tr></form>
+<tr>
+<form name=jump method=post><td align=left><br><span class=bold>跳转到 :</span>
+<select onchange="if(this.options[this.selectedIndex].value != '') {
+window.location=('forum.php?fid='+this.options[this.selectedIndex].value) }">
+<option value="" selected>快速跳至</option>
+$forumcache
+</select></td></form>
+<FORM action='forum.php?fid=$fid' method=post>
+<td align=right><br>
+<SELECT  name=search>
+<OPTION selected value=''>所有的主题</OPTION>
+<OPTION value=digest>本版精华区</OPTION>
+<OPTION value=1>昨天以来的主题</OPTION>
+<OPTION value=2>二天以来的主题</OPTION>
+<OPTION value=5>五天以来的主题</OPTION>
+<OPTION value=10>十天以来的主题</OPTION>
+<OPTION value=20>二十天以来的主题</OPTION>
+<OPTION value=30>三十天以来的主题</OPTION>
+<OPTION value=60>六十天以来的主题</OPTION>
+<OPTION value=100>一百天以来的主题</OPTION>
+<OPTION value=365>一年以来的主题</OPTION>
+</select>
+<INPUT type=submit value="搜索">
+</td></form></tr></table>
+<!-- 
+EOT;
+$fastpost && include PrintEot($fastpost);
+print <<<EOT
+-->
+<center><br>
+<img src="$imgpath/$stylepath/thread/headtopic.gif"> 置顶主题
+<img src="$imgpath/$stylepath/thread/topicnew.gif"> 开放主题 
+<img src="$imgpath/$stylepath/thread/topiclock.gif"> 锁定主题 
+<img src="$imgpath/$stylepath/thread/topichot.gif"> 热门主题 
+<img src="$imgpath/$stylepath/file/new.gif"> 最新主题</center>
+<br><br>
+<!--
+EOT;
+?>-->

@@ -1,0 +1,37 @@
+<!--
+<?php print <<<EOT
+-->
+$msg_guide
+<table width=$tablewidth border=0 cellspacing=0 cellpadding=0 align=center>
+<tr><td>
+<table width=100% border=0 cellspacing=1 cellpadding=3 $i_table style='TABLE-LAYOUT: fixed;WORD-WRAP: break-word'>
+<!-- 
+EOT;
+foreach($noticedb as $notice){print <<<EOT
+<!--公告模版-->
+
+<tr align=center>
+<td class=head colspan=2 align=center><a name=$notice[i]>≡ $notice[title] ≡<br>
+</td></tr>
+<tr>
+<td colspan=2 align=left class='f_one'><br><br>$notice[msg]<br><br></td></tr>
+<tr><td colspan=2 class='f_two'>
+<table width=100% border=0 cellspacing=0 cellpadding=3>
+<tr>
+<td align=left>作者：<a href='usercp.php?action=show&username=$notice[rawurl]'>$notice[author]</a></td>
+<td align=right>起始时间：$notice[stime]终止时间：$notice[etime]</td>
+</tr></table></td></tr>	
+<!--
+EOT;
+}print <<<EOT
+<!---->
+$notice_info
+</table>
+</td></tr>
+
+</td></TR>
+</TABLE>
+
+<!--
+EOT;
+?>-->

@@ -1,0 +1,17 @@
+<!--
+<?php print <<<EOT
+-->
+$msg_guide
+<!--
+EOT;
+$thread_online && include PrintEot($thread_online);
+$thread_children && include PrintEot($thread_children);
+print <<<EOT
+<!---->
+<center>
+<br><br><img src="$imgpath/$stylepath/old.gif" align=absmiddle >&nbsp;无新的贴子&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+<img src="$imgpath/$stylepath/new.gif" align=absmiddle >&nbsp;有新的贴子&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+<img src="$imgpath/$stylepath/lock.gif" align=absmiddle>&nbsp;认证的论坛<br><br></center>
+<!--
+EOT;
+?>-->

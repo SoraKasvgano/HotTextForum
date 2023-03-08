@@ -1,0 +1,92 @@
+<!--
+<?php print <<<EOT
+-->
+<form name="FORM" method="post" action="post.php">
+<table cellspacing=1 cellpadding=0 width=$tablewidth align=center border=0 $i_table>
+<tr><td>
+<table cellspacing=0 cellpadding=0 width=100% border=0>
+<tr>
+<td class=head valign=center align=left>
+<span class=bold>* 快速发帖 </span><a href=#top class=headurl>顶端</a></td>
+<td width=10% class=head align=right valign=middle>
+<a href=#top class=headurl>顶端</a> &nbsp;</td></tr></table></td>
+</tr>
+<tr><td> 
+<table cellspacing=0 cellpadding=4 width=100% height="90%" class='f_one'>
+<tr><td valign=top width=20% class='f_one' rowspan=2 ><!--  20宽跟下面搭配 -->
+<span class=bold>文章内容</span>：<br>
+<font face=verdana> HTML 代码不可用
+$htfcode
+<br>
+<input type=checkbox name="atc_hide" value="1" $htmlhide>隐藏此帖
+<br>
+<input type=checkbox name="atc_requirervrc" value="1" $htmlpost>加密此帖
+<input maxlength=6 size=3 name=atc_rvrc value="0">
+
+<br>
+<input type=checkbox name="atc_requiresell" value="1" $htmlsell>出售此帖
+<input maxlength=3 size=3 name=atc_money value="0">$money_title
+</td>
+<td width=* class='f_one' height=90% rowspan=2> 
+<table height=100% cellspacing=0 cellpadding=0 width=1 bgcolor=$tablecolor>
+<tr><td width=1%></td></tr>
+</table></td>
+<td width=79% class='f_one' rowspan=2> 
+
+标题: 
+<input type="text" name="atc_title" value="$titletop1" size="45" maxlength="45">
+<input type=checkbox name="atc_usesign" value="1" checked>
+使用签名<input type=checkbox name="atc_autourl" value="1" checked>htf Code自动转换 <br>
+<textarea onkeydown=quickpost() name="atc_content" cols="85" rows="5"></textarea>
+<input type=hidden value=2 name=step>
+<input type=hidden value="$psot_sta" name='action'>
+<input type=hidden value="$fid" name=fid>
+<input type=hidden value="$tid" name=tid>
+<input type=hidden value="none" name=atc_attachment>
+<BR><BR>
+
+&nbsp;&nbsp;&nbsp;&nbsp;
+<font color=red> 按 Ctrl+Enter 直接提交&nbsp;&nbsp;&nbsp;</font><input type="submit" name="Submit" value="发 表 文 章" onclick="return checkCnt();"> [<a  href="javascript:checklength(document.FORM);">查看帖子长度</a>]
+</td></tr></table></td></tr></table></form>
+<script language=JavaScript>	
+var postmaxchars =$db_postmax;
+ie = (document.all)? true:false;
+cnt = 0;
+if (ie)
+{
+	function quickpost(eventobject)
+	{
+		if((event.ctrlKey && window.event.keyCode == 13)||(event.altKey && window.event.keyCode == 83))
+		{
+			this.document.FORM.submit();
+		}
+	}
+}
+function checkCnt() {
+  cnt++;
+  if (cnt==1) return true;
+  alert('Submission Processing. Please Wait');
+  return false;
+}
+function checklength(theform) 
+{
+	if (postmaxchars != 0) 
+	{
+		message = "\\n最大的字符为 $db_postmax 字节.";
+	}
+	else 
+	{
+		message = ""; 
+	}		
+	alert("你的信息已经有 "+theform.atc_content.value.length+" 字节"+message);
+}
+function Addaction(addTitle)
+{ 
+	var revisedTitle; 
+	var currentTitle = document.FORM.atc_content.value; revisedTitle = currentTitle+addTitle; document.FORM.atc_content.value=revisedTitle; document.FORM.atc_content.focus(); 
+	return; 
+}
+</script>
+<!--
+EOT;
+?>

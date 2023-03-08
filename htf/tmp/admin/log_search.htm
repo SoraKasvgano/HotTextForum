@@ -1,0 +1,9 @@
+$leftforum
+{$admintopad}
+<tr>
+<td colspan=2 align=center> <table width=100% border=0 cellspacing=2 cellpadding=5 style='TABLE-LAYOUT: fixed;WORD-WRAP: break-word'>
+<tr><td bgcolor=$c valign=middle align=center colspan=5>
+	<font color='#333333'><b>论坛搜索操作日志</b><br>为了保证后台的安全性,搜索日记管理员不允许删除.系统必须保留前100条.<br>$fenye</td></tr>
+	<tr bgcolor=$c><td>用户</td><td>IP</td><td>操作时间</td><td>搜索关键词</td><td>搜索类型</td></tr>
+	{$adlogfor} 
+</table>$fenye<br><br><a href="admin.php?adminjob=record&goto=search&del=Y"><span class=bold>删除多余搜索日志</span></a></td></tr>$adminbottomad</td></tr></table></body></html>

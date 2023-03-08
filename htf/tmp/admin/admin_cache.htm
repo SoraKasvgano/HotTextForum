@@ -1,0 +1,28 @@
+$leftforum
+$admintopad
+<form action="$basename" method=post>
+<tr><td align=center><br><br>
+<table cellspacing="1" cellpadding="4" width="95%" bgcolor=$a>
+<tr><td class=head colspan=2>
+<span class=bold>更新用户组列表</span>
+<tr><td bgcolor=$b>
+将更新用户组等级：<br>
+由于为了加快后台的运行速度,我们采用了缓冲的思想,如果你发现前台有不正确的用户组权限或头衔!请使用此功能 !由此可以恢复正确用户组成员和各版块版主设置.<br>
+</td></tr></table>
+<br>
+<input type=hidden name="action" value="updata">
+<center><input type=submit value="更  新"></center>	
+</form><br><br>
+<form action="$basename" method=post>
+<tr><td align=center><br><br>
+<table cellspacing="1" cellpadding="4" width="95%" bgcolor=$a>
+<tr><td class=head colspan=2>
+<span class=bold>更新单个用户</span>
+<tr><td bgcolor=$b width=60%>
+如果个别用户的用户组权限或头衔不正确，请使用此功能恢复。用户名：</td><td bgcolor=$b><input type=text name="updataname"><br>
+</td></tr></table>
+<br>
+<input type=hidden name="action" value="onlyone">
+<center><input type=submit value="更  新"></center>	
+</form>
+$adminbottomad</body></html>

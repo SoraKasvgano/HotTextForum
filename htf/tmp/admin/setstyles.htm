@@ -1,0 +1,59 @@
+$leftforum
+$admintopad
+
+<form action="$basename&action=see" method="post">
+<tr><td align=center>
+<table cellspacing=1 cellpadding=8 width=95% border=0 class=head>
+<tr>
+<td class=head valign=middle align=left colspan=2>
+<span class=bold>颜色风格设定</span>(当前默认风格：$skin)
+</td></tr>
+<tr bgcolor=$b>
+<td>是否照顾800*600用户(建议选择是,这样更美观)</td>
+<td><INPUT type=radio value=1 $open_seecheck name=setting_seecheck>是 &nbsp;&nbsp;<INPUT type=radio value=0 $close_seecheck name=setting_seecheck>否 <input type=submit value="提 交"></td>
+</tr></form>
+<tr bgcolor=$b><td>新增风格风格核心文件</td>
+			<td><a href="$basename&action=add">新增风格风格核心文件</a></td></tr>
+			<tr bgcolor=$b><td>编辑此风格的核心文件</td><td>
+			<form action="$basename&action=edit" method="post"> 
+{$get_style}
+			<input type=submit value="提 交">
+			</form></td></tr>
+			<tr bgcolor=$b><td>删除此风格的核心文件</td><td>
+			<form action="$basename" method="post">
+			<input type=hidden name="job" value="submit">
+			<input type=hidden name="skin" value=$skin> 
+{$get_style}
+<input type=submit value="提 交"></td></tr></table><br></td></tr></form>
+<form action="$basename&action=editcss" method="post">
+<tr><td align=center>
+<table cellspacing=1 cellpadding=8 width=95% border=0 class=head>
+<tr>
+<td class=head valign=middle align=left>
+编辑当前默认风格：<span class=bold>$skin</span> 的css  (更改默认风格请到核心设置里设置)
+</td></tr><tr>
+<tr>
+<td bgcolor=$b valign=middle align=left>
+帮助:<br>
+.bold 为加粗字体<br>
+.cfont 为论坛类别名字的颜色<br>
+.table 为将特殊字体颜色  1.x版主要在 头部和尾部实现白色<br>
+.head 为表格头一行的颜色 主要是在行里需要使用深颜色时使用 可以加图片<br>
+.cbg 为论坛类别下一行的颜色(与上一行形成对比) 可以加图片<br>
+
+.topbg { color: #ffffff;background: #606096 url();}<br>
+.footbg { color: #ffffff;background: #606096 url();}<br>
+.topbg 可以在头部的 主 table标签里使用   可以加图片<br>
+.footbg 可以在尾部 主 table 标签里使用 第一版不存在此标签 如果你自定义风格可以尝试 可以加图片<br>
+.fnamecolor 各版块名字颜色<br>
+.smalltxt 为字体和字体大小控制等 1.x版主要应用在版块简介.最新帖子导航和首页欢迎拦里!<br>
+.headurl 为链接等字体的颜色.1.x版主要应用在表格上的链接字体颜色!<br>
+.tpc_title 里font-size为 帖子标题的字体大小<br>
+.tpc_content 里 font-size帖子内容字体大小 line-height为行与行的间距<br>
+.i_table 为表格内部表线为白色  外部为 boardcolor 色<br>
+</td></tr><tr>
+<td valign=middle align=center bgcolor=$b>
+<textarea  name=style_css rows=12 cols=95 style="background-color:#F0F0f3; border: 1 double #B4B4B4" title="请慎重,这里的一举一动将改变论坛整个风格">
+{$style_css}</textarea><br><input type=hidden name="skin" value=$skin><input type=submit value="提 交">
+</td></tr>
+</table></td></tr></form>$adminbottomad</table></body></html>

@@ -1,0 +1,46 @@
+<style type="text/css">
+BODY { COLOR: '#3F3849'; FONT-FAMILY: Verdana,Arial; FONT-SIZE: 9pt;
+SCROLLBAR-HIGHLIGHT-COLOR: buttonface;
+SCROLLBAR-SHADOW-COLOR: buttonface;
+SCROLLBAR-3DLIGHT-COLOR: buttonhighlight;
+SCROLLBAR-TRACK-COLOR: '#eeeeee';
+SCROLLBAR-DARKSHADOW-COLOR: buttonshadow
+}
+textarea,input,object	{ font-family: Tahoma, Verdana; font-size: 12px;  color: #000000; font-weight: normal; background-color: $ffffff }
+A:active {color:'#444444' }
+A:visited { color:'#444444'; text-decoration: none}
+A:hover { color:'#444444'; text-decoration: underline}
+A:link { color:'#444444'; text-decoration: none}
+.t     {	LINE-HEIGHT: 1.4}
+.head { color: #ffffff;background: $a url();}
+.bold {font-weight:bold;}
+TD,SELECT,DIV,FORM,OPTION,P{COLOR:333333; FONT-FAMILY: 宋体; FONT-SIZE: 9pt}
+</style>
+<form action="$basename" method="post">
+	<p>
+    <tr><td valign=middle colspan=3 align=center>
+	<br>
+	</p>
+	<table width=300 align=center cellspacing=1 cellpadding=0 bgcolor=333333>
+    <tr><td>
+    <table width=100%  cellspacing=0 cellpadding=3>
+    <tr bgcolor=$c>
+    <font face=verdana>
+    <td valign=middle width=40% align=right><font color='#555555'>管理员ID</font></td>
+    <td valign=middle><input type=text name="admin_name" ></td></tr>
+    <tr bgcolor=$c>
+    <td valign=middle width=40% align=right><font color='#555555'>密码</font></td>
+    <td valign=middle><input type=password name="admin_pwd"></td></tr>
+	</font>
+    </tr></table>
+    </td></tr></table>
+	<p align="center">
+	</td></tr>
+    <tr>
+    <td valign=middle  align=center><input type=submit name="submit" value="提 交"></td></tr></p>
+	<INPUT TYPE="hidden" name="Login_f" value=1>
+    </form>
+
+$adminbottomad
+</table></td></tr></table>
+</td></tr></table></body></html>

@@ -1,0 +1,138 @@
+$leftforum
+$admintopad
+
+$ifecho[set_index1]            
+<tr><td bgcolor=$b  colspan=2>
+<br><br>$cptop
+<span class=bold>更新用户信息</span>
+<tr><td bgcolor=$b>
+<form action="$basename" method=post>更新用户总数<br>
+<input type=hidden name="action" value="updatecount"><input type=submit value="提  交">
+将更新首页显示的用户数,这样可以用来恢复正确总用户数.
+<input type=hidden name="jop" value="countnoly">
+</form>
+<form action="$basename" method=post>更新用户列表--- <font color="red"><b>更新前先关闭论坛</b></font><br>
+<input type=hidden name="action" value="updatecount"><input type=submit value="提  交">
+可以更正错误的用户列表<b>(此功能很耗服务器资源，如非必要不要任意更新)</b>.<br><br>
+$cpbottom</form><br><br>
+<form action="$basename" method=post>
+$cptop
+<span class=bold>批量更正无法通过前台编辑的会员</span>
+<tr><td bgcolor=$b>
+(1)<font color="red">强制将邮件验证失败的会员转为正式会员</font> --- 后台开启邮件验证,而会员未收到验证邮件,可通过此功能纠正<br><br>
+(2)纠正由于数据转换时产生的不可预料的错误,同时更新一些非法的用户<br><br>
+--- 
+<b>(会员数据很多时，此功能耗服务器资源，如非必要不要任意更新)</b><br><br>
+确定纠正所有用户?
+<input type=hidden name="action" value="uprongdata">
+<input type=submit value="提  交">
+$cpbottom</form><br><br>
+<form action="$basename" method=post>
+$cptop
+<span class=bold>查看/编辑用户</span>
+<tr><td bgcolor=$b>
+输入用户名，将可以看到详细资料， 并可编辑、改变用户的信息。<br>
+删除用户：只要找到用户，点击删除就可以。<br><br>
+(
+<input type=radio name="action" value="view">查看 <input type=radio checked name="action" value="edit">编辑 <input type=radio name="action" value="kill">删除 )
+<input type=text name="setusername" size=10 maxlength=16>
+<input type=submit value="提  交"> 
+$cpbottom
+</form><BR>$adminbottomad</table></body></html>
+$ifecho[set_index2]
+
+$ifecho[set_view1]
+<tr><td bgcolor=$c align=center colspan=2>
+<span class=bold>查看用户资料</span><br>
+<tr><td bgcolor=$b colspan=2 align=center>
+<font face=verdana><span class=bold>$setusername</span> 的简要资料 　 </font></td></tr>
+<tr><td bgcolor=$b width=30%><span class=bold>注册时间：</span></td>
+<td bgcolor=$b>$dir_regdate<br><br></td></tr>
+<tr><td bgcolor=$b><span class=bold>用户密码：</span></td>
+<td bgcolor=$b>已md5加密<br><br></td></tr>
+<tr><td bgcolor=$b><span class=bold>电子信箱：</span></td>
+<td bgcolor=$b>$dir_email<br><br></td></tr>
+<tr><td bgcolor=$b><span class=bold>QQ号码：</span></td>
+<td bgcolor=$b>$dir_oicq<br><br></td></tr>
+<tr><td bgcolor=$b><span class=bold>用户头衔：</span></td>
+<td bgcolor=$b>$ltitle[$dir_groupid]<br><br></td></tr>
+<tr><td bgcolor=$b><span class=bold>发表总数：</span></td>
+<td bgcolor=$b>$dir_post 篇<br><br></td></tr>
+<tr><td bgcolor=$b><span class=bold>威望：</span></td><td bgcolor=$b>$dir_rvrc <br><br></td></tr>
+<tr><td bgcolor=$b><span class=bold>金钱：</span></td><td bgcolor=$b>$dir_money <br><br></td></tr>
+</table>
+<br><center><a href=javascript:history.go(-1)>返 回 前 页</a></center></body></html>
+$ifecho[set_view2]
+$ifecho[set_yes1]
+<form action="$basename" method=post>
+<input type=hidden name="action" value="edit">
+<input type=hidden name="step" value="yes">
+<input type=hidden name="setusername" value="$setusername">
+<tr><td bgcolor=$b  colspan=2>
+<br>
+<table width=95% align=center cellspacing=0 cellpadding=0 bgcolor=333333><tr><td><table width=100% cellspacing=1 cellpadding=3>
+<tr><td class=head colspan=2 height=20>
+<span class=bold>要编辑的用户名称： $setusername</span></td>
+</tr>
+<tr><td bgcolor=$c colspan=2 height=20>
+<span class=bold>编辑用户基本信息</span></td>
+</tr>
+<tr><td bgcolor=$b><span class=bold>用户头衔：</span></td>
+<td bgcolor=$b><span class=bold>$ltitle</span></td></tr>
+<tr><td bgcolor=$b><span class=bold>荣誉头衔</span></td>
+<td bgcolor=$b><input type=text name="edit_honor" value="$dir_honor"></td></tr>
+<tr><td bgcolor=$b><span class=bold>发表总数：</span></td>
+<td bgcolor=$b><input type=text name="edit_post" value="$dir_post"></td></tr>
+<tr><td bgcolor=$b><span class=bold>威望值：</span></td>
+<td bgcolor=$b><input type=text name="edit_rvrc" value="$dir_rvrc"></td></tr>
+<tr><td bgcolor=$b><span class=bold>金钱：</span></td>
+<td bgcolor=$b><input type=text name="edit_money" value="$dir_money"></td>    </tr>
+<tr><td bgcolor=$b><span class=bold>密码：</span></td>
+<td bgcolor=$b><input type=password name="edit_pwd" value="已md5加密"></td></tr>
+<tr><td bgcolor=$b><span class=bold>邮件地址：</span></td>
+<td bgcolor=$b><input type=text name="edit_email" value="$dir_email"></td></tr>
+<tr><td bgcolor=$b><span class=bold>主页地址：</span></td>
+<td bgcolor=$b><input type=text name="edit_homepage" value="$dir_homepage"></td></tr>
+<tr><td bgcolor=$b><span class=bold>OICQ 号：</span></td>
+<td bgcolor=$b><input type=text name="edit_oicq" value="$dir_oicq"></td></tr>
+<tr><td bgcolor=$b><span class=bold>个性化签名：</span></td>
+<td bgcolor=$b><textarea cols=50 name="edit_sign">$dir_sign</textarea></td>    </tr><tr>
+<td bgcolor=$b><span class=bold>来自何方：</span></td>
+<td bgcolor=$b><input type=text name="edit_area" value="$dir_from"></td>
+<tr><td bgcolor=$b><span class=bold>生日：</span></td>
+<td bgcolor=$b><input type=text name="edit_birth" value="$dir_birth"></td></tr>
+<tr><td bgcolor=$b><span class=bold>注册时间：</span></td>
+<td bgcolor=$b><input type=text name="edit_regdata" value="$dir_regdate"></td></tr>
+
+<tr><td bgcolor=$c colspan=2 height=20>
+<span class=bold>编辑用户特殊信息(商务平台管理用户真实信息)</span></td>
+</tr>
+<tr>
+<td bgcolor=$b><span class=bold>用户真实姓名</span></td>
+<td bgcolor=$b><input type=text name="S_name" value="$P_S_name"></td>
+</tr>
+<tr>
+<td bgcolor=$b><span class=bold>用户真实地址</span></td>
+<td bgcolor=$b><input type=text name="S_adr" value="$P_S_adr"></td>
+</tr>
+<tr>
+<td bgcolor=$b><span class=bold>用户电话号码</span></td>
+<td bgcolor=$b><input type=text name="S_phone" value="$P_S_phone"></td>
+</tr>
+<tr>
+<td bgcolor=$b><span class=bold>用户银行帐号</span></td>
+<td bgcolor=$b><input type=text name="S_bankN" value="$P_S_bankN"></td>
+</tr>
+<tr>
+<td bgcolor=$b><span class=bold>用户帐户余额</span></td>
+<td bgcolor=$b><input type=text name="S_money" value="$P_S_money"></td>
+</tr>
+<tr>
+<td bgcolor=$b><span class=bold>用户补充信息</span></td>
+<td bgcolor=$b><textarea cols=50 name="S_add">$P_S_add</textarea></td>
+</tr>
+
+<tr><td colspan=2 bgcolor=$c align=center><input type=submit value="提 交" name=submit></td></tr>
+</table></td></tr>
+</form><BR>$adminbottomad</table></body></html>
+$ifecho[set_yes2]

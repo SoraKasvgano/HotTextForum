@@ -1,0 +1,45 @@
+<!--
+<?php
+header("Content-Type: text/html; charset=gb2312");
+print <<<EOT
+-->
+</head>
+<body leftmargin="0" rightmargin="0" topmargin="0" vlink='#333333' link='#333333'>
+$msgsound
+<table bgcolor="#FFFFFF" width="98%" cellpadding="0" cellspacing="0" border="0" align="center">
+<tr>
+<td width="100%" background="$imgpath/$stylepath/headbg.gif">
+<table cellspacing=0 cellpadding=0 width='99%' align="center">
+<td rowspan="2" width="8"><img src="$imgpath/$stylepath/spacer.gif" width="0" height="0"></td>
+<td rowspan="2" valign="top"><a href='index.php'><img src='$imgpath/$stylepath/logo.gif' alt='$db_bbsname' border='0'></a></td>
+<td height="80" align="right">&nbsp;
+<!-- 广告位 -->
+<!-- /广告位 -->
+</td>
+</tr>
+
+<tr>
+<td align='right' class="smalltxt">
+<span class="bold">&raquo;</span>
+$headif[hd_nlg1]
+您尚未 <b> <a  href=login.php class=table><span class=bold>登录</span></a>&nbsp;&nbsp;<a href="register.php" class=table><span class=bold>注册</span></a></b>
+$headif[hd_nlg2]
+$headif[hd_lg1]
+<span class=bold>$htfid</span>&nbsp;<a href=login.php?action=quit class=table>退出</a>$headif[hd_lg2]$headif[hd_lg1]
+| <a href=usercp.php class=table>控制面板</a>
+| <a href="message.php" class=table>$head_gotmsg</a>
+| <a href="search.php" class=table>搜索</a>$headif[hd_lg2]
+| <a href="member.php" class=table>会员</a>
+| <a href="faq.php" class=table>帮助</a>$headif[hd_ma1]
+| <a href="admin.php" class=talble>后台</a>$headif[hd_ma2]
+| <a href="index.php" class=table>社区</a>
+</td>
+<td rowspan="2" width="8"><img src="$imgpath/$stylepath/spacer.gif" width="0" height="0"></td>
+</tr>
+</table></tr></td></table>
+<table bgcolor="#FFFFFF" width="98%" cellpadding="0" cellspacing="1" border="0" align="center">
+<tr>
+<td width="100%" align="center"><br>
+<!--
+EOT;
+?>-->

@@ -1,0 +1,140 @@
+<!--
+<?php print <<<EOT
+-->
+$msg_guide
+<table width=$tablewidth border=0 cellspacing=0 cellpadding=0 align=center>
+<tr><td>
+<table width=100% border=0 cellspacing=1 cellpadding=3 $i_table>
+<tr><td class=head colspan=4>短消息功能</td></tr>
+<tr align=center height=25><td class='f_one'><a href='$secondurl?action=receivebox'>收件箱</a></td>
+<td class='f_one'><a href="$secondurl?action=sendbox" >发件箱</a></td>
+<td class='f_one'><a href="$secondurl?action=write" >写新消息</a> </td>
+<td class='f_one'><a href="$secondurl?action=clear">清空</a></td></tr>
+</table><br><table width=100% border=0 cellspacing=1 cellpadding=0>
+<tr>
+
+<!--
+EOT;
+if($action=='receivebox'||$action=='sendbox'){
+print <<<EOT
+-->
+
+<td width=25% valign=top align=left><br>
+<table width=100% border=0 cellspacing=1 cellpadding=3 $i_table>
+<tr class=head><td class=head>信箱状态</td></tr>
+<tr><td class='f_one'><br>
+&nbsp;目前有短消息<font color=red>$msgcount</font>条<br>
+&nbsp;最多可存消息<font color=red>$gp_maxmsg</font>条<br>
+&nbsp;使用率<font color=red>$contl%</font><br><br>
+</td></tr></table></td>
+
+<!--
+EOT;
+}
+print <<<EOT
+-->
+<td align=center valign=top>
+<br>
+<!--
+EOT;
+if($action=='read'||$action=='readsnd'){
+print <<<EOT
+-->
+
+<table width=50% border=0 cellspacing=1 cellpadding=3 bgcolor=$tablecolor>
+<tr class=head><td class=head colspan=2>查看信息</td></tr>
+<tr class='f_one' >
+<td width=12%><font color=5A6633>作者:</font></td><td>$msg_author</td></tr>
+<tr class='f_one'><td width=12%><font color=5A6633>标题:</font></td><td>$msg_title</td></tr>
+<tr class='f_one'><td width=12%><font color=5A6633>时间:</font></td><td>$msg_time</td></tr>
+<tr class='f_one'><td width=12%><font color=5A6633>内容:</font></td><td><table cellspacing=0 cellpadding=0 width=100% height=55% style='TABLE-LAYOUT: fixed;WORD-WRAP: break-word'>
+<tr><td valign=top align=left>$sfcv_content</td></tr></table></td></tr>
+<tr class='f_one'><td colspan=2><font color=5A6633>选项: [<a href='$secondurl?action=write&msgid=$raw_author&retitle=$raw_title'>$read</a>] 
+[<a href='$secondurl?action=del&msg=$msg&filename=$filename'>删除</a>]
+[<a href='message.php?action=receivebox'>返回</a>]</font></td></tr>
+</table>
+<!--
+EOT;
+}
+if($action=='receivebox'||$action=='sendbox'){
+print <<<EOT
+-->
+<form name="FORM" action=$secondurl method=POST>
+<input type=hidden name="tyle" value=$tyle>
+<input type=hidden name="action" value='del'>
+<table width=100% border=0 cellspacing=1 cellpadding=3 $i_table>
+<tr>
+<td  align=center class=head width=*>标题</td><td width=15% align=center class=head>收件人</td>
+<td width=20% align=center class=head>时间</td>$receivebox
+<td width=* align=center class=head>删除</a></td>
+</tr>
+$msg_receive
+$msg_send
+<tr><td colspan=5 class=f_one align=right>
+<input type=submit value="删  除"></td></tr></table>
+
+</form>
+<!--
+EOT;
+}elseif($mes_info){
+print <<<EOT
+-->
+<br>
+
+<table width=50% border=0 cellspacing=1 cellpadding=3 $i_table>
+<tr><td class=head colspan=2>提示信息</td></tr>
+<tr class='f_one'><td>
+<br><center>$mes_info&nbsp;</center><br><br><center><a href="message.php?action=receivebox">返回信箱</a>&nbsp;$writefail</center>
+<br>
+</td></tr>
+</table>
+
+<!--
+EOT;
+}elseif($action=="write"){
+print <<<EOT
+-->
+
+<form name="FORM" action=$secondurl method=POST>
+<table width=100%  border=0 cellspacing=0 cellpadding=3  align=center>
+<tr  align=center>
+<td colspan=2>接收用户：<input type=text name="msg_ruser" maxlength=100  size=73 $msgid></td></tr>
+<tr align=center>
+<td colspan=2>题 目：&nbsp;&nbsp;
+<input type=text value="$retitle"  name="msg_title" maxlength=100  size=73></td></tr>
+<tr align=center>
+<td colspan=2>  &nbsp;  &nbsp; <textarea onkeydown=quickpost() name=msg_content cols=95 rows=15></textarea></td></tr>
+<tr>
+<td width=26%></td><td><input type="checkbox" name="ifsave" value="Y">保存到发件箱中</td></tr></table>
+<br>
+<center>按 Ctrl+Enter 直接提交    <input type=submit value="发 送 消 息" onclick="return checkCnt();">
+</center><input type=hidden name=action value=write>
+<input type=hidden name=step value=2></form>
+<script language=JavaScript>
+ie = (document.all)? true:false;
+cnt = 0;
+if (ie)
+{
+	function quickpost(eventobject)
+	{
+		if((event.ctrlKey && window.event.keyCode == 13)||(event.altKey && window.event.keyCode == 83))
+		{
+			this.document.FORM.submit();
+		}
+	}
+}
+function checkCnt() {
+  cnt++;
+  if (cnt==1) return true;
+  alert('Submission Processing. Please Wait');
+  return false;
+}
+</script>
+<!--
+EOT;
+}
+?>-->
+</td></tr></table><br><br>
+<!--
+EOT;
+?>-->

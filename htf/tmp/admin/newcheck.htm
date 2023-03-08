@@ -1,0 +1,45 @@
+$leftforum
+$admintopad
+<form action=$basename method=post><input type=hidden name='action' value='admin'><table cellspacing="0" cellpadding="1" border="0" width="95%" align="center" bgcolor=$a>
+<tr><td align="center">
+<table border="0" cellspacing="0" cellpadding="4" width="100%" bgcolor=$b>
+<tr bgcolor=$a><td colspan="6" class=head><span class=bold>新用户验证</span></td></tr>
+<tr bgcolor=$c>
+<td width=20%>用户名</td>
+<td width=30%>注册时间</td>
+<td width=30%>用户IP</td>
+<td width=10%>通过验证</td>
+<td width=10%>不通过</td></tr>
+$newuser
+</table></td></tr></table><center><br><input type='button' name='chkall' value='全 选' onclick='CheckAll(this.form)'>    <input type="submit" name="" value="通过验证"></center></form>
+<table border="0" cellspacing="0" cellpadding="0" width="100%" >
+<tr><td align=center><br><br>
+<form action="$basename" method=post>
+<table cellspacing="1" cellpadding="4" width="95%" bgcolor=$a>
+<tr><td class=head colspan=2>
+<span class=bold>更新验证用户名单</span>
+<tr><td bgcolor=$b width=60%>
+如果用户还没通过验证而又不在验证用户名单中请在这里更新，用户名：</td><td bgcolor=$b><input type=text name="username"><br>
+</td></tr></table>
+<br>
+<input type=hidden name="action" value="updatauser">
+<center><input type=submit value="更  新"></center>	
+</form></td></tr>
+$adminbottomad</table></body></html>
+<script language=JavaScript>
+function CheckAll(form)
+{
+	for (var i=0;i<form.elements.length;i++)
+	{
+		var e = form.elements[i];
+		if (e.checked == true)
+		{
+			e.checked = false;
+		}
+		else 
+		{
+			e.checked = true;
+		}
+	}
+}
+</script>

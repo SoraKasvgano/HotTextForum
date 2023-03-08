@@ -1,0 +1,290 @@
+<!--
+<?php print <<<EOT
+-->
+
+<head>
+<style>
+<!--
+.f_one {background: #FFFFFF;}
+-->
+</style>
+</head>
+
+$msg_guide
+<table width=$tablewidth border=0 cellspacing=0 cellpadding=0 align=center>
+<tr>
+<td>
+<table width=100% border=0 cellspacing=1 cellpadding=3 bgcolor=$tablecolor>
+<tr>
+<td width=20% align=center class='f_one'><a href=faq.php?faqjob=2#1>用户须知</a></td>
+<td width=20% align=center class='f_one'><a href=faq.php?faqjob=2#2>阅读和发布信息 </a></td>
+<td width=20% align=center class='f_one'><a href=faq.php?faqjob=2#3>版权声明 </a></td> 
+<td width=20% align=center class='f_one'><a href=faq.php?faqjob=2#4>$htf_version 技术功能介绍 </a></td>
+<td  width=20% align=center class='f_one'><a href=faq.php?faqjob=1#5> htf Code</a> </td>
+</td></tr></table></td></tr></table>
+<br>
+<!-- 
+EOT;
+if($faqjob==2){print <<<EOT
+<!---->
+<table width=$tablewidth border=0 cellspacing=0 cellpadding=0 align=center>
+<tr>
+<td>
+<table width=100% border=0 cellspacing=1 cellpadding=3 $i_table>
+<tr><td class=head><a name=1>用户须知 
+</td></tr>
+<tr class='f_one'><td><span class=bold>
+关于注册</span></td></tr>
+<tr class='f_one'><td >
+你需要注册成为会员才能正常使用论坛的各项功能，目前论坛注册是免费的，会员拥有以下权限：
+<li>发布新主题
+<li>回复其他会员的帖子
+<li>编辑自己的帖子
+<li>指定的主题被回复时的邮件通知
+<li>给其他会员发送短信息
+<br>注册时，你需要一个用户名、密码和一个有效的email地址。
+输入你的email地址不会给你带来'垃圾邮件'，你可以在个人信息中选择隐藏email地址。
+<tr class='f_one'><td><span class=bold>
+关于cookies</span></td></tr>
+<tr class='f_one'><td>
+　　cookies 主要用于在你离开一会儿或者重新进入一个主题或者帖子的时候确认你的身份。当你登陆时， 你将有一个'cookie 有效期:'选项，你可以选择cookie保存的时间，这时系统将你的用户名和密码用cookie保存，
+储存在你的电脑。如果你是使用一台共用的电脑，比如在图书馆、网吧，或者其他不能完全信任的地方， 建议使用'即时'选项，以免你的帐号被他人盗用。
+<tr class='f_one'><td><span class=bold>
+个人信息</span></td></tr>
+<tr class='f_one'><td>
+	在控制版面内可以修改个人资料，不能更改用户名，如有特殊情况需要修改用户名，请与管理员联系。确认
+你的email地址是最新的，必要时系统将会发送一些论坛信息你的邮箱。
+<tr class='f_one'><td><span class=bold>
+关于个性签名</span></td></tr>
+<tr class='f_one'><td >
+　　注册时，可以设置自己的个性签名。如果论坛允许使用个性签名，你的签名将出现在每个帖子底部，你也可以
+选择不显示个性签名，在发贴和回复的时候不选中'使用签名'选项。 
+<tr class='f_one'><td><span class=bold>
+找回密码</span></td></tr>
+<tr class='f_one'><td>
+　　如果你忘记了密码，可此功能找回密码(邮箱必须有效)，在取回密码页面输入你注册时候的信箱，系统将会把去回密码的方法发送到你的邮箱里，请及时查收。
+<tr class='f_one'><td><span class=bold>
+个人头像</span></td></tr>
+<tr class='f_one'><td>
+　　个人头像会出现在每个帖子中用户名的下方，头像可以是由论坛提供或者你自己上传，你可以选择一个最能代表你个性的头像。如果论坛允许使用自定义会员头像， 你可以使用自己上传头像。
+</td></tr>
+<tr><td class=head><a name=2>阅读和发布信息 </td></tr>
+<tr class='f_one'><td><span class=bold>
+关于htf Code</span></td></tr>
+<tr class='f_one'><td>
+　　可以使用htfcode编辑你的帖子，你可以设置帖子文字的字体、颜色等格式。htf Code代码使用简单,你
+可以查看论坛是否允许使用[img][flash][size]。
+<tr class='f_one'><td><span class=bold>
+关于投票</span></td></tr>
+<tr class='f_one'><td>
+　　这项功能允许你提出一个问题，并设置一些可能的答案。其他会员则选答案参与投票，投票结果将在主题上显示。投票的例子见：
+<ol>什么是你最喜欢的颜色?
+<li>red 
+<li>blue 
+<li>yellow 
+<li>green 
+<li>sky-blue
+</ol>
+　其他会员可以参与投票，你可以任意选择你想投的选项，也可以不参与投票。每个会员只有一次投票机会，在投票前请慎重考虑！
+<tr class='f_one'><td><span class=bold>
+关于附件</span></td></tr>
+<tr class='f_one'><td>
+　　如果论坛允许使用上传附件的功能， 你可以在帖子中上传一些文件.。可以是一个图片、一个文本、一个压
+缩文件等. 你上传的每种文件都有大小限制，而且论坛跟你的硬盘所采用的文件扩展名可能并不一致!上传一个附
+件，只有下载到自己的电脑上才能浏览。论坛限定了上传文件的类型:可以上传的文件扩展名: gif jpg png txt zip rar bmp jpeg.发帖成功后， 附件将显示在你所发布的信息中. 查看附件内容(如果还没有直接显示)点击代表
+附件的文件图标就可以了。
+<tr class='f_one'><td><span class=bold>
+编辑帖子</span></td></tr>
+<tr class='f_one'><td>
+　　注册会员可以编辑自己的帖子，点“编辑”来编辑帖子。管理员可以
+编辑和删除论坛的所有帖子，版主只能编辑和删除指定版块内的贴子。
+<tr class='f_one'><td><span class=bold>
+关于版主</span></td></tr>
+<tr class='f_one'><td>
+　　版主负责论坛中某个版面。可以修改，删除或移动他们所管理的版面中的任何帖子等权限。任命为某个版面的
+版主，通常作为的对那些对本版有特殊贡献和知识渊博的会员的一种奖励。
+<tr><td class=head><a name=3>版权声明</td></tr>
+<tr class='f_one'><td>版权所有 (c) 2005 感谢您选择 HTF 论坛。希望我们的努力能为您提供一个高效快速和强大的 web 
+	论坛解决方案。 HTF 英文全称为 Hot Text Forum，中文全称为 HTF 论坛，以下简称 HTF。 HTF 官方技术支持论坛为 
+	http://www.htf.1m.cn。 在开始安装HTF之前，请务必仔细阅读本授权文档，在您确定符合授权协议的全部条件后，即可继续 HTF 
+	论坛的安装。即：您一旦开始安装 HTF，即被视为完全同意本授权协议的全部内容，如果出现纠纷，我们将根据相关法律和协议条款追究责任。 
+	1.HTF并非原创程序,但安全性,易用性要高。 2.您可以查看 HTF 
+	的全部源代码，也可以根据自己的需要对其进行修改，但无论如何，即无论用途如何、是否改动、改动程度如何，只要 HTF 
+	程序的任何部分被包含在您修改后的系统中，都必须保留页脚处的 HTF 名称和 http://www.htf.1m.cn 
+	的链接。您修改后的代码，在没有获得许可的情况下，严禁公开发布或发售。 
+	3.用户出于自愿而使用本软件，我们不承诺对提供任何形式的技术支持、使用担保，也不承担任何因使用本软件而产生问题的相关责任。 
+	4.对于且仅对于非营利性个人用户，HTF是开放源代码的免费软件，欢迎您在原样完整保留全部版权信息和说明档的前提下，传播和转载本程序。 5.安装 HTF 
+	建立在完全同意本授权协议的基础之上，因此而产生的纠纷，违反本协议的一方将承担全部民事与刑事责任。 <br>
+</td></tr><tr><td class=head><a name=4>$htf_version 内容</tr>
+<tr><td valign=left class='f_one'><br>
+
+您现在使用的版本是 $htf_version<br><br>
+
+详情请点击我们的官方站 <a href="http://www.htf.1m.cn">http://www.htf.1m.cn</a><br><br>
+</td></tr></table></td></tr></table><br>
+<!-- 
+EOT;
+}elseif($faqjob==1){print <<<EOT
+<!---->
+<table width=$tablewidth border=0 cellspacing=0 cellpadding=0 align=center>
+<tr><td>
+<table width=100% border=0 cellspacing=1 cellpadding=3 $i_table>
+<tr><td class=head colspan=2><a name=5><span class=bold>htf Code</span>
+</td></tr>
+<tr class='f_one'><td valign=center align=left>
+<ul>
+<font color=#5a6633 face=verdana>[quote]</font>
+被引用的内容，主要作用是在发贴时引用并回复具体楼层的帖子
+<font color=#5a6633 face=verdana>[/quote]</font> 
+</ul>
+</td>
+<td valign=center align=left>
+<table cellpadding=0 cellspacing=0 border=0 width=94% bgcolor=#000000 align=center>
+<tr><td>
+<table width=100% cellpadding=5 cellspacing=1 border=0>
+<tr><td class='f_one'>被引用的帖子和你的回复内容
+</td></tr></table></td></tr></table>
+</td></tr>
+<tr class='f_one'><td valign=center align=left>
+<ul>
+<font color=#5a6633 face=verdana>[code]</font><font color=#5a6633></font>
+<br><font face=courier color=#333333><br>
+	 unset(\$txt[\$i]);<br>
+     \$txt=implode("",\$txt);<br>
+     \$f=fopen("data/xuni/market.data","w");<br>
+     fputs(\$f,\$txt);<br>
+	 fclose(\$f);<br>
+</font><font color=#5a6633 face=verdana>[/code]</font> 
+</ul>
+</td>
+<td valign=center align=left > 
+<font color=red>以下是代码:</font><br>
+<textarea name=textfield rows=5 style='width:100%;'>
+unset(\$txt[\$i]);
+\$txt=implode("",\$txt);
+\$f=fopen("data/xuni/market.data","w");
+fputs(\$f,\$txt);
+fclose(\$f);
+</textarea><br><font color=red>[Ctrl+A 全部选择]</font>
+</td></tr>
+<tr class='f_one'><td valign=center align=middle>
+<font face=verdana color=5a6633>[url]</font>
+<font face=verdana>http://www.htf.1m.cn</font><font color=5a6633>[/url] 
+</font>
+</td>
+<td valign=center align=middle>
+<a href=http://www.htf.1m.cn target=_blank>
+<font color=#000066>http://www.htf.1m.cn</font></a></td></tr>
+<tr class='f_one'><td valign=center align=middle>
+<font face=verdana color=5a6633>[url=http://www.htf.1m.cn]</font>
+<font face=verdana>htf Board</font><font color=5a6633>[/url]</font></td>
+<td valign=center align=middle>
+<a href=http://www.htf.1m.cn>
+<font color=000066>htf Board</font></a></font></td></tr>
+<tr class='f_one'>
+<td valign=center align=middle>
+<font face=verdana color=5a6633>[email]</font><font face=verdana>htforum@126.com</font>
+<font color=5a6633>[/email]</font></td>
+<td valign=center align=middle>
+<a href="mailto:htforum@126.com"><font color="#000066">htforum</font><font color=000066>@126.com</font></a></td></tr>
+<tr class='f_one'><td valign=center align=middle>
+<font face=verdana color=5a6633>[email=htforum@126.com]</font>
+<font face=verdana>email me</font><font color=5a6633>[/email]</font></td>
+<td valign=center align=middle>
+<a href=mailto:htforum@126.com><font color=000066>email me</font></a></td></tr>
+<tr class='f_one'> 
+<td valign=center align=middle><font face=verdana color=5a6633>[b]</font>
+<font face=verdana>粗体字</font><font color=5a6633 face=verdana>[/b]</font> 
+</td>
+<td valign=center align=middle><font face=verdana><span class=bold>粗体字</span></font> 
+</td></tr>
+<tr class='f_one'><td valign=center align=middle><font face=verdana color=5a6633>[i]</font>
+<font face=verdana>斜体字<font color=5a6633>[/i]</font> 
+</font></td>
+<td valign=center align=middle><font face=verdana><i>斜体字</i></font> 
+</td></tr>
+<tr class='f_one'><td valign=center align=middle><font face=verdana color=5a6633>[u]</font>
+<font face=verdana>下划线</font><font color=5a6633>[/u]</font></td>
+<td valign=center align=middle><font face=verdana><u>下划线</u></font> 
+</td>
+</tr>
+<tr class='f_one'> 
+<td valign=center align=middle>
+<font face=verdana color=5a6633>[align=center(可以是向左left，向右right)]</font>位于中间
+<font color=5a6633>[/align]</font></td>
+<td valign=center align=middle><font face=verdana><div align=center>中间对齐</div></font></td></tr>
+<tr class='f_one'> 
+<td valign=center align=middle><font face=verdana color=5a6633>[size=4]</font>
+<font face=verdana>改变字体大小<font color=5a6633>[/size] 
+</font> </font></td>
+<td valign=center align=middle><font face=verdana>改变字体大小 </font></td></tr>
+<tr class='f_one'> 
+<td valign=center align=middle><font face=verdana color=5a6633>[font=</font>
+<font color=5a6633>楷体_gb2312<font face=verdana>]</font></font>
+<font face=verdana>改变字体<font color=5a6633>[/font] 
+</font> </font></td>
+<td valign=center align=middle><font face=verdana><font face=楷体_gb2312>改变字体</font> 
+</font></td>
+</tr>
+<tr class='f_one'> 
+<td valign=center align=middle><font face=verdana color=5a6633>[color=red]</font>
+<font face=verdana>改变颜色<font color=5a6633>[/color] 
+</font> </font></td>
+<td valign=center align=middle><font face=verdana color=red>改变颜色</font><font face=verdana> 
+</font></td>
+
+</tr>
+<tr class='f_one'> 
+<td valign=center align=middle><font face=verdana color=5a6633>[img]</font>
+<font face=verdana>http://www.hao123.com/logo.gif<font color=5a6633>[/img]</font> 
+</font></td>
+<td align=center><font face=verdana>
+<img src=http://www.hao123.com/logo.gif border=0></font> </td>
+</tr>
+<tr class='f_one'> 
+<td valign=center align=middle>
+<font face=宋体 color=#333333><font color=#5a6633>[fly]</font>飞行文字特效
+<font color=#5a6633>[/fly]</font> </font></td>
+<td valign=center align=left>
+<font face=宋体	color=#333333>
+<marquee scrollamount=3 behavior=alternate width=90%>飞行文字特效</marquee></font></td>
+</tr>
+<tr class='f_one'> 
+<td valign=center align=middle >
+<font face=宋体 color=#333333><font color=#5a6633>[move]</font>滚动文字特效
+<font color=#5a6633>[/move]</font> </font></td>
+<td valign=center align=left >
+<font face=宋体 color=#333333> <marquee scrollamount=3 width=90%>滚动文字特效</marquee></font></td>
+</tr>
+<tr class='f_one'>
+<td valign=center align=middle>
+<font face=宋体 color=#333333>
+<font color=#5a6633>[flash=400,300]</font>http://www.htf.1m.cn/htf.swf
+<font color=#5a6633>[/flash]</font> </font></td>
+<td valign=center align=middle>
+<font face=宋体 color=#333333>将显示flash文件</font> </td>
+</tr>
+<tr class='f_one'>
+<td valign=center align=middle>
+<font face=宋体 color=#333333>
+<font color=#5a6633>[iframe]</font>http://www.htf.1m.cn<font color=#5a6633>[/iframe]</font> </font></td>
+<td valign=center align=middle>
+<font face=宋体 color=#333333>将在帖子中粘贴网页(后台默认关闭)</font> </td>
+</tr>
+<tr class='f_one'>
+<td align=center>
+<font color=#5a6633>[glow=255(宽度)，red(颜色)，1(边界)]</font><br>
+要产生光晕效果的文字<font color=#5a6633>[/glow]
+</td>
+<td align=center><font face=宋体 color=#333333>
+<table width=255 style=filter:glow(color=red， direction=1)>
+<tr><td align=center>要产生彩色发光效果的文字</td>
+</tr></table></font></td>
+</tr>
+</tbody> 
+</table>
+</td></tr></tbody></table>
+<!-- 
+EOT;
+}
+?>-->

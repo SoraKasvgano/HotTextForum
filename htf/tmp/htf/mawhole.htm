@@ -1,0 +1,28 @@
+<!--
+<?php print <<<EOT
+-->
+$msg_guide
+<form name="form1" method="post" action="mawhole.php?tidarray=$tiddb">
+<table width=$tablewidth border=0 cellspacing=0 cellpadding=0 align=center>
+<tr><td>
+<table width=100% border=0 cellspacing=1 cellpadding=3 $i_table>
+<tr><td class=head>你确定要 $ma_whatdo 以下贴子吗?（共$count 篇)：</td></tr>
+<tr bgcolor=FFFFFF><td>
+<table cellspacing=1 cellpadding=0 width=$tablewidth align=center border=0 $i_table>
+<tr align=center><td width=30 class=head>列表</td>
+<td width=* class=head><span class=bold>主&nbsp;&nbsp;题</span> </td>   
+<td width=85  class=head><span class=bold>作 者</span></td>
+<td width=160 class=head><span class=bold>发　贴　时　间</span></td></tr>
+$ma_tidarray
+</table>
+<br><br><center>{$ifecho[mah_jup1]}选择目的版块:
+<select name=gotoboard>$mg_jumpforum</select><p>{$ifecho[mah_jup2]}管理程式需要您确认这次操作：<br>
+<a href='javascript:history.back(1)'>返回前一页</a>&nbsp;&nbsp;&nbsp;
+<input name=action type=hidden value=$action>
+<input name=fid type=hidden value=$fid>
+<input name=step type=hidden value=2>
+<input type=submit name=Submit value=确认并继续><br></center></td></tr>
+<tr height=23><td class=head>&nbsp;</td></tr></table></td></tr></table></form>
+<!--
+EOT;
+?>-->

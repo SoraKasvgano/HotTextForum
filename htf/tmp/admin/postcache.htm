@@ -1,0 +1,96 @@
+$leftforum
+$admintopad
+<tr><td bgcolor=$b  colspan=2>
+<br>$cptop
+<span class=bold>提示信息</span>
+<tr><td bgcolor=$b>
+添加<font color="red">新动作和新表情</font>
+时必须将相应的动作和表情图片上传到相应的目录，否则浏览帖子时无法显示图片<br>
+动作图片目录/post/act，表情图片目录/post/smile。
+$cpbottom</form><br>
+
+<form method="post" action="$basename">
+<table cellspacing="0" cellpadding="1" border="0" width="95%" align="center" bgcolor=$a>
+<tr><td align="center">
+<table border="0" cellspacing="0" cellpadding="4" width="100%" bgcolor=$b>
+<tr bgcolor=$a><td colspan="6" class=head><span class=bold>发贴动作编辑</span></td></tr>
+<tr bgcolor=$c>
+<td width="45">删</td>
+<td>动作名称</td><td>动作说明</td><td>动作图片</td></tr>
+$motioninfo
+</table></td></tr></table>
+<input name=action type=hidden value="delact">
+<br><center><input type="button" name="chkall" value="全选" onclick="CheckAll(this.form)"><input type="submit" name="delete" value="删除"></center>
+</form>
+<form method="post" action="$basename">
+<table cellspacing="0" cellpadding="1" border="0" width="95%" align="center" bgcolor=$a>
+<tr><td align="center">
+<table border="0" cellspacing="0" cellpadding="4" width="100%" bgcolor=$b>
+<tr><td colspan="2" class=head><span class=bold>添加动作</span></td></tr>
+<tr bgcolor=$c>
+<td width="21%" >动作名称：</td>
+<td width="79%"><input type="text" size="45" name="motion1"></td>
+</tr>
+<tr bgcolor=$b>
+<td width="21%">动作说明：</td><td width="79%">
+<input type="text" size="45" name="motion2"></td></tr>
+<tr bgcolor=$c>
+<td width="21%">动作图片：</td>
+<td width="79%"><input type="text" size="45" name="motion3"></td>
+</tr>
+<input name=action type=hidden value="addact">
+</table></td></tr></table>
+<table border="0" cellspacing="0" cellpadding="0" width="100%">
+<tr><td>
+<br><center>
+<input type="submit" name="add" value="提交">
+</form></td></tr>
+
+<form method="post" action="$basename">
+<table cellspacing="0" cellpadding="1" border="0" width="60%" align="center" bgcolor=$a>
+<tr><td align="center">
+<table border="0" cellspacing="0" cellpadding="4" width="100%" bgcolor=$b>
+<tr bgcolor=$a><td colspan="2" class=head><span class=bold>发贴表情编辑</span></td></tr>
+<tr bgcolor=$c>
+<td align=left width="5%">删</td>
+<td align=center>表情图片</td></tr>
+$faceinfo
+</table></td></tr></table>
+<input name=action type=hidden value="delface">
+<br><center><input type="button" name="chkall" value="全选" onclick="CheckAll(this.form)"><input type="submit" name="delete" value="删除"></center>
+</form>
+<form method="post" action="$basename">
+<table cellspacing="0" cellpadding="1" border="0" width="30%" align="center" bgcolor=$a>
+<tr><td align="center">
+<table border="0" cellspacing="0" cellpadding="4" width="100%" bgcolor=$b>
+<tr><td colspan="2" class=head><span class=bold>添加表情</span></td></tr>
+<tr bgcolor=$c>
+<td width="40%" >表情图片</td>
+<td width="60%"><input type="text" size="20" name="face1"></td>
+</tr>
+<input name=action type=hidden value="addface">
+</table></td></tr></table>
+<table border="0" cellspacing="0" cellpadding="0" width="100%">
+<tr><td>
+<br><center>
+<input type="submit" name="add" value="提交">
+</form></td></tr>
+
+$adminbottomad</body></html>
+<script language=JavaScript>
+function CheckAll(form)
+{
+	for (var i=0;i<form.elements.length;i++)
+	{
+		var e = form.elements[i];
+		if (e.checked == true)
+		{
+			e.checked = false;
+		}
+		else 
+		{
+			e.checked = true;
+		}
+	}
+}
+</script>

@@ -1,0 +1,43 @@
+<!--
+<?php print <<<EOT
+-->
+$msg_guide
+<!--
+EOT;
+if($url!=''){print <<<EOT
+-->
+<META HTTP-EQUIV="Refresh" CONTENT="$time; URL=$url">
+<!--
+EOT;
+}print <<<EOT
+<!---->
+<table width=$tablewidth border=0 cellspacing=0 cellpadding=0 align=center $i_table>
+<tr><td>
+<table width=100% border=0 cellspacing=1 cellpadding=3>
+<tr class=head> 
+<td colspan=2 class=head>$db_bbsname 提示信息</td>
+</tr>
+<tr bgcolor=#FFFFFF>
+<td >
+<center><br><br><br>$msg_info<br>
+{$ifjiami}{$printmsgpwd}
+<br>
+<!--
+EOT;
+if($groupid=='guest' && !strpos($REQUEST_URI,'register') && !strpos($REQUEST_URI,'login')){print <<<EOT
+-->
+您还不是论坛会员,请先 <a href="register.php"><font color=red><b>注册</b></font></a> 或 <a href="login.php"><font color=red><b>登陆</b></font></a> ---同时页面将在5秒后跳到登陆界面!<br>
+<META HTTP-EQUIV="Refresh" CONTENT="5; URL=login.php">
+<!--
+EOT;
+}print <<<EOT
+<!---->
+</center> <br><br>
+</table></td></tr></table><br><br>
+<center><input type="submit" name="regsubmit" value="点击这里返回上一页" onclick="javascript:history.go(-1);"></center>
+<br><br>
+<!--
+EOT;
+footer();
+?>
+<!---->

@@ -1,0 +1,73 @@
+$leftforum
+$admintopad
+$ifecho[send_index1]
+<tr><td bgcolor='$c' valign=middle align=center colspan=2>
+<font color='#333333'><span class=bold>$topname</span>
+</td></tr>
+<form action="$thisprog" method="post">
+<input type=hidden name="action" value="process">
+<tr><td bgcolor='$b' valign=middle colspan=2>
+$cptop
+<span class=bold>功能说明：</span></td></tr>
+<tr><td bgcolor='$b'><font color='#000000'>$introduce<br>
+PS： 使用本程序前,请到用户管理那使用更新用户列表!以保证不出错
+$cpbottom
+<br><table cellspacing="0" cellpadding="1" border="0" width="95%" align="center" bgcolor=$a>
+<tr><td align="center">
+<table border="0" cellspacing="0" cellpadding="4" width="100%" bgcolor=$b>
+<tr><td colspan="2" class=head><span class=bold>消息发送</span></td></tr>
+<tr bgcolor="$b" valign=middle>
+<td width="20%" align=right><span class=bold>每批发送个数：</span></td>
+<td width="80%"><input type="text" value=100 name="percount"></td></tr>
+<tr bgcolor="$c" valign=middle>
+<td width="20%" align=right value=$value><span class=bold>主题：</span></td>
+<td width="80%"><input type="text" name="subject"></td></tr>
+$extra
+<tr bgcolor="$b" valign=top>
+<td align=right><span class=bold>内容：</span></td>
+<td><textarea size=20 name="text" cols="60" rows="10">$textcontent</textarea></td></tr>
+</table></td></tr></table>
+<br><table cellspacing="0" cellpadding="1" border="0" width="95%" align="center" bgcolor=$a>
+<tr><td align="center">
+<table border="0" cellspacing="0" cellpadding="4" width="100%" bgcolor=$b>
+<tr><td colspan="2" class=head><span class=bold>字符变量使用说明：</span></td></tr>
+<tr><td bgcolor='$b'>
+<span class=bold>你可以在内容中使用 \$\htfid , \$\password , \$\email 三个变量  分别表示 用户名 密码 邮件</span>
+</td></tr></table><tr>
+<td colspan="2" align="center" width="100%" bgcolor='$b'>
+<SELECT name="sendto" style="HEIGHT: 22px; WIDTH: 148px">
+<OPTION selected value="allusers">所有注册用户</OPTION>
+<OPTION value="alladmins">论坛所有版主</OPTION>
+</SELECT>&nbsp;<input type=hidden name="action" value="send">
+<input type="submit" value="提 交">　<input type="reset" value="重 置"></td></tr></form>
+$adminbottomad</table></td></tr></table></td></tr></table></body></html>
+	$ifecho[send_index2]
+
+	$ifecho[send_err1]
+	<tr><td bgcolor='$c' valign=middle colspan=2>
+				<center><span class=bold>请填入完整信息，主题和内容不能为空！！</span></center>
+				<br>
+				<br><center><span class=bold><a href='javascript:history.go(-1)'>返回修改</a></span></center>
+				</td></tr></table></body></html>
+	$ifecho[send_err2]
+
+	$ifecho[send_foru1]
+	<tr><td bgcolor='$b' colspan=2><center><span class=bold>发送成功</span></center></td></tr><tr bgcolor='$b'><td colspan=2><br><center>一共发送了 $count 个用户</center></td></tr></table>
+	<br><center><span class=bold><a href='$basename'>返回修改</a></span></center></body></html>
+	$ifecho[send_foru2]
+
+	$ifecho[send_foru3]
+			<tr><td bgcolor='$b' colspan=2>
+			<center><span class=bold>正在发送</span></center></td></tr>
+			<form action="$basename" method=POST>
+			<tr bgcolor='$b'><td colspan=2>
+			<input type=hidden name=step value="$step">
+			<input type=hidden name=text value="$text">
+			<input type=hidden name=percount value="$percount">
+			<input type=hidden name=subject value="$subject">
+			<input type=hidden name=sendto value="$sendto">
+			<input type=hidden name=action value="send">
+			一共要发送 $count 个用户，目前已经发送了 $i 个用户<br><br><br>
+			<input type=submit value="点击这里进行下一批用户的短消息发送">
+			</td></tr></form></table></body></html>
+	$ifecho[send_foru4]

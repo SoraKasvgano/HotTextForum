@@ -1,0 +1,12 @@
+$leftforum
+$admintopad
+<tr><td bgcolor=$c valign=middle align=center colspan=2><b>$grouptitle</b></td></tr>
+<form action=$basename method=post name="submit">
+<input type=hidden name="action" value="unsubmit">
+<tr><td bgcolor=$b valign=middle colspan=2>$cptop<b>请注意:</b></td></tr><tr><td bgcolor='$b'>
+此功能是用来{$grouptitle}!<BR>$msg<BR>输入的时候，每行输入一条信息即可。<br>$cpbottom<br><br></td>
+</tr>
+$adinfo
+<tr><td bgcolor=$b valign=left colspan=2>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<b>$whatdo</b><br><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<textarea cols=60 rows=6 name="grouparray">$groupadmin</textarea>&nbsp;&nbsp;&nbsp;<input type="submit" value="提交添加" name="submit"></td></tr>
+</form>$adminbottomad

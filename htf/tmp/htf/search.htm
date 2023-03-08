@@ -1,0 +1,110 @@
+<!--
+<?php print <<<EOT
+-->
+$msg_guide
+
+$ifecho[sc_nokey1]
+<table width=$tablewidth border=0 cellspacing=1 cellpadding=5 align=center $i_table>
+<form action="search.php?" method=post>
+<tr>
+<td class=head colspan=2>搜索程式</td>
+</tr>
+<tr > 
+<td  class='f_one' width=15%>
+<br>
+请输入关键字：</td>
+<td  class='f_one'>
+<input type=text name=keyword $style2 size=30>
+(2个字节以上,关键字用 | 分开)
+</td></tr>
+<tr><td  class='f_one'>
+选择搜索方式：</td>
+<td class='f_one'>
+<input type=radio name="method" value="or" checked>
+‘or‘的方式搜索
+<input type=radio name="method" value="and">
+‘and‘方式搜索<br>
+(匹配多个关键字的部分请用‘or‘方式. 匹配多个关键字的全部请用‘and‘方式)
+</td></tr>
+<tr><td  class='f_one'> 选择搜索范围：</td>
+<td  class='f_one'>
+<select name=sch_area>
+<OPTION value="C">搜索所有的一切</OPTION>
+<OPTION value="T">只搜索主题</OPTION>
+<OPTION value="A">只搜索首贴作者</OPTION>
+</select>
+</td></tr>
+<tr><td  class='f_one'> 
+选择搜索版块： </td> 
+<td  class='f_one'>
+<select name=seekfid>
+
+$sch_foruminfo
+</select>
+</td></tr>
+<tr><td  class='f_one'>选择搜索时间：</td>
+<td class='f_one'>
+<select name=sch_time>
+<OPTION value="ALL">搜索全部贴子</OPTION>
+<OPTION value="1">一天内的贴子</OPTION>
+<OPTION value="7">一星期内的贴子</OPTION>
+<OPTION value="30">一个月内的贴子</OPTION>
+<OPTION value="60">二个月内的贴子</OPTION>
+<OPTION value="90">三个月内的贴子</OPTION>
+</select>(包括新贴和回复贴)
+</td>
+</tr>
+</table>
+<center><br><input type="submit" value="开始搜索">
+<input type="reset" value="清除重写"></center></form>
+$ifecho[sc_nokey2]
+
+$ifecho[sc_key1]
+<table width=$tablewidth border=0 cellspacing=1 cellpadding=0 align=center $i_table>
+<tr align=center> 
+<td width=15% class=head><span class=bold>版&nbsp;块</span><br>   </td>
+<td width=* class=head><span class=bold>主&nbsp;&nbsp;题</span></td>
+<td width=10% class=head><span class=bold>作 者</span></td>
+<td width=5% class=head><span class=bold>回复</span></td>
+<td width=5% class=head><span class=bold>点击</span></td>
+<td width=15% class=head><span class=bold>最后发表</span></td>
+</tr>
+$searchresult
+</table><br>
+<table cellspacing=2 cellpadding=0 width=$tablewidth align=center border=0>
+<tr height=4></tr>
+<tr> 
+<td align=left>
+$ifecho[sc_key2]
+
+$ifecho[sc_nomore1]
+搜索信息：共搜索到了 $rstcount 条信息
+$ifecho[sc_nomore2]
+
+$ifecho[sc_more1]
+搜索信息：已经搜索到了 $rstcount 条信息
+--- [ <a href='search.php?keyword=$keyword&page=$nextpage&lastpage=$lastpage&method=$method&sch_area=$sch_area&sch_time=$sch_time&fid=$seekfid'>
+搜索下 $db_perpage 个结果</a>] 
+$ifecho[sc_more2]
+
+$ifecho[sc_page1] 
+[<a href='search.php?keyword=$keyword&page=$prepage&lastpage=$lastpage&method=$method&sch_area=$sch_area&sch_time=$sch_time&fid=$seekfid'>
+ 返回上 $db_perpage 个结果 </a>]
+$ifecho[sc_page2]
+$ifecho[sc_key1]
+<tr><td>
+<form name=jump action="search.php?keyword=$keyword&method=$method&sch_area=$sch_area&sch_time=$sch_time&fid=$seekfid" method=post>
+
+当前页：<span class=bold> $page  </span>跳到
+<input type='text' name='page' size=4 maxlength=4>
+页
+<input type='submit' value='确　定'  name='submit'>
+<span class=bold>[ $db_perpage 条/页 ]</span>
+</form>
+</td></tr></table>
+<br>
+$ifecho[sc_key2]
+
+<!--
+EOT;
+?>-->

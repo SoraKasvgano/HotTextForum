@@ -1,0 +1,104 @@
+<!--
+<?php print <<<EOT
+-->
+$msg_guide
+<!-- 
+EOT;
+if($action=='showping'){print <<<EOT
+-->
+<form action=masingle.php?action=showping&fid=$fid&tid=$tid method=post>
+<table width=$tablewidth border=0 cellspacing=0 cellpadding=0 align=center>
+<tr><td>
+<table width=100% border=0 cellspacing=1 cellpadding=3 $i_table>
+<tr class="header"><td colspan="2" class=head>帖子评分</td></tr>
+<tr><td class='f_one' width="21%">操作者:</td>
+<td bgcolor="$threadcolortwo">$htfid  <span class="smalltxt">
+[<a href="./login.php?action=quit">退出登录</a>]</span></td></tr>
+<tr><td class='f_one' width="21%">作者:</td>
+<td bgcolor="$threadcolortwo">
+<a href="usercp.php?action=show&username=$raw_author">$tpc_author</a></td></tr>
+<tr><td class='f_one' width="21%">评分:</td>
+<td bgcolor="$threadcolortwo">威望 
+<font color=red><span class=bold>$postrvrc</span></font> 点</td></tr>
+<tr><td class='f_one' width="21%">标题:</td>
+<td bgcolor="$threadcolortwo"><a href="topic.php?fid=$fid&tid=$tid">$tpc_title</a></td></tr>
+<tr><td class='f_one' width="21%">内容:</td>
+<td bgcolor="$threadcolortwo">$pingdetail[14]</td></tr>
+</table></td></tr></table><br>
+<center><input type=submit value=' 确 认 继 续 '></center><br>
+<input type=hidden name=tid value=$tid >
+<input type=hidden name=postrvrc value=$postrvrc >
+<input type=hidden name=adminping value=$htfid >
+<input type=hidden name=fid value=$fid >
+<input type=hidden name=article value=$article>
+<input type=hidden name=step value='1'></form>
+<!-- 
+EOT;
+}elseif(empty($_POST['step'])){print <<<EOT
+-->
+
+<table width=$tablewidth border=0 cellspacing=0 cellpadding=0 align=center>
+<tr><td>
+<table width=100% border=0 cellspacing=1 cellpadding=3 $i_table>
+<tr><td colspan=2 class=head>$db_bbsname 提示信息</td></tr>
+<tr bgcolor=#FFFFFF><td><center><br>管理程式需要您确认这次操作：
+<font color=red>$ma_whatdo</font><br>
+<!-- 
+EOT;
+if($action=="move" || $action=="copy"){print <<<EOT
+-->
+<form action=masingle.php method=POST>
+<select name=gotoboard>$mg_jumpforum</OPTION></select>
+<br><br><input type=submit value=' 确 认 继 续  '>
+<input type=hidden name=action value='$action'>
+<input type=hidden name=tid value='$tid'>
+<input type=hidden name=fid value='$fid'>
+<input type=hidden name=step value='2'>
+</form>
+<!-- 
+EOT;
+}else{print <<<EOT
+-->
+
+<form name=form1 method=post action=masingle.php?fid=$fid&tid=$tid>
+<!-- 
+EOT;
+if($action=='edit'){print <<<EOT
+-->
+<input type=checkbox name="title2" value="1" $ifchecked[1]>
+<img height=22 alt="粗体字" src="$imgpath/post/editor/bold.gif" width=23 >
+<input type=checkbox name="title3" value="1" $ifchecked[2]>
+<img height=22 alt="斜体字" src="$imgpath/post/editor/italicize.gif" width=23 >
+<input type=checkbox name="title4" value="1" $ifchecked[3]>
+<img height=22 alt="下划线" src="$imgpath/post/editor/underline.gif" width=23 >
+<br><br>
+&nbsp;颜色: 
+<input name=title1 type=checkbox value=red $ifchecked[red]><font color="red">红色</font>
+<input name=title1 type=checkbox value=blue $ifchecked[blue]><font color="blue">蓝色</font>
+<input name=title1 type=checkbox value=green $ifchecked[green]><font color="green">绿色</font>
+<input name=title1 type=checkbox value=orange $ifchecked[orange]><font color="orange">橙色</font>
+<input name=title1 type=checkbox value=silver $ifchecked[silver]><font color="silver">银色</font>
+<br>
+<!-- 
+EOT;
+}print <<<EOT
+-->
+
+<br>真的要继续吗?&nbsp;&nbsp;<a href='javascript:history.back(1)'>返回前页</a>
+<input type=hidden name=action value=$action>
+<input type=hidden name=article value=$article>
+<input type=hidden name=step value=2>
+<input type=submit name=Submit value=确认并继续>
+</form>
+
+
+<!--
+EOT;
+}
+print <<<EOT
+-->
+<br><br></center></td></tr><tr height=23><td colspan=2 class=head>　</td></tr></table></td></tr></table>
+<!--
+EOT;
+}
+?>-->

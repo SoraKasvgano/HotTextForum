@@ -1,0 +1,66 @@
+<!--
+<?php print <<<EOT
+-->
+$msg_guide
+<table width=$tablewidth border=0 cellspacing=0 cellpadding=1 align=center $i_table>
+<form action="login.php?" method=post>
+<tr><td>
+<table width=100% border=0 cellspacing=0 cellpadding=6 class='f_one'>
+<tr><td class=head colspan=2 height=27><span class=bold>
+登录论坛
+</span></td></tr>
+<tr><td rowspan=6 width=3%></td>
+<td width="100%">
+<br>
+请输入你的帐号与密码，然后点击登录按钮. 如果你没有注册，请先
+<A href="register.php">
+<font color="red">
+<b>注册成为会员</b></font></A>
+。提示：你的浏览器必须支持cookie，否则将不能成功登录。
+<br><span class=bold><FONT color=red> 
+注意：
+</FONT></span> 
+如果您在网吧，有效时间请选择即时登录; 
+</td></tr>
+<tr><td>用户: 
+<input type=text maxLength=20 name=loginuser size=40>
+</td></tr>
+<tr><td>
+密码: 
+<input type=password maxLength=20 name=loginpwd size=40>　
+</td></tr>
+<tr><td>
+隐身登录
+<input name=hideid type=radio value="1">          是 &nbsp
+<input name=hideid type=radio value="0" checked>  否 &nbsp 
+</td></tr>
+<tr><td>
+Cookie 有效期:
+<input type="radio" checked name="cktime" value="31536000">        一年 &nbsp;
+<input type="radio"  name="cktime" value="2592000"> 一个月 &nbsp;
+<input type="radio"  name="cktime" value="86400">			一天 &nbsp;
+<input type="radio"  name="cktime" value="3600">			一小时 &nbsp;
+<input type="radio"  name="cktime" value="0">				即时 &nbsp; &nbsp;
+ </td></tr>
+<tr><td>
+如果你忘记密码或用户名，请点击 "
+<A href="sendpwd.php">
+<font color="red">
+忘记密码
+</font></A>
+" 并输入用户或邮件，我们的系统将自动发送密码到您的邮件中。
+</td></tr>
+</table>
+</td></tr>
+</table>
+<center>
+<br>
+<input name=submit type=submit value=提交登录>
+</center>
+<input type=hidden value=$jumpurl name='jumpurl'>
+<input type=hidden value='2' name='step'>
+</form>	
+
+<!--
+EOT;
+?>-->

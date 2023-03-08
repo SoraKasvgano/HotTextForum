@@ -1,0 +1,50 @@
+<!--
+<?php print <<<EOT
+-->
+$msg_guide
+<table width=$tablewidth border=0 cellspacing=1 cellpadding=4 align=center bgcolor=$tablecolor>
+<tr align=center>
+<td width=25% class='f_one'>控制面板首页</td>
+<td width=25% class='f_one'><a href='usercp.php'>编辑个人资料</a></td>
+<td width=25% class='f_one'>
+<a href=usercp.php?action=show&username=$rawhtfid>查看个人资料</a></td>
+<td width=25% class='f_one'><a href="peruse.php?action=favor">收藏夹</a></td>
+</tr>
+</table>
+<br><br>
+<form method=post name=form action=peruse.php?action=favor>
+<input type=hidden name=job value=clear>
+<table cellspacing=1 cellpadding=0 width=$tablewidth align=center border=0 $i_table>$trd_adminhide
+<tr align=center>
+<td width=45% class=head align=center><span class=bold>标&nbsp;&nbsp;题</span></td>
+<td width=20% class=head><span align=center>版 块 名 称</span></td>
+<td width=15% class=head><span align=center>作 者</span></td>
+<td width=15% class=head><span align=center>发 表 时 间</span></td>
+<td width=5%  class=head><span align=center>删除</span></td>
+</tr>
+<!--
+EOT;
+foreach($favordb as $key=>$favor) {
+if($favor){
+$favor[3]=date('Y-m-d H:i',$favor[3]);
+print <<<EOT
+<!--thread模版-->
+<tr align=center class='f_one'>
+<td align=center><span class=bold><a href="topic.php?fid=$favor[4]&tid=$favor[5]">$favor[1]</a></span></td>
+<td><span class=bold>$favor[6]</span></td>
+<td><span class=bold>$favor[2]</span></td>
+<td><span align=center>$favor[3]</span></td>
+<td><span align=center><input type=checkbox name='delid[]' value='$key'></span></td>
+<!--
+EOT;
+}}
+print <<<EOT
+<!---->
+</table>
+<br>
+<center><input type="submit" value="更新"> 
+</center>
+</form>
+<!--
+EOT;
+?>-->

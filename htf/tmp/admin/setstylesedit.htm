@@ -1,0 +1,81 @@
+$leftforum
+  $admintopad
+  <tr>
+  <td bgcolor=$c valign=middle align=center colspan=2>
+  <font color=#333333><b>编辑颜色风格</b>
+  </td></tr>
+  <tr bgcolor=$b colspan=2><td height=5></td></tr>
+  <form action="$basename" method="post">
+  <input type=hidden name="action" value="edit">
+  <input type=hidden name="job" value="submit">
+	    <input type=hidden name="stylefile" value=$stylefile>
+	  <tr bgcolor=$b>
+   <td>编辑的风格名称</td>
+   <td>$stylefile</td>
+  </tr>
+  <tr bgcolor=$b>
+   <td>此风格在images目录下的文件夹名称:(请不要任意修改,如果需要请先手动修改images下的目录名)</td>
+   <td><INPUT size=35 value="$stylepath" name=setting[0]></td>
+  </tr>
+ <tr bgcolor=$b>
+   <td>此风格在tmp目录下的风格文件夹名称:</td>
+   <td><INPUT size=35  value="$tplpath" name=setting[1]></td>
+  </tr>
+  <tr bgcolor=$b>
+   <td>表格内部是否使用白色:(如果要使用,请务必写 yes 不使用请写 no)</td>
+   <td><INPUT size=35 value="$yeyestyle" name=setting[3]></td>
+  </tr>
+
+  <tr bgcolor=$b>
+   <td>表格边框颜色：(<font color=$tablecolor>■■■■</font>)</td>
+   <td><INPUT size=35 value="$tablecolor" name=setting[10]></td>
+  </tr>
+
+  <tr bgcolor=$b>
+   <td>表格宽度：(900)</td>
+   <td><INPUT size=35 value="$tablewidth" name=setting[11]></td>
+  </tr>
+    <tr bgcolor=$b>
+   <td>头部和尾部表格宽度：(920)</td>
+   <td><INPUT size=35 value="$mtablewidth" name=setting[12]></td>
+  </tr>
+
+  <tr bgcolor=$b>
+   <td>论坛版块列表颜色一：(<font color=$forumcolorone>■■■■</font>)</td>
+   <td><INPUT size=35 value="$forumcolorone" name=setting[16]></td>
+  </tr>
+
+  <tr bgcolor=$b>
+   <td>论坛版块列表颜色二：(<font color=$forumcolortwo>■■■■</font>)</td>
+   <td><INPUT size=35 value="$forumcolortwo" name=setting[17]></td>
+  </tr>
+
+  <tr bgcolor=$b>
+   <td>版块内文章列表颜色一：(<font color=$threadcolorone>■■■■</font>)</td>
+   <td><INPUT size=35 value="$threadcolorone" name=setting[18]></td>
+  </tr>
+
+  <tr bgcolor=$b>
+   <td>文章列表颜色二：(<font color=$threadcolorone>■■■■</font>)</td>
+   <td><INPUT size=35 value="$threadcolortwo" name=setting[19]></td>
+  </tr>
+
+  <tr bgcolor=$b>
+   <td>阅读主题时文章背景颜色一：(<font color=$threadcolorone>■■■■</font>)</td>
+   <td><INPUT size=35 value="$threadcolorone" name=setting[20]></td>
+  </tr>
+
+  <tr bgcolor=$b>
+   <td>阅读主题时文章背景颜色二：(<font color=$readcolortwo>■■■■</font>)</td>
+   <td><INPUT size=35 value="$readcolortwo" name=setting[21]></td>
+  </tr>
+
+  <tr bgcolor=$b>
+   <td>开发程序备用颜色：(<font color=$maincolor>■■■■</font>)</td>
+   <td><INPUT size=35 value="$maincolor" name=setting[22]></td>
+  </tr>
+  <tr bgcolor=$c>
+   <td colspan=2 align=center ><input type=submit value="提 交"> <input type=reset value="重 置">
+  </tr>
+</form>
+  </td></tr>$adminbottomad</table></body></html>

@@ -1,0 +1,62 @@
+$leftforum
+$admintopad
+<form method="post" action="$basename">
+<table cellspacing="0" cellpadding="1" border="0" width="95%" align="center" bgcolor=$a>
+<tr><td align="center">
+<table border="0" cellspacing="0" cellpadding="4" width="100%" bgcolor=$b>
+<tr bgcolor=$a><td colspan="6" class=head><span class=bold>论坛公告编辑</span></td></tr>
+<tr bgcolor=$c>
+<td width="45">删</td>
+<td>发布人</td><td>标题</td><td>起始时间</td><td>终止时间</td></tr>
+$msginfo
+</table></td></tr></table>
+<input name=action type=hidden value="del">
+<br><center><input type="button" name="chkall" value="全选" onclick="CheckAll(this.form)"><input type="submit" name="delete" value="删除"></center>
+</form>
+<form method="post" action="$basename">
+<table cellspacing="0" cellpadding="1" border="0" width="95%" align="center" bgcolor=$a>
+<tr><td align="center">
+<table border="0" cellspacing="0" cellpadding="4" width="100%" bgcolor=$b>
+<tr><td colspan="2" class=head><span class=bold>更新论坛公告</span></td></tr>
+<tr bgcolor=$c><td width="21%" >标题：</td>
+<td width="79%"><input type="text" size="45" name="newsubject" value="$oldsubject"></td></tr>
+<tr bgcolor=$b><td width="21%">起始时间：<br>格式：yyyy-mm-dd</td><td width="79%">
+<input type="text" size="45" name="newstarttime" value="$oldstarttime">
+</td></tr>
+<tr bgcolor=$c><td width="21%">终止时间：<br>格式：yyyy-mm-dd</td>
+<td width="79%"><input type="text" size="45" name="newendtime" value="$oldendtime"> 留空为不限制</td></tr>
+<tr bgcolor=$b><td width="21%" valign="top">公告内容：<br>公告中可以使用 html 代码支持换行</td>
+<td width="79%">
+<textarea name="newmessage" cols="60" rows="10">$oldmessage</textarea></td></tr>
+$ifecho[anc_add1]<input name=action type=hidden value="add">$ifecho[anc_add2]
+
+$ifecho[anc_edit1]
+<input type=hidden value=$mid name=mid>
+<input type=hidden value=2 name=step>
+<input name=action type=hidden value="edit">
+$ifecho[anc_edit2]
+
+</table></td></tr></table>
+<table border="0" cellspacing="0" cellpadding="0" width="100%">
+<tr><td>
+<br><center>
+<input type="submit" name="add" value="提交">
+</form></td></tr>
+$adminbottomad</body></html>
+<script language=JavaScript>
+function CheckAll(form)
+{
+	for (var i=0;i<form.elements.length;i++)
+	{
+		var e = form.elements[i];
+		if (e.checked == true)
+		{
+			e.checked = false;
+		}
+		else 
+		{
+			e.checked = true;
+		}
+	}
+}
+</script>

@@ -1,0 +1,125 @@
+$leftforum
+$admintopad
+<tr><td bgcolor=$b  colspan=2>
+<br><br>
+$cptop
+<span class=bold>特别提示</span></td></tr>
+<tr><td bgcolor=$b><br>
+<ul>
+$ifecho[bakout1]
+<li>数据备份功能根据您的选择备份全部论坛贴子和设置数据,导出的数据文件可用"数据恢复"功能。</li>
+<br><br>
+<li>为了数据安全,备份文件采用时间戳命名保存,请记好备份路径,以供导入数据时使用。</li>
+<br><br>
+<li>附件的备份只需手工转移附件目录和文件即可,风格备份也同! htf不提供单独备份。</li>
+$ifecho[bakout2]
+$ifecho[bakin1]
+<li>本功能在恢复备份数据的同时,将覆盖原有数据,请确定是否需要恢复,以免造成数据损失。</li>
+<br><br>
+<li>数据恢复功能只能恢复由当前版本 Htf 导出的数据文件,其他软件导出格式可能无法识别。</li>
+<br><br>
+<li><font color="red">如果您备份的论坛有一版块主题数超过1万个,数据还原完成后,切记使用<a href="admin.php?adminjob=forumcp">重建版块索引</a>重新建立各版块的索引.小型论坛无须进行此操作</font></li>
+$ifecho[bakin2]
+$notice
+</ul>
+</td></tr>
+$cpbottom
+$ifecho[bakout1]
+<form action="$basename" method=post>
+<br>
+<table width=95% align=center cellspacing=1 cellpadding=0 bgcolor=$a>
+<tr><td align=center>
+<table width=100% cellspacing=0 cellpadding=3>
+<tr><td class=head colspan=2>
+<span class=bold colspan=2>论坛用户与基本设置备份</span></td></tr>
+<tr><td bgcolor=$b width=20></td>
+<td bgcolor=$b>
+<input name=baktype type=radio value=alldata checked>备份论坛设置数据和用户数据<br>
+<input name=baktype type=radio value=forumset>只备份论坛设置数据<br>
+<input name=baktype type=radio value=data>只备份用户数据<br><br>
+为了数据安全,备份文件采用随机10位数字名保存,请记好备份路径,以供导入数据时使用.<br>
+<input type=text name="bakpath" value="$bakpath" size=40>
+请输入备份路径(为了数据安全建议使用默认路径)<br><br>
+$cpbottom
+<br>
+<input type=hidden name="action" value="user">
+<center><input type=submit value="开始备份"></center>
+</form>
+<form action="$basename" method=post>
+<table width=95% align=center cellspacing=1 cellpadding=0 bgcolor=$a>
+<tr><td align=center>
+<table width=100% cellspacing=0 cellpadding=3>
+<tr><td class=head colspan=2>
+<span class=bold>帖子数据备份</span></td></tr>
+<tr><td bgcolor=$b width=20></td>
+<td bgcolor=$b><br>
+如果您的帖子数据太大(<font color="#FF3333">>5M</font>)程序将自动使用分卷备份功能,此功能支持超大容量(<font color="#FF3366">>100M</font>)的数据备份,适合大型论坛,点击"开始备份"程序将自动进入分卷备份!<br><br>
+<input type=text name=persize value=$bakbit>文件长度(K)(1024k=1M)<br><br>
+<input type=text name="bakpath" value="$bakpath" size=40>请输入备份路径(为了数据安全建议使用默认路径)<br><br>
+$cpbottom
+<br>
+<table width='' align=center cellspacing=1 cellpadding=0 bgcolor=$b>
+<tr><td align=right>
+<input type=hidden value=$step name=step>
+<input type=hidden value=process name=action>
+<center><input type=submit value="开始备份"></center>
+</form></td>
+</tr><br>
+$ifecho[bakout2]
+$ifecho[bakin1]
+<form action="$basename" method=post>
+<br>
+<table width=95% align=center cellspacing=1 cellpadding=0 bgcolor=333333>
+<tr><td>
+<table width=100% cellspacing=0 cellpadding=3>
+<tr><td class=head colspan=2>
+<span class=bold>导入用户与基本设置数据</span></td></tr>
+<tr><td bgcolor=$b width=20></td>
+<td bgcolor=$b>
+<input name=in_user type=checkbox value=1 checked>导入用户数据<br>
+<input name=in_setting type=checkbox value=1 checked>导入核心设置数据<br>
+<input name=in_forum type=checkbox value=1 checked>导入版块设置数据<br>
+<input name=in_share type=checkbox value=1 checked>导入联盟论坛数据<br>
+
+<input type=text name="bakpath" value="bak/" size=40>
+<br>请输入备份文件路径:为下面对应的<font color="red">备份目录名</font>(安全考虑,请用ftp软件下载到本地机,并删除空间上的备份文件)<br><br>
+$cpbottom
+<br>
+<input type=hidden name="action" value="bakinall">
+<center><input type=submit value="恢 复"></center>
+</form>
+<form action="$basename" method=post>
+<table width=95% align=center cellspacing=1 cellpadding=0 bgcolor=333333>
+<tr><td>
+<table width=100% cellspacing=0 cellpadding=3>
+<tr><td class=head colspan=2>
+<span class=bold>导入帖子数据</span></td></tr>
+<tr><td bgcolor=$b width=20></td>
+<td bgcolor=$b><br>
+
+<input type=text name="bakpath" value="bak/" size=40><br>
+请输入备份文件路径:为下面对应的<font color="red">备份目录名</font>(安全考虑,请用ftp软件下载到本地机,并删除空间上的备份文件)<br><br>
+$cpbottom
+<br>
+<input type=hidden value=bakstep name=action>
+<center><input type=submit value="恢 复"></center>
+</form>
+<form method="post" action="$basename">
+<table width=95% align=center cellspacing=1 cellpadding=3 bgcolor=$a>
+<tr bgcolor=$a align=center>
+<td colspan="5" class=head><span class=bold>论坛备份文件</span></td></tr>
+<tr bgcolor=$c>
+<td width=5% align=center>删</td>
+<td width=35% align=center>备份目录名</td><td width=10% align=center>版本</td>
+<td width=10% align=center>类型</td>
+<td align=center>备份时间</td></tr>
+$bakshow
+</table></td></tr>
+<tr><td>
+<input name=action type=hidden value="del">
+<br><center><input type="submit" name="delete" value="删除"></center></td></tr>
+</form>
+$ifecho[bakin2]
+<table width=100% align=center cellspacing=0 cellpadding=0 bgcolor=$a> 
+<tr><td bgcolor=$b>
+</td></tr>$adminbottomad</table></body></html>

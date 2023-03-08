@@ -1,0 +1,89 @@
+$leftforum
+$admintopad
+	<tr><td><table width=95% align=center cellspacing=1 cellpadding=0 bgcolor=#000000>
+	<br><tr><td> 
+	<table width=100% cellspacing=0 cellpadding=0> 
+	<FORM METHOD=POST ACTION=$basename>
+
+	$ifecho[del_msg1]
+	<tr><td class=head height=25 colspan=2>删除所有用户的收件箱(1.php)</td></tr>
+	<tr><td bgcolor="$b" height=28>
+	<font color=red>(将清除所有用户的收件箱)</font></td><td bgcolor="$b" height=28 align=right> <INPUT TYPE="hidden" name="job" value="rec"><INPUT TYPE="submit" value="确定删除"></TD>
+	</TR>
+	</form>
+	</table></td></tr></table>
+	<table width=95% align=center cellspacing=1 cellpadding=0 bgcolor=$a>
+	<br><tr><td> 
+	<table width=100% cellspacing=0 cellpadding=0> 
+	<FORM METHOD=POST ACTION=$basename>
+	<tr><td class=head height=25 colspan=2>删除所有用户的发件箱(2.php)</td></tr>
+	<tr><td bgcolor="$b" height=28><font color=red>(将清除所有用户的发件箱)</font></td><td bgcolor="$b" height=28 align=right> <INPUT TYPE="hidden" name="job" value="snd"><INPUT TYPE="submit" value="确定删除"></TD>
+	</TR>
+	</form>
+	</table></td></tr></table>
+	<table width=95% align=center cellspacing=1 cellpadding=0 bgcolor=$a>
+	<br><tr><td> 
+	<table width=100% cellspacing=0 cellpadding=0> 
+	<FORM METHOD=POST ACTION=$basename>
+	<tr><td class=head height=25 colspan=2>删除所有用户的已读的收件箱(1.php)</td></tr>
+	<tr><td bgcolor="$b" height=28><font color=red>(并可删除冗余无效的短消息)</font> <font color="green">推荐使用此功能</font></td><td bgcolor="$b" height=28 align=right> <INPUT TYPE="hidden" name="job" value="readrec"><INPUT TYPE="submit" value="确定删除"></TD>
+	</TR>
+	</form>
+	</table></td></tr></table>
+	<table width=95% align=center cellspacing=1 cellpadding=0 bgcolor=$a>
+	<br><tr><td> 
+	<table width=100% cellspacing=0 cellpadding=0>
+	<FORM METHOD=POST ACTION=$basename>
+	<tr><td class=head height=25 colspan=2>按用户名清理(用户名间用半角逗号 "," 分割)</td></tr>
+	<TR>
+	<TD bgcolor="$b" colspan=2 height=28><font color=red>(将清除用户的收件箱与发件箱)</font></TD>
+	</TR><TR><TD bgcolor="$b">&nbsp;&nbsp;<INPUT TYPE="text" NAME="htf_delname" value="$htf_delname"></TD><td bgcolor="$b" height=28 align=right> <INPUT TYPE="hidden" name="job" value="delmsg"><INPUT TYPE="submit" value="确定删除"></TD>
+$ifecho[del_msg2]
+
+$ifecho[del_men1]
+	<INPUT TYPE="hidden" name="job" value="K_s_men">
+	<tr><td class=head height=25 colspan=3>批量检索符合要求的用户</td></tr>
+
+	<tr>
+	<td bgcolor="$b" height=28>&nbsp; &nbsp;</TD><td bgcolor="$b" height=28>
+	删除发贴<font color=red>少于</font>:</TD><td bgcolor="$b" height=28><INPUT TYPE="text" NAME="postnum" value=""> (例: 填 1 --- 留空将不做限制)</TD>
+	</TR>
+
+
+	<tr>
+	<td bgcolor="$b" height=28>&nbsp; &nbsp;</TD><td bgcolor="$b" height=28>
+	最后登陆时间<font color=red>早于</font>:</TD><td bgcolor="$b" height=28><INPUT TYPE="text" NAME="lastlogin" value=""> (例: 填 20050101 --- 留空将不做限制)</TD>
+	</TR>
+
+	<tr>
+	<td bgcolor="$b" height=28>&nbsp; &nbsp;</TD><td bgcolor="$b" height=28>
+	注册日期<font color=red>早于</font>:</TD><td bgcolor="$b" height=28><INPUT TYPE="text" NAME="regdate" value=""> (例: 填 20050101 --- 留空将不做限制)</TD>
+	</TR>
+
+	<tr>
+	<td bgcolor="$b" height=28>&nbsp; &nbsp;</TD><td bgcolor="$b" height=28>
+	并且最后登陆ip:</TD><td bgcolor="$b" height=28><INPUT TYPE="text" NAME="userip" value="">
+	 (例: 填 127.0.0.1 --- 留空将不做限制)</TD>
+	</TR>
+
+	<tr>
+	<td bgcolor="$b" height=28>&nbsp; &nbsp;</TD><td bgcolor="$b" height=28>
+	未通过Email验证的用户:</TD><td bgcolor="$b" height=28><input name=E_check type=checkbox value=1 > ( 默认不选 --- 打勾将搜索出未通过验证的用户)</TD>
+	</TR>
+
+
+
+	<tr><td bgcolor="$b" colspan=3 align=center><br><INPUT TYPE="submit" value="开始搜索"><br><br></td></tr>
+	
+	<tr><td colspan=3 bgcolor="$b"><br>	&nbsp;注1:删除同一ip,恶意或非恶意注册众多ID.最后登陆ip可以在用户资料处查看得到<br><br>&nbsp;注2:全部完成后请务必到
+	用户管理--&gt;更新用户数.和更新用户列表.否则将造成前台用户数和列表错误</font>
+	</TD></TR>
+
+
+
+	$ifecho[del_men2]
+
+
+	</form>
+	</table></td></tr></table><br>
+</td></tr>$adminbottomad</table></body></html>

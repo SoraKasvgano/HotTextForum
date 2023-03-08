@@ -1,0 +1,30 @@
+$leftforum
+$admintopad
+<tr><td bgcolor='$b' colspan=3>
+<form action="$basename" method=POST><input type=hidden name="action" value="addnew">
+$cptop
+<span class=bold>1.新增管理员：</span></td></tr>
+<tr><td bgcolor='$b'>   
+<input type=text name="newadname" size=12>　密码：<input type=text name="newadpwd" size=12> 权限：
+<select name="adminpower">
+<option value=0 selected>普通管理员</option>
+<option value=1>超级管理员</option>
+</select>
+<input type=submit value="提 交">
+$cpbottom</form>$cptop
+<span class=bold>2.管理员资料修改：</span>(密码留空无效，仍旧是原来的密码)</td></tr>
+<tr><td bgcolor='$b'>  
+<div align="center"><center>
+<table width=100% border="0" cellspacing="0" cellpadding="0" ><tr> 
+<td height="26" width="25%"align="center"><span class=bold>用户名</span></td>
+<td height="26" width="25%" align="center"><span class=bold>密码</span></td>
+<td height="26" width="25%"  align="center"><span class=bold>权限</span></td>
+<td height="26" width="25%"  align="center"><span class=bold>操作</span></td></tr>
+$oldinfo</table></center></div>
+$cpbottom
+<br>$cptop
+<span class=bold>3.注意</span></td></tr>
+<tr><td bgcolor='$b'>  
+超级管理员可以进行所有功能的操作，
+普通管理员无法添加修改用户与权限。<br>考虑到论坛的安全性,论坛创始人不在此列,所以论坛创始人是不能删除与修改的,请放心!<br>
+超级管理员与论坛创始人拥有一模一样的权限,请慎重,而普通管理员只是后台无添加管理员的权限!前台都是相同的!$cpbottom</td></tr></td></tr>$adminbottomad</table></body></html>

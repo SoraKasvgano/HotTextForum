@@ -1,0 +1,66 @@
+$leftforum
+$admintopad
+<table cellspacing="0" cellpadding="1" border="0" width="95%" align="center" bgcolor=$b>
+<tr><td><br>
+<table cellspacing="1" cellpadding="4" width="100%" bgcolor=$a>
+<tr bgcolor=$a><td class=head><span class=bold>说明</span></td></tr>
+<tr bgcolor=$b><td>1,这是 htf 系统组控制!包括系统组的添加和删除<br>2,如果您发现前台和后台不对应,请去更新用户组缓冲</td></tr>
+</table>
+<form method="post" action="$basename&groupname=$groupname" name=edit>
+<tr><td align=center><br><span class=bold>点击以下链接进行添加各用户组成员</span></td></tr>
+<tr><td align=center>
+<table cellspacing="1" cellpadding="4" width="95%" bgcolor=$a>
+<tr bgcolor=$c align=center>
+<td width=20% bgcolor=$b><a href="$basename&groupname=superadmin">$ltitle[superadmin]</a></td>
+<td width=20% bgcolor=$b><a href="$basename&groupname=djuser">$ltitle[djuser]</a></td>
+<td width=20% bgcolor=$b><a href="$basename&groupname=ctuser">$ltitle[ctuser]</a></td>
+<td width=20% bgcolor=$b><a href="$basename&groupname=rzuser">$ltitle[rzuser]</a></td>
+<td width=20% bgcolor=$b><a href="$basename&groupname=banned">$ltitle[banned]</a></td>
+</tr></table></td></tr>
+<table cellspacing="0" cellpadding="1" border="0" width="95%" align="center" bgcolor=$b>
+<tr><td><br>
+<table cellspacing="1" cellpadding="4" width="100%" bgcolor=$a>
+<tr bgcolor=$a><td colspan="3" class=head><span class=bold>用户编辑</span></td></tr>
+<tr bgcolor=$c><td width=4%>删</td><td width=48% align=center>用 户 名</td>
+<td align=center>用 户 头 衔</td></tr>
+$user_info
+</table>
+<br>
+<input name=action type=hidden value="del">
+<center>
+<input type="button" name="chkall" value="全选" onclick="CheckAll(this.form)">
+<input type="submit" name="delete" value="删除">
+</center>
+</form></td></tr></table>
+<br>
+<table cellspacing="0" cellpadding="1" border="0" width="95%" align="center" bgcolor=$b>
+<tr><td align="center">
+<form method="post" action="$basename&groupname=$groupname">
+<table border="0" cellspacing="1" cellpadding="4" width="30%" bgcolor=$a>
+<tr><td colspan="2" class=head>
+<span class=bold>添加 $ltitle[$groupname]</td></tr>
+<tr><td  bgcolor=$b width=50% align=center>用 户 名</td>
+<td bgcolor=$b align=center>
+<input type="text" size="20" name="newuserid"></td></tr>
+<input name=action type=hidden value="add">
+</table><br>
+<center>
+<input type="submit" name="add" value="提交"></center></form></td></tr>
+$adminbottomad</body></html>
+<script language=JavaScript>
+function CheckAll(form)
+{
+	for (var i=0;i<form.elements.length;i++)
+	{
+		var e = form.elements[i];
+		if (e.checked == true)
+		{
+			e.checked = false;
+		}
+		else 
+		{
+			e.checked = true;
+		}
+	}
+}
+</script>

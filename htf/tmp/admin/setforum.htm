@@ -1,0 +1,129 @@
+$leftforum
+{$admintopad}
+
+<tr><td bgcolor=$b colspan=3><br>
+<form action="$basename" method=POST><input type=hidden name="action" value="newforum">
+$cptop
+<span class=bold>1.新建一个分类区/版块：( 位于: $dbpath 下)</span></td></tr>
+<tr><td bgcolor=$b>
+<input type=radio checked name=setfid_type value="category">分类区 
+<input type=radio name=setfid_type value="forum">开放版块
+<input type=radio name=setfid_type value="former">正规版块(只对会员开放)
+<input type=radio name=setfid_type value="hidden">隐藏版块
+<input type=radio name=setfid_type value="vote">投票版块(只允许投票贴)
+<br><br>设为子版块,所属版块<select name="setfid_fatherid"><option value="0">请选择版块</option>$onlyforum</select> <br>
+<br>名称<input type=text name="setfid_name" size=10>&nbsp;&nbsp;描述<input type=text name="setfid_introduce" size=26>&nbsp;&nbsp;
+<input type=submit value="提 交"><br>
+$cpbottom</form>
+<form action="$basename" method=POST><input type=hidden name="action" value="linemodify">
+$cptop
+<span class=bold>2.改变版块或分类顺序：</span></td></tr>
+<tr><td bgcolor=$b><br>
+如果你想改变一个版块的位置或者比如是新建一个版块应该属于前面的类别。<br>
+将项目 <select name="line1">$cateAndforum</select> 移动到 <select name="line2">$cateAndforum</select> 之前/之后 <input type=submit value="提 交"><br>
+<br>$cpbottom</form>
+<form action="$basename" method=POST name=mod><input type=hidden name="action" value="modify">
+
+<table width=95% align=center cellspacing=0 cellpadding=0 bgcolor=333333>
+<tr><td>
+<table width=100% cellspacing=1 cellpadding=3>
+<tr><td class=head colspan=2>
+<span class=bold>3.删除/修改版块或分类</span></td></tr>
+<tr bgcolor=$b><td width=20%>对象：</td>
+<td><select name="selectfid" onChange=menu()>$cateAndforum</select></td></tr>
+<tr bgcolor=$b><td width=20%>动作：</td>
+<td><input type=radio checked name="job" value="modify">修改(不填则不做修改) 
+<input type=radio name="job" value="delete">删除
+<input type=radio name="job" value="delchildren">移出子版块
+<input type=radio name="job" value="addchildren">设为子版块,所属父版块<select name="fid"><option value="0">请选择版块</option>$onlyforum</select></td></tr>
+<tr bgcolor=$b><td width=20%>新名称</td>
+<td><input type=text name="setfid_name" size=10 value="$forumname">&nbsp;&nbsp;</td></tr>
+$ifecho[cate1]
+<tr bgcolor=$b><td width=20%>新描述</td>
+<td><input type=text name="setfid_introduce" size=26  value="$forumintroduce">&nbsp;&nbsp;</td></tr>
+<tr bgcolor=$b><td width=20%>版块logo地址</td>
+<td><input type=text name="setfid_logo" value="$forumlogo" size=26></td></tr>
+<tr bgcolor=$b><td width=20%>新风格</td><td>$setfid_style </td></tr>
+<tr bgcolor=$b><td width=20%>新类别</td><td><select name="forumtype">
+<option value="">请选择类别</option>
+<option value="forum" $ftype[forum]>开放版块</option>
+<option value="former" $ftype[former]>正规版块</option>
+<option value="hidden" $ftype[hidden]>隐藏版块</option>
+<option value="vote" $ftype[vote]>投票版块</option>
+
+</select></td></tr>
+<tr bgcolor=$b><td width=20%>是否只显示子版块</td><td>
+<input type=radio name=setifchildren value=1 $checked1>是
+<input type=radio name=setifchildren value=2 $checked2>否 (必须拥有子版块才有效)</td></tr>
+<tr bgcolor=$b><td width=20%>是否允许游客浏览单一主题</td><td>
+<input type=radio name=C_Tread value=1 $TRcheck1>是
+<input type=radio name=C_Tread value=2 $TRcheck2>否 (选择的前提是该版块为开放版块)</td></tr>
+
+<tr bgcolor=$b><td width=20%>允许隐藏贴</td><td>
+<input type=radio name=hide value=1 $hidecheck1>是
+<input type=radio name=hide value=2 $hidecheck2>否 </td></tr>
+<tr bgcolor=$b><td width=20%>允许加密贴</td><td>
+<input type=radio name=post value=1 $jiamicheck1>是
+<input type=radio name=post value=2 $jiamicheck2>否</td></tr>
+<tr bgcolor=$b><td width=20%>允许出售贴</td><td>
+<input type=radio name=sell value=1 $sellcheck1>是
+<input type=radio name=sell value=2 $sellcheck2>否</td></tr>
+<tr bgcolor=$b>
+<td width=20%>论坛文章列表每页显示主题数</td><td>
+<input type=text name="S_topicN" size=10  value="$P_topicN">( 留空 将采用核心设置处的默认值 )</td>
+</tr>
+<tr bgcolor=$b>
+<td width=20%>发一贴增加的威望</td><td>
+<input type=text name="S_Prvrc" size=10  value="$P_Prvrc">( 留空 将采用核心设置处的默认值 )</td>
+</tr>
+<tr bgcolor=$b>
+<td width=20%>回复十贴增加的威望</td><td>
+<input type=text name="S_Rrvrc" size=10  value="$P_Rrvrc">( 留空 将采用核心设置处的默认值 )</td>
+</tr>
+<tr bgcolor=$b>
+<td width=20%>发一贴增加的财富</td><td>
+<input type=text name="S_Pmoney" size=10  value="$P_Pmoney">( 留空 将采用核心设置处的默认值 )</td>
+</tr>
+<tr bgcolor=$b>
+<td width=20%>回复一贴增加的财富</td><td>
+<input type=text name="S_Rmoney" size=10  value="$P_Rmoney">( 留空 将采用核心设置处的默认值 )</td>
+</tr>
+<tr bgcolor=$b>
+<td width=20%>删除一贴减少的威望</td><td>
+<input type=text name="S_Drvrc" size=10  value="$P_Drvrc">( 留空 将采用核心设置处的默认值 )</td>
+</tr>
+<tr bgcolor=$b>
+<td width=20%>删除一贴减少的财富</td><td>
+<input type=text name="S_Dmoney" size=10  value="$P_Dmoney">( 留空 将采用核心设置处的默认值 )</td>
+</tr>
+
+<tr><td bgcolor=$c colspan=2>
+<span class=bold>版块权限设置--全不选则默认为开放版块</span><br>(若设置版块权限则根据版块设置取得用户权限,若不设置则根据用户组取得用户权限,请不要随意设置)</td></tr>
+<tr bgcolor=$b><td width=20%>新密码</td>
+<td><input type=text name="setfid_pwd" size=10  value="$forumpwd">不加密请清空!如果版块已加密,显示的密码为32位MD5密码,不必再修改!</td></tr>
+<tr bgcolor=$b><td>是否允许进入该版块</td>
+<td>$allowvisit</td></tr>
+<tr bgcolor=$b><td>是否允许发表主题</td>
+<td>$allowpost</td></tr>
+<tr bgcolor=$b>
+<td>是否允许回复主题</td>
+<td>$allowreply</td>
+</tr>
+<tr bgcolor=$b><td>下载附件</td>
+<td>$allowdownload</td></tr>
+<tr bgcolor=$b><td>上传附件</td>
+<td>$allowupload</td></tr>
+$ifecho[cate2]
+
+</table>
+<tr><td bgcolor=$b colspan=2 align=center ><br>
+<center><input type=submit value="提 交">　<input type=reset value="重 置"></center>
+</td></tr></table></form>
+$adminbottomad</body></html>
+<SCRIPT LANGUAGE='JavaScript'>
+<!--
+function menu(){
+var URL=document.mod.selectfid.options[document.mod.selectfid.selectedIndex].value;
+top.location.href="$basename&fid="+URL;selectfid='_self';
+}
+</script>

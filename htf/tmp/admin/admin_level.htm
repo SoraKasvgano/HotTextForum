@@ -1,0 +1,82 @@
+$leftforum
+$admintopad
+<tr><td bgcolor='$c' valign=middle align=center colspan=2><span class=bold>用户等级设置</span ></td></tr>
+<tr bgcolor=F5F5FF colspan=2><td height=5></td></tr>
+<tr><td bgcolor='$b' valign=middle align=left colspan=2>
+$cptop<span class=bold>说明</span ><tr><td bgcolor='$b'>
+<span class=bold>
+&nbsp;&nbsp;论坛的用户组分为会员组和系统组，会员组级别按照会员发的帖子数自动进行级别判断并更新。
+<br>&nbsp;&nbsp;系统组为属于论坛管理层，系统组成员由论坛管理员设定，管理员可以在
+<a href="admin.php?adminjob=addgpmenber"><font color=red>用户组管理</font></a>内编辑系统组成员。
+$cpbottom</td></tr>
+<tr><td bgcolor='$b' valign=middle align=center>
+<table width=95% align=center cellspacing=0 cellpadding=0 bgcolor=333333>
+<form action="$basename" method="post">
+<tr><td>
+<table width=100% cellspacing=1 cellpadding=3>
+<input type=hidden name="action" value="menedit">
+<tr><td class=head colspan=2><span class=bold>会员等级编辑</span></td></tr>
+$memthread
+<tr bgcolor='$c'>
+<td colspan=2 align=center ><input type=submit value="提 交"> <input type=reset value="重 置">
+</tr></form>
+<form action="$basename" method="post">
+<input type=hidden name="action" value="addmengroup">
+<tr><td bgcolor='$b' valign=middle align=center colspan=2>
+<span class=bold>新增会员用户组</span ></td></tr>		
+<td bgcolor='$b' valign=middle align=left width=40%>
+<span class=bold>用户组名称</span ></td>
+<td bgcolor='$b' valign=middle align=left>
+<input type=text size=40 name='newmemtitle'></td></tr>
+<tr><td bgcolor='$b' valign=middle align=left width=40%>
+<span class=bold>用户组图像</span ></td>
+<td bgcolor='$b' valign=middle align=left>
+<input type=text size=40 name='newmempic'></td>
+</tr>
+<tr><td bgcolor='$b' valign=middle align=left width=40%>
+<span class=bold>最大发贴数</span ></td><td bgcolor='F5F5FF' valign=middle align=left>
+<input type=text size=40 name='newmempost'></td></tr>
+<tr bgcolor='$c'>
+<td colspan=2 align=center ><input type=submit value="新 增">
+</table></td></tr></form></table><br>
+
+<table width=95% align=center cellspacing=0 cellpadding=0 bgcolor=333333>
+<tr><td><table width=100% cellspacing=1 cellpadding=3>
+<form action="$basename" method="post">
+<input type=hidden name="action" value="sysedit">
+<tr><td class=head colspan=2><span class=bold>管理团队编辑</span></td></tr>
+<tr>
+<td bgcolor='$b' valign=middle align=center colspan=2>
+<span class=bold>管理员专用的名称和图像 (如果不想要，请全部留空)</span >
+</td>
+</tr>
+$systhread
+<tr bgcolor='$c'>
+<td colspan=2 align=center ><input type=submit value="提 交"> <input type=reset value="重 置">
+</tr></form>
+$vipthread
+<form action="$basename" method="post">
+<input type=hidden name="action" value="addvipgroup">
+<tr><td bgcolor='$b' valign=middle align=center colspan=2>
+<span class=bold>新增特殊用户组</span ></td></tr>
+<td bgcolor='$b' valign=middle align=left width=40%><span class=bold>用户组ID<br>(英文<10)</span >
+</td><td bgcolor='$b' valign=middle align=left><input type=text size=40 name='newkey'></td></tr>
+<td bgcolor='$b' valign=middle align=left width=40%><span class=bold>用户组名称</span ></td>
+<td bgcolor='$b' valign=middle align=left><input type=text size=40 name='newsystitle'></td></tr>
+<tr><td bgcolor='$b' valign=middle align=left width=40%><span class=bold>用户组图像</span ></td>
+<td bgcolor='$b' valign=middle align=left><input type=text size=40 name='newsyspic'></td></tr>
+<tr><td bgcolor='$b' valign=middle align=left width=40%><span class=bold>特殊用户(用户名之间用','分隔)</span ></td>
+<td bgcolor='$b' valign=middle align=left><input type=text size=40 name='vipuser'></td></tr>
+<tr bgcolor='$c'>
+<td colspan=2 align=center ><input type=submit value="新 增"> </table></td></tr></table></td></tr></form>
+<tr><td bgcolor='$b' valign=middle align=center><table width=95% align=center cellspacing=0 cellpadding=0 bgcolor=333333><tr><td><table width=100% cellspacing=1 cellpadding=3><tr><td class=head><span class=bold>更新会员等级</span></td></tr>
+<tr><td bgcolor='$b' valign=middle align=left width=40%>若您改变各等级最大发贴数,请使用此功能更新用户等级<br>这里将对所有用户都进行等级缓冲更新,请不要滥用等级更新!对一个大型论坛来说,这是非常耗用系统资源的</td></tr>
+<tr>
+<td bgcolor='$b' align=center ><input type=button name=chkall value=更新等级 onclick="location.href='admin.php?adminjob=updatagroup'"></td>
+</tr></table></td></tr></table></td></tr>
+$adminbottomad</table>
+<script language="JavaScript">
+function checkset(chars)
+{if(!confirm("确定删除吗? 如果您删除了此用户组,请更新用户组缓冲!"))return false;
+location.href=chars;}
+</script></body></html>

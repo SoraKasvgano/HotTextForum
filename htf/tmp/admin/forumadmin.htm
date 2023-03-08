@@ -1,0 +1,30 @@
+$leftforum
+{$admintopad}
+<form action="$basename" method=POST name=mod>		
+$cptop
+<span class=bold>论坛版主管理</span></td></tr>
+<tr><td bgcolor=$b>在这里你可以增加和删除版块管理员<br>
+具体操作:<input type=radio checked name="action" value="add">增加  <input type=radio  name="action" value="del">删除&nbsp;
+斑竹:<input type=text name="adminname" size=8>&nbsp; 执行版块:
+<select name="fid" onChange=menu()>$onlyforum
+<input type=hidden value="$selectedid" name=selectedid>
+<input type=submit value="提 交">&nbsp;(以下只显示所选版块的版主)
+$cpbottom</form>
+<table cellspacing="0" cellpadding="1" border="0" width="95%" align="center" bgcolor=$b>
+<tr><td>
+<table cellspacing="1" cellpadding="4" width="100%" bgcolor=$a>
+<tr bgcolor=$c>
+<td align=center width=30%><span class=bold>版 主</span></td>
+<td align=center><span class=bold>版 块 ID</span></td>
+<td align=center><span class=bold>最后登陆时间</span></td>
+</tr>
+$forumadmin
+</table></td></tr>$adminbottomad</body></html>
+<script language=JavaScript>
+function menu()
+{
+	var URL=document.mod.fid.options[document.mod.fid.selectedIndex].value;
+	URL="$basename&selectedid="+URL;
+	top.location.href=URL;fid='_self';
+}
+</script>

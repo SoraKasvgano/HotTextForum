@@ -1,0 +1,154 @@
+<!--
+<?php print <<<EOT
+-->
+$msg_guide
+<!--
+EOT;
+if($votedb){
+print <<<EOT
+-->
+<table width=$tablewidth border=0 cellspacing=0 cellpadding=0 align=center>
+<form action=peruse.php?votejop=vote method=post name=vote>
+<tr class='f_one'><td colspan=2>
+<table width=100% border=0 cellspacing=1 cellpadding=3 $i_table >
+<tr><td class=head colspan=2>投票主题：$subject</td><td align=right class=head>
+<a href='topic.php?fid=$fid&tid=$tid&viewvoter=$ifview' class=headurl>查看投票的会员</a></td></tr>
+<!--
+EOT;
+foreach($votedb as $vote){
+print <<<EOT
+<!--投票模版-->
+<tr height=30>
+<td align=left class='f_one'><span class=bold>$vote[name]</span> </td>
+<td class='f_one'>
+<img src="$imgpath/post/vote/bar1.gif" width=$vote[width] height=10>&nbsp;$vote[num]&nbsp;票</td>
+<td class='f_one'>$vote[voter]</td>
+</tr>
+<!--
+EOT;
+}print <<<EOT
+-->
+<tr height=22 class='f_one' align=center><td colspan=4>$state</td></tr>
+<tr><td class=head colspan=4>总共有 <span class=bold>$votesum</span> 人参与本次投票 发起于 $vote_date</td></tr></table></table></td></tr></form><br>
+<!--
+EOT;
+}print <<<EOT
+-->
+<table width=$tablewidth border=0 cellspacing=0 cellpadding=1 align=center>
+<tr><td align=left>$fengye</td>
+<td align=right>
+<a href="post.php?fid=$fid"><img src="$imgpath/$stylepath/post.gif" border=0></a>
+<a href="post.php?action=vote&fid=$fid"><img src="$imgpath/$stylepath/vote.gif" border=0></a> <a href="post.php?action=reply&fid=$fid&tid=$tid">
+<img src='$imgpath/$stylepath/reply.gif' border=0></a>
+</td></tr></table>
+<table cellspacing=0 cellpadding=0 width=$tablewidth align=center bgcolor=$tablecolor border=0>
+<tr><td height=1></td></tr></table>
+<table cellspacing=0 cellpadding=0 width=$tablewidth align=center border=0>
+<tr><td valign=center width=1 bgcolor=$tablecolor height=22></td>
+<td valign=center align=left width=*>
+<table cellspacing=0 cellpadding=1 width=100% border=0>
+<tr><td valign=center align=left class=head><span class=bold>本页主题</span>: $titletop</td>
+<td align=right class=head>
+<a onfocus=this.blur() class=headurl href=# onClick="window.external.AddFavorite('$db_bbsurl/topic.php?&fid=$fid&tid=$tid', '$db_bbsname--$titletop')">加为IE收藏</a> 
+|<a href="peruse.php?action=favor&job=favor&fid=$fid&tid=$tid" class=headurl>收藏主题</a>&nbsp;
+|<a href="peruse.php?rd_previous=1&fid=$fid&tid=$tid&fpage=$fpage&goto=previous" class=headurl>上一主题</a>
+|<a href="peruse.php?rd_previous=1&fid=$fid&tid=$tid&fpage=$fpage&goto=next" class=headurl>下一主题</a>
+</td></tr></table></td>
+<td valign=center width=1 bgcolor=$tablecolor height=22></td></tr>
+</table>
+<table cellspacing=0 cellpadding=0 width=$tablewidth align=center bgcolor=$tablecolor border=0>
+<tr><td height=1></td></tr></table>
+<!--
+EOT;
+foreach($readdb as $read) {
+print <<<EOT
+<!--帖子模版-->
+<table cellspacing=0 cellpadding=0 width=$tablewidth align=center border=1 bordercolor=$tablecolor>
+<tr><td bgcolor=$read[colour]>
+<table cellspacing=0 cellpadding=4 width=100% bgcolor=$read[colour] style='TABLE-LAYOUT: fixed;WORD-WRAP: break-word'>
+<tr><td valign=top width=20% bgcolor=$read[colour] rowspan=2>{$read[jupend]}
+<font color=#000066 face=Gulim><span class=bold>$read[author]</span></font>
+<br><br>
+$read[face]<br>
+$read[honor]<img src='$imgpath/$stylepath/level/$read[lpic]'><br>
+级别: <font color=#555555>{$read[level]}</font><br>状态：$read[ifonline]<br>
+发贴: <font color=green><span class=bold>$read[postnum]</span></font><br>
+威望: <font color=984b98><span class=bold>$read[aurvrc]</span></font><br>
+金钱: <font color=red><span class=bold>$read[money]</span></font><br>
+$read[ontime]
+$read[loction]
+注册时间:{$read[regdate]}<br>
+最后登陆:{$read[lastlogin]}
+</td>
+<td width=1% bgcolor=$read[colour] height=100% rowspan=2>
+<table height=100% cellspacing=0 cellpadding=0 width=1 bgcolor=$tablecolor>
+<tr><td width=1></td></tr></table></td>
+<td valign=top width=100% bgcolor=$read[colour] height=100% colspan=2>&nbsp;
+<a href="usercp.php?action=show&username=$read[rawauthor]">资料</a>
+<a href="message.php?action=write&msgid=$read[rawauthor]">消息</a>
+<a href="sendemail.php?username=$read[rawauthor]">邮件</a>$read[qq]
+<a href='sendemail.php?action=tofriend&fid=$fid&tid=$tid&fpage=$fpage'>推荐</a>
+<a href='post.php?action=quote&fid=$fid&tid=$tid&article=$read[lou]'>引用</a>
+<a href='post.php?action=modify&fid=$fid&tid=$tid&article=$read[lou]'>编辑</a>&nbsp;
+<hr width=100% color=$tablecolor size=1>
+
+<img src='$imgpath/post/emotion/$read[icon].gif' align=left border=0>
+<span class="tpc_title">
+&nbsp;$read[tpctitle]</span><br>
+<span class="tpc_content">$read[tpccontent]</span></td></tr>
+<form method=post>
+<tr><td valign=bottom bgcolor=$read[colour] style='WIDTH: *; WORD-WRAP: break-word'>
+<!--
+EOT;
+if($read[sign]){print <<<EOT
+-->
+<hr align=left width=63% color=#777777 SIZE=1>$read[sign]<br>
+<!--
+EOT;
+}print <<<EOT
+-->
+<font color=red>[$read[lou]楼]</font>
+$read[ipfrom] | IP：$read[ip]|
+<span class=bold>Posted:</span>$read[postdate]|</td>
+<td align=right vAlign=bottom>{$read[ping]}</td></tr></form>
+</table></td></tr></table>
+<!--
+EOT;
+}print <<<EOT
+-->
+<br><table cellspacing=0 cellpadding=0 width=$tablewidth align=center>
+<form name=jump method=post><tr><td align=left>$fengye</td>
+<td valign=center align=right>
+<select onchange="if(this.options[this.selectedIndex].value != '') {
+window.location=('forum.php?fid='+this.options[this.selectedIndex].value) }">
+<option value="" selected>快速跳至</option>
+$forumcache
+</select>
+</td></tr></form>
+<tr><td align=left><br><img src='$imgpath/$stylepath/index/home.gif' align=absbottom>&nbsp;<span class=bold><a href="index.php">$db_bbsname</a> -> <a href=$secondurl>$secondname</a></span></td>
+<td align=right><br><a href="post.php?fid=$fid"><img src="$imgpath/$stylepath/post.gif" border=0></a>
+<a href="post.php?action=vote&fid=$fid"><img src="$imgpath/$stylepath/vote.gif" border=0></a> <a href="post.php?action=reply&fid=$fid&tid=$tid">
+<img src='$imgpath/$stylepath/reply.gif' border=0></a>
+</td></tr></table>
+<!--
+EOT;
+$fastpost && include PrintEot($fastpost);
+print <<<EOT
+<!---->
+$ifecho[read_sadm1]
+<center>
+$settopatc
+$digestname
+[<a href='masingle.php?action=lock&fid=$fid&tid=$tid'title='锁定帖子不让会员再回复帖子'>锁定</a>]
+[<a href='masingle.php?action=unlock&fid=$fid&tid=$tid' title='解除锁定帖子'>解锁</a>]
+[<a href='masingle.php?action=move&fid=$fid&tid=$tid' title='移动帖子'>移动</a>]
+[<a href='masingle.php?action=copy&fid=$fid&tid=$tid' title='复制帖子到另一个版块'>复制</a>]
+[<a href='masingle.php?action=pushtopic&fid=$fid&tid=$tid' title='提前帖子'>提前</a>]
+[<a href='masingle.php?action=edit&fid=$fid&tid=$tid' title='编辑标题颜色'>标题颜色</a>]
+[<a href='masingle.php?action=del&fid=$fid&tid=$tid' title='删除帖子'>删除</a>]
+</center>
+$ifecho[read_sadm2]<br>
+
+<!--
+EOT;
+?>-->

@@ -1,0 +1,21 @@
+$leftforum
+{$admintopad}
+<tr>
+<td colspan=2 align=center><form action=$basename method=post><input type=hidden name=step value=2> <table width=100% border=0 cellspacing=2 cellpadding=5 >
+
+<tr><td bgcolor=$c valign=middle align=center colspan=5>
+	<font color='#333333'><b>论坛附件管理</b><br>为了保证空间的可持续发展,请及时清理!附件保存目录为:$attachpath<br>共有附件 $count 个,占用空间 $Asize M  <a href="$basename&showbad=Y"><font color="red"><b>显示无效附件</b></a></font><br>$fenye</td></tr>
+<tr bgcolor=$c><td>附件名称</td><td>附件大小</td><td>所在帖子/版块</td><td>是否有效</td><td>删除</td></tr>
+	{$admin_atc}
+
+</table><input type='button' name='chkall' value='全 选' onclick='CheckAll(this.form)'>    <input type="submit" name="hello" value="确认删除"></form>$fenye<br></td></tr>$adminbottomad</td></tr></table>
+<script language=JavaScript>
+function CheckAll(form)
+{
+	for (var i=0;i<form.elements.length;i++)
+	{
+		var e = form.elements[i];
+		e.checked == true ? e.checked = false : e.checked = true;
+	}
+}
+</script></body></html>

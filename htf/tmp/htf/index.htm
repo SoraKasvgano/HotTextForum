@@ -1,0 +1,155 @@
+<!--
+<?php print <<<EOT
+-->
+<table width=$tablewidth border=0 cellspacing=0 cellpadding=0 align=center>
+<tr><td align=left class=smalltxt><img src='$imgpath/$stylepath/index/home.gif' align='absbottom'>$notice</td><td align=right class=smalltxt>
+共 <b>$bbstpc</b> 篇主题 / <b>$bbsatc</b>  篇帖子 / <b>$bbstotleuser</b>  位会员<br>
+$ifecho[id_pt1]
+今日 <b>$bbstoday</b> 贴 | 昨日 <b>$bbsyestoday</b> 贴 |
+$ifecho[id_pt2]
+最高日 <b>$bbsmost</b> 贴 | <a href="peruse.php?action=viewnew">最新帖子</a> | 欢迎新会员 <a href="usercp.php?action=show&username=$rawnewuser"><font color=#ff0000> $bbsnewer</td></tr></table>
+
+
+
+<table cellspacing=0 cellpadding=0 width=$tablewidth align=center border=0>
+<tr><td><table cellspacing=1 cellpadding=5 width=100% border=0 $i_table>
+<!-- 
+EOT;
+foreach($forumdb as $forum) {if($forum[type]==forum){print <<<EOT
+<!--版块模版-->
+<tr height=41>
+<td width=5% align=center valign=middle class='f_two'><img src='$imgpath/$stylepath/$forum[pic].gif' border=0></td>
+<td width=53% class='f_one' align=left><a href='forum.php?fid=$forum[fid]'>$forum[logo]</a>&nbsp;<a href='forum.php?fid=$forum[fid]' class=fnamecolor><b>$forum[name]</b></a><br><span class=smalltxt>$forum[info]</span></td>
+<td width=7% class='f_two' align=center><b>$forum[tpc]</b></td>
+<td width=7% class='f_one' align=center><b>$forum[atc]</b></td>
+<td class=smalltxt align=center title='$forum[newtitle]' width=16% bgcolor=$forumcolortwo>$forum[newpost]</td>
+<td width=12% class='f_one' align=center style='word-break: keep-all'>$forum[admin]</td>
+</tr>
+<!--
+EOT;
+}elseif($forum[type]==category){print <<<EOT
+<!--分类模版-->
+</table></td></tr></table><br>
+<table cellspacing=0 cellpadding=0 width=$tablewidth align=center border=0><tr><td><table cellspacing=1 cellpadding=5 width=100% border=0 $i_table>
+<tr>
+<td class=head colspan=6 align=left><font class=cfont><b>≡ $forum[name] </b></font></td>
+</tr>
+<tr align=center height=23>
+<td width=5% class=cbg></td>
+<td width=53% class=cbg>论坛</td>
+<td width=7% class=cbg>主题</td>
+<td width=7% class=cbg>文章</td>
+<td width=16% class=cbg>最后发表</td>
+<td width=12% class=cbg>版主</td>
+</tr>
+<!--
+EOT;
+}}print <<<EOT
+<!----> 
+</table></td></tr></table><br><br>
+
+
+<table cellpadding=0 cellspacing=0 border=0 width=$tablewidth $i_table align=center>
+<tr><td width=100%><table cellpadding=5 cellspacing=1 border=0 width=100%>
+
+<!-- 
+EOT;
+if($db_indexshowbirth==1){include './require/birth.php';print <<<EOT
+<!---->
+<tr>
+<td colspan=2 class=head>生日会员 [<a href='index.php?birth=tongji' class=cbg>重新统计生日会员</a>]</td>
+</tr>
+
+<tr>
+<td class='f_two' align=center width=5%><img src='$imgpath/$stylepath/index/birth.gif'></td>
+<td class='f_one' colspan=1 width=95%>$index_birth</td></tr>
+<!-- 
+EOT;
+}print <<<EOT
+<!---->
+
+<tr>
+<td colspan=2 class=head>用户资料</td>
+</tr>
+<tr height=40>
+<td class='f_two' align=center width=5% rowspan=1><img src='$imgpath/$stylepath/index/share.gif'></td>
+<td class='f_one' width=95%>
+<!-- 
+EOT;
+if($groupid=='guest'){print <<<EOT
+<!---->
+请先登陆论坛,等级: <b>游客</b><br>
+<table border=0 cellpadding=0 cellspacing=0>
+<form action=login.php method=post>
+<tr>
+<td><input type=hidden name=step value=2><input type=hidden name=cktime value=31536000>
+<input type=text size=8 name=loginuser>
+<input type=password size=8 name=loginpwd>
+<input type=submit value="登 录"></td>
+</tr>
+</form>
+</table>
+<!-- 
+EOT;
+}else{print <<<EOT
+<!---->
+您的等级:<b>$level</b> / 威望: <b>$userrvrc</b> / 共发表帖子: <b>$htfdb[16]</b>
+<br>您上次登陆时间:{$lastlodate} | 您的IP : $onlineip | <a href="search.php?keyword=$rawhtfid&method=or&sch_area=A&seekfid=0&sch_time=ALL"><font color="red">查看我的主题</font></a>
+<!-- 
+EOT;
+}print <<<EOT
+<!---->
+</td></tr>
+
+<!-- 
+EOT;
+if($db_indexlink==1){print <<<EOT
+<!---->
+<tr>
+<td colspan=2 class=head>联盟论坛</td>
+</tr>
+<tr height=40>
+<td class='f_two' align=center width=5% rowspan=1><img src='$imgpath/$stylepath/index/share.gif'></td>
+<td class='f_one' width=95%>
+$index_link</td></tr>
+<!-- 
+EOT;
+}print <<<EOT
+<!---->
+
+
+
+
+<tr>
+<td colspan=2 class=head>在线用户<a name=online> -  共 $usertotal 人在线,$userinbbs 位会员,$guestinbbs 位访客,最多 $bbsol 人发生在 $mostinbbstime </td>
+</tr>
+<tr>
+<td class='f_two' align=center width=5% rowspan=1><img src='$imgpath/$stylepath/index/online.gif'></td>
+<td class='f_one'><table align=center border=0 cellspacing=0 cellpadding=0 width=99%>
+<tr><td colspan=7>
+<img src="$imgpath/$stylepath/group/0.gif"> $ltitle[manager]  <img src="$imgpath/$stylepath/group/1.gif">$ltitle[superadmin]   <img src="$imgpath/$stylepath/group/2.gif">$ltitle[admin]   <img src="$imgpath/$stylepath/group/3.gif">$ltitle[rzuser]   <img src="$imgpath/$stylepath/group/5.gif">普通会员&nbsp;
+<!--
+EOT;
+if($doonlinefu){print <<<EOT
+-->
+<a name="online"></a> [<a href='index.php?online=no#online'>关闭在线列表</a>]
+</td></tr>
+<tr><td colspan=7><hr width=100% color=#ffffff size=1></td></tr>
+<!--
+EOT;
+}else{print <<<EOT
+-->
+<a name="online"></a> [<a href='index.php?online=yes#online'>打开在线列表</a>]
+</td></tr>
+<tr><td colspan=7>
+<!--
+EOT;
+}print <<<EOT
+-->
+$index_whosonline
+</table></td>
+</tr></table></td></tr></table>
+<p align="center"><img src='$imgpath/$stylepath/new.gif' border=0>有新贴的论坛 <img src='$imgpath/$stylepath/old.gif' border=0>无新贴的论坛</p>
+<!--
+EOT;
+?>-->

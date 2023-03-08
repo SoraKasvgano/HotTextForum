@@ -1,0 +1,29 @@
+$leftforum
+$admintopad
+<tr><td bgcolor=$b colspan=3>
+<form action="$basename" method=POST><input type=hidden name="action" value="cleanup">
+$cptop<span class=bold>1.清理旧贴</a>:</span></td></tr><tr><td bgcolor='$b'>
+就程序的设计原理来说旧贴是不影响论坛速度的,如果有必要您可以使用此功能!<br><br>
+<input type=radio name="method" value="byamount">按照数量 删除<input type=text size=10 name="limitnum">个外的主题(比如1000个)<br>
+<input type=radio name="method" value="bydate">按照时间 删除<input type=text size=10 name="limitdate">天外的主题(比如30天)<br>
+<input type=radio name="method" value="byauthor" checked>按照作者 删除<input type=text size=10 name="author">将删除该作者发表的所有主题<br><br>
+
+<select name="target"><option value="all">所有版块</option>$onlyforum <input type=submit value="提 交"><br><br>
+注意:删除的单位是<span class=bold>主题</span>,不是<span class=bold>贴子</span>。一个主题通常包含一个话题及多个回复,即多个贴子。
+$cpbottom</form>
+<form action="$basename" method=POST><input type=hidden name="action" value="updatecount">
+$cptop<span class=bold>2.重新统计:</span></td></tr><tr><td bgcolor='$b'>
+对论坛的贴子重新统计总数,这样可以修复首页上总数显示的错误,包括修正主题和帖子数,推荐使用!<br>如果您只修正单一版块,而此版块有子版块<font color="red">建议您更新所有版块</font><br>
+<select name="target"><option value="all">所有版块</option>$onlyforum <input type=submit value="提 交"><br>
+$cpbottom</form>
+<form action="$basename" method=POST><input type=hidden name="action" value="fixindex">
+$cptop<span class=bold>3.重建版块索引:</span>
+</td></tr><tr><td bgcolor='$b'>建立论坛各版块索引:
+<input type=radio name=coverold value=Y checked>是     (建立版块索引.不会导致置顶贴无序化.)<br>
+是否建立回收站索引:
+<input type=radio name=recycle value=Y checked>是
+<input type=radio name=recycle value=N>否<br><br>
+当版块索引由于服务器端影响而受损时,版块索引发生问题,或者导入了论坛数据后,使用本功能可以重建索引,不推荐经常使用此功能,不得以而用之<br>
+此功能可同时更新精华帖缓冲<br>
+<select name="target"><option value="all">所有版块</option>$onlyforum <input type=submit value="提 交"><br>
+$cpbottom</form></td></tr></td></tr>$adminbottomad</table></body></html>

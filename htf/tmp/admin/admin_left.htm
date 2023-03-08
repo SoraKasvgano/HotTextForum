@@ -1,0 +1,141 @@
+<html>
+<head>
+<title>{$db_forumname}后台管理- powered by htf.1m.cn</title>
+<meta http-equiv="Content-Type" content="text/html; charset=gb2312">
+<style type="text/css">
+BODY { COLOR: '#3F3849'; FONT-FAMILY: Verdana,Arial; FONT-SIZE: 9pt;
+SCROLLBAR-HIGHLIGHT-COLOR: buttonface;
+SCROLLBAR-SHADOW-COLOR: buttonface;
+SCROLLBAR-3DLIGHT-COLOR: buttonhighlight;
+SCROLLBAR-TRACK-COLOR: '#eeeeee';
+SCROLLBAR-DARKSHADOW-COLOR: buttonshadow
+}
+textarea,input,object	{ font-family: Tahoma, Verdana; font-size: 12px;  color: #000000; font-weight: normal; background-color: $ffffff }
+A:active {color:'#444444' }
+A:visited { color:'#444444'; text-decoration: none}
+A:hover { color:'#444444'; text-decoration: underline}
+A:link { color:'#444444'; text-decoration: none}
+.t     {	LINE-HEIGHT: 1.4}
+.head { color: #ffffff;background: $a url();}
+.bold {font-weight:bold;}
+TD,SELECT,DIV,FORM,OPTION,P{COLOR:333333; FONT-FAMILY: 宋体; FONT-SIZE: 9pt}
+</style>
+</head>
+<body bgcolor='#f7f7f7' topmargin=5 leftmargin=5 style="color: #739ACE">
+<table width=95% cellpadding=0 cellspacing=0 border=0 bgcolor='$a' align=center>
+<tr><td>
+<table width=100% cellpadding=0 cellspacing=1 border=0>
+<tr><td width=20% valign=top bgcolor='$b'>
+<table width=100% cellpadding=6 cellspacing=2 border=0>
+<tr><td class=head>
+<b>
+ <a href="admin.php"><font color="#FFFFFF">管理区首页</font></a>&nbsp;
+ <a href="admin.php?adminjob=quit"><font color="#FFFFFF">退出</font></a></b></td></tr>
+<tr>
+<td bgcolor='$b' style="color: 333333; font-family: 宋体; font-size: 9pt">$cptop
+<b>后台管理</b></td>
+	</tr>
+	<tr>
+		<td bgcolor='$b' style="color: 333333; font-family: 宋体; font-size: 9pt">
+ <a href="admin.php?adminjob=addgpmenber">系统管理组</a><br>
+ <a href="admin.php?adminjob=addadmin">添加管理员</a><br>
+ <a href="admin.php?adminjob=forumadmin">添加版主</a><br>
+	$cpbottom</td>
+	</tr>
+<tr>
+<td bgcolor='$b'>$cptop
+<b>网站统筹管理</b></td></tr>
+<tr><td bgcolor='$b'>
+ <a href="admin.php?adminjob=settings">论坛核心设置</a><br>
+	<a href="admin.php?adminjob=postcache">动作表情管理</a><br>
+	$cpbottom</td></tr>
+<td bgcolor="$b">
+$cptop
+<span class=bold>论坛版块管理</span></td></tr>
+<tr><td bgcolor='$b'>
+ <a href="admin.php?adminjob=setforum">版块添加与管理</a><br>	
+ <a href="admin.php?adminjob=forumcp">版块,帖子维护中心</a><br>
+	$cpbottom</td></tr>
+<td bgcolor="$b">
+$cptop
+<span class=bold>论坛用户组管理</span></td></tr>
+<tr><td bgcolor='$b'>
+ <a href="admin.php?adminjob=level">用户等级与权限控制</a><br>
+ <a href="admin.php?adminjob=updatagroup">更新用户组缓冲</a><br>
+	$cpbottom</td></tr>
+<td bgcolor="$b">
+$cptop
+<span class=bold>会员管理</span></td></tr>
+<tr><td bgcolor='$b'>
+ <a href="admin.php?adminjob=setuser">会员管理</a><br>
+ <a href="admin.php?adminjob=newcheck">新注册用户验证</a><br>
+ <a href="admin.php?adminjob=fbusername">保留特殊用户名</a><br>
+	$cpbottom</td></tr>
+<td bgcolor="$b">
+$cptop
+<span class=bold>信息管理</span></td></tr>
+<tr><td bgcolor='$b'>
+ <a href="admin.php?adminjob=announcement">发布公告</a><br>
+ <a href="admin.php?adminjob=mailuser">Email 群发</a><br>
+ <a href="admin.php?adminjob=sendmsg">短消息群发</a><br> 
+ <a href="admin.php?adminjob=giveuser">节日礼物赠送功能</a><br>
+	$cpbottom</td></tr>
+
+<td bgcolor='$b'>
+$cptop
+<span class=bold>论坛维护</span></td></tr>
+<tr><td bgcolor='$b'>
+ <a href="admin.php?adminjob=superdel&action=men">批量删除用户</a><br>
+ <a href="admin.php?adminjob=superdel&action=msgdel">批量删除短消息</a><br>
+ <a href="admin.php?adminjob=attachment">附件管理</a><br>
+	$cpbottom</td></tr>
+<td bgcolor="$b">
+$cptop
+<span class=bold>管理日志</span></td></tr>
+<tr><td bgcolor='$b'>
+ <a href="admin.php?adminjob=setbwd">不良词语过滤</a><br>
+ <a href="admin.php?adminjob=ipban">IP 禁止</a><br>
+ <a href="admin.php?adminjob=record&goto=log">后台管理安全日志</a><br>
+ <a href="admin.php?adminjob=record&goto=forum">前台管理安全日志</a><br>
+ <a href="admin.php?adminjob=record&goto=search">前台搜索日志</a><br>
+	$cpbottom</td></tr>
+<!-- <td bgcolor="$b">
+$cptop
+<span class=bold>插件管理</span></td></tr>
+<tr><td bgcolor='$b'>
+ <a href="action.php?adminfacepic=adminface">虚拟形象管理</a><br>
+$cpbottom</td></tr> -->
+<td bgcolor="$b">
+$cptop
+<span class="bold">辅助设置</span></td></tr>
+<tr><td bgcolor='$b'>
+ <a href="admin.php?adminjob=share">联盟论坛管理</a><br>
+ <a href="peruse.php?action=viewtody">查看今日到访会员</a><br>
+	$cpbottom</td></tr>	
+<tr>
+
+<td bgcolor="$b" style="color: 333333; font-family: 宋体; font-size: 9pt">
+$cptop <span class=bold>数据管理</span></td>
+</tr>
+<tr>
+	<td bgcolor='$b' style="color: 333333; font-family: 宋体; font-size: 9pt">
+ <a href="admin.php?adminjob=bak&bakjob=bakout">论坛数据备份</a><br>	
+ <a href="admin.php?adminjob=bak&bakjob=bakin">论坛数据恢复</a><br>
+	$cpbottom</td>
+</tr>
+<tr>
+	<td bgcolor='$b'>
+$cptop
+<span class=bold>风格管理</span></td>
+</tr>
+<tr>
+	<td bgcolor='$b'>
+ <a href="admin.php?adminjob=setstyles">风格模版设置</a><br>
+ $cpbottom</td></tr>
+</tr>
+<tr>
+<td bgcolor='$c'>
+<p align="center"><b><font face="Arial Unicode MS"><a href="http://www.htf.1m.cn">
+http://www.htf.1m.cn</a></font></b></td></tr></table>
+</td><td width=80% valign=top bgcolor='$b'>
+<table width=100% cellpadding=1 cellspacing=0 border=0>

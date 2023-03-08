@@ -1,0 +1,36 @@
+$leftforum
+$admintopad
+<form action=$basename method=post><input type=hidden name='K_del_user' value=1><tr><td><br><br></td></tr><table cellspacing="0" cellpadding="1" border="0" width="95%" align="center" bgcolor=$a>
+<tr><td align="center">
+<table border="0" cellspacing="0" cellpadding="4" width="100%" bgcolor=$b>
+<tr bgcolor=$a><td colspan="6" class=head><span class=bold>新用户验证</span></td></tr>
+<tr bgcolor=$c>
+<td width=20%>用户名</td>
+<td width=20%>发贴数</td>
+<td width=20%>注册时间</td>
+<td width=20%>最后登陆时间</td>
+<td width=10%>最后IP</td>
+<td width=10%>删</td></tr>
+$K_db
+</table></td></tr></table>
+
+<table border="0" cellspacing="0" cellpadding="0" width="100%" >
+<tr><td align=center><center>共搜索到 $count 个符合要求的会员<br><input type='button' name='chkall' value='全 选' onclick='CheckAll(this.form)'>    <input type="submit" name="" value="确认删除"></center></td></tr>
+$adminbottomad</table></form></body></html>
+<script language=JavaScript>
+function CheckAll(form)
+{
+	for (var i=0;i<form.elements.length;i++)
+	{
+		var e = form.elements[i];
+		if (e.checked == true)
+		{
+			e.checked = false;
+		}
+		else 
+		{
+			e.checked = true;
+		}
+	}
+}
+</script>

@@ -1,0 +1,150 @@
+$leftforum
+$admintopad
+<tr bgcolor=$b colspan=2><td><br></td></tr>
+<tr bgcolor=$b>
+<td align=right colspan=2>
+<form name=jump method=post><span class=bold>用户组编辑导航:</span>
+<select onchange="if(this.options[this.selectedIndex].value != '') {
+window.location=('admin.php?adminjob=setgroup&status='+this.options[this.selectedIndex].value) }">
+<option value="" selected>请选择</option>
+
+$level_jump
+</select>&nbsp;  &nbsp;  &nbsp;  &nbsp;</td></form>
+</td>
+</tr>
+<form action="admin.php?adminjob=setgroup" method="post">
+<input type=hidden name="action" value="unsubmit">
+<input type=hidden name="key" value="$key">
+<input type=hidden name="status" value="$status">
+
+<table width=95% align=center cellspacing=1 cellpadding=3 bgcolor=333333>
+
+
+<tr>
+<td class=head align=center colspan=2>
+<a class=bold><font color=#ffffff>用户组编辑</font></a></td>
+</tr>
+<tr bgcolor=$b><td width=60%>用户组头衔：</td>
+<td>$status<br>$is_default</td></tr>
+</td></tr></table>
+<br><br>
+<table width=95% align=center cellspacing=0 cellpadding=0 bgcolor=333333>
+<tr><td><table width=100% cellspacing=1 cellpadding=3>
+<tr>
+<td class=head align=center colspan=2>
+<a class=bold><font color=#ffffff>基本权限</font></a></td></tr>
+<tr bgcolor=$b>
+<td width=60%>是否允许隐身登陆：</td>
+<td><input type=radio value=1 $hide_Y name=group[ifhide]>是 
+<input type=radio value=0 $hide_N name=group[ifhide]>否 
+</td>
+</tr>
+<tr bgcolor=$b>
+<td width=60%>是否允许浏览贴子：</td>
+<td><input type=radio value=1 $read_Y name=group[ifread]>是 
+<input type=radio value=0 $read_N name=group[ifread]>否 
+</td></tr>
+<tr bgcolor=$b>
+<td>是否允许使用搜索：</td>
+<td><input type=radio value=1 $search_Y name=group[ifsearch]>是 
+<input type=radio value=0 $search_N name=group[ifsearch]>否 
+</td></tr>
+
+<tr bgcolor=$b>
+<td>是否允许查看会员列表：</td>
+<td><input type=radio value=1 $member_Y name=group[ifmember]>是 
+<input type=radio value=0 $member_N name=group[ifmember]>否 
+</td></tr>
+<tr bgcolor=$b>
+<td>是否允许用户使用自定义头像：</td>
+<td><input type=radio value=1 $portait_Y name=group[ifportait]>是
+<input type=radio value=0 $portait_N name=group[ifportait]>否 </td></tr> 
+<tr bgcolor=$b>
+<td>是否允许自定义荣誉头衔：</td>
+<td><input type=radio value=1 $honor_Y name=group[ifhonor]>是
+<input type=radio value=0 $honor_N name=group[ifhonor]>否 </td></tr>
+<tr bgcolor=$b>
+<td>是否允许使用短消息系统：</td>
+<td><input type=radio value=1 $messege_Y name=group[ifmessege]>是
+<input type=radio value=0 $messege_N name=group[ifmessege]>否 </td></tr> 
+
+
+<tr bgcolor=$b>
+<td>两次搜索时间间隔：</td>
+<td><input size=35 value="$gp_searchtime" name=group[searchtime]></td></tr>
+<tr bgcolor=$b>
+<td>个人签名最大字节数：：</td>
+<td><input size=35 value="$gp_signnum" name=group[signnum]></td></tr>
+<tr bgcolor=$b>
+<td>最大短消息数目：</td>
+<td><input size=35 value="$gp_maxmsg" name=group[maxmsg]></td></tr>
+</table></td></tr></table>
+<br><br>
+<table width=95% align=center cellspacing=0 cellpadding=0 bgcolor=333333>
+<tr><td><table width=100% cellspacing=1 cellpadding=3>
+<tr>
+<td class=head align=center colspan=2>
+<a class=bold><font color=#ffffff>帖子权限</font></a></td>
+</tr>
+
+<tr bgcolor=$b>
+<td width=60%>是否允许发贴：</td>
+<td><input type=radio value=1 $post_Y name=group[ifpost]>是 
+<input type=radio value=0 $post_N name=group[ifpost]>否 
+</td></tr>
+<tr bgcolor=$b>
+<td width=60%>是否允许回复帖子：</td>
+<td><input type=radio value=1 $reply_Y name=group[ifreply]>是 
+<input type=radio value=0 $reply_N name=group[ifreply]>否 
+</td></tr>
+<tr bgcolor=$b>
+<td>是否允许发起投票：</td>
+<td><input type=radio value=1 $postvote_Y name=group[ifpostvote]>是 
+<input type=radio value=0 $postvote_N name=group[ifpostvote]>否 
+</td></tr>
+<tr bgcolor=$b>
+<td>是否允许参与投票：</td>
+<td><input type=radio value=1 $vote_Y name=group[ifvote]>是 
+<input type=radio value=0 $vote_N name=group[ifvote]>否 
+</td></tr>
+<tr bgcolor=$b>
+<td width=60%>是否允许删除自己的帖子：</td>
+<td><input type=radio value=1 $delatc_Y name=group[ifdelatc]>是 
+<input type=radio value=0 $delatc_N name=group[ifdelatc]>否 
+</td></tr>
+<tr bgcolor=$b><td>灌水预防(多少秒间隔内不能发贴,设为0则不做限制)：</td>
+<td><input size=35 value="$gp_postpertime" name=group[postpertime]></td></tr>
+<tr bgcolor=$b><td>编辑时间约束(分钟)
+超过设定时间后拒绝用户编辑。留空或者键入0则没有约束：</td>
+<td><input size=35 value="$gp_edittime" name=group[edittime]></td></tr>
+</table></td></tr></table>
+<br><br>
+<table width=95% align=center cellspacing=0 cellpadding=0 bgcolor=333333>
+<tr><td><table width=100% cellspacing=1 cellpadding=3>
+
+<tr><td class=head align=center colspan=2>
+<a class=bold><font color=#ffffff>附件权限</font></a></td></tr>
+<tr bgcolor=$b><td width=60%>是否允许上传附件：</td>
+<td><input type=radio value=1 $upload_Y name=group[ifupload]>是 
+<input type=radio value=0 $upload_N name=group[ifupload]>否 </td></tr>
+<tr bgcolor=$b><td>是否允许下载附件：</td>
+<td><input type=radio value=1 $download_Y name=group[ifdownload]>是 
+<input type=radio value=0 $download_N name=group[ifdownload]>否 </td></tr>
+<tr bgcolor=$b><td>发贴处是否使用限定多少威望下载附件：</td>
+<td><input type=radio value=1 $uploadrvrc_Y name=group[ifuploadrvrc]>是 
+<input type=radio value=0 $uploadrvrc_N name=group[ifuploadrvrc]>否 </td></tr>
+
+<tr bgcolor=$b>
+<td>上传附件被扣金钱为：</td>
+<td><input size=35 value="$gp_uploadmoney" name=group[uploadmoney]></td></tr>
+
+<tr bgcolor=$b><td>一天最多上传附件个数：</td>
+<td><input size=35 value="$gp_allownum" name=group[allownum]></td></tr>
+</table></td></tr></table>
+<br><br>
+<table width=95% align=center cellspacing=0 cellpadding=0 >
+<tr><td><table width=100% cellspacing=1 cellpadding=3>
+<tr>
+<td colspan=2 align=center ><input type=submit value="提 交"> <input type=reset value="重 置">
+</tr>
+</td></tr></table></td></tr>$adminbottomad</table></form></td></tr></table></body></html>

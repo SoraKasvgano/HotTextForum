@@ -1,0 +1,56 @@
+<!--
+<?php print <<<EOT
+-->
+$msg_guide
+<form method="post" action="sendemail.php">
+<table cellspacing="1" cellpadding="0" border="0" width="$tablewidth" align="center" bgcolor=$tablecolor>
+<tr><td class='f_one'>
+
+<table border="0" cellspacing="1" cellpadding="4" width="100%">
+<tr>
+<td colspan="2" class=head>$mail_action</td>
+</tr>
+
+<tr>
+<td width="21%">您的名字:</td>
+<td><input type="text" name="fromname" size="25" maxlength="40" value=$htfid disabled></td>
+</tr>
+
+<tr>
+<td>您的 Email:</td>
+<td><input type="text" name="fromemail" size="25" value="$idarray[3]"></td>
+</tr>
+
+<tr>
+<td>接收者名字:</td>
+<td><input type="text" name="sendtoname" size="25" value="$to_user" $ifdisabled></td>
+</tr>
+<tr>
+<td>接收者 Email:</td>
+<td><input $type name="sendtoemail" size="25" value="$to_mail" $ifdisabled>$info</td>
+</tr>
+<tr>
+<td>标题:</td>
+<td><input type="text" name="subject" size="65" value="$atc_name"></td>
+</tr>
+<tr>
+<td valign="top">内容:</td>
+<td>$ifecho[sdm_friend1]<textarea rows="9" cols="65" name="emailcontent">
+
+你好！我在 $db_bbsname ($db_bbsurl)
+看到了这篇帖子，认为很有价值，特推荐给你。
+
+$filearray[5]
+地址:{$db_bbsurl}/topic.php?fid=$fid&tid=$tid
+
+希望你能喜欢。
+</textarea>$ifecho[sdm_friend2]{$ifecho[sdm_mail1]}<textarea rows="9" cols="65" name="emailcontent"></textarea>$ifecho[sdm_mail2]</td>
+</tr>
+</table>
+</td></tr></table><br>
+<center><input type="submit" name="sendsubmit" value="提 &nbsp; 交"></center>
+<input type="hidden" name="step" value="2"><input type="hidden" name="to_mail" value="$to_mail">
+</form>	
+<!--
+EOT;
+?>-->

@@ -1,0 +1,55 @@
+<!--
+<?php print <<<EOT
+-->
+$msg_guide
+$ifecho[pr_gd1]
+<table width=$tablewidth border=0 cellspacing=1 cellpadding=4 align=center bgcolor=$tablecolor>
+<tr align=center>
+<td width=25% class='f_one'>控制面板首页</td>
+<td width=25% class='f_one'><a href='usercp.php'>编辑个人资料</a></td>
+<td width=25% class='f_one'>
+<a href=usercp.php?action=show&username=$rawhtfid>查看个人资料</a></td>
+<td width=25% class='f_one'><a href="peruse.php?action=favor">收藏夹</a></td>
+</tr>
+</table>
+$ifecho[pr_gd2]
+<br>
+<table width=$tablewidth border=0 cellspacing=0 cellpadding=0 align=center>
+<tr><td>
+<table width=100% border=0 cellspacing=1 cellpadding=4 align=center $i_table>
+<tr><td align="center" class=head colspan=2 >个人信息</td></tr>
+<tr><td width=40% class='f_two'>用户名:</td><td class='f_two'>$dir_name  ( <b>$ifonline</b> ) --- <a href="./search.php?keyword=$rawusername&method=or&sch_area=A&seekfid=0&sch_time=ALL">搜索用户帖子</a> </td></tr>
+<tr><td width=40% class='f_one'>等级:</td><td class='f_one'>$level</td></tr>
+<!-- 
+EOT;
+if($htfid==$manager){print <<<EOT
+<!---->
+<tr><td width=40% class='f_one'>最后登陆IP:</td><td class='f_one'>$dir_lastip</td></tr>
+<!-- 
+EOT;
+}print <<<EOT
+<!---->
+$honorlevel
+<tr><td class='f_two'>头像:</td><td class='f_two'>$usericon</td></tr>
+<tr><td class='f_one'>电子邮件:</td><td class='f_one'>$sendemail</td></tr>
+<tr><td class='f_two'>OICQ:</td><td class='f_two'>$dir_oicq</td></tr>
+<tr><td class='f_one'>ICQ:</td><td class='f_one'>$dir_icq</td></tr>
+<tr><td class='f_two'>性别:</td><td class='f_two'>$usersex </td></tr>
+<tr><td class='f_one'>生日:</td><td class='f_one'>$dir_birth</td></tr>
+<tr><td class='f_two'>主页:</td><td class='f_two'><a href=$dir_homepage >$dir_homepage</a></td></tr>
+<tr><td width=40% class='f_one'>签名:</td><td class='f_one'>$tempsign</td></tr>
+<tr><td class='f_two'>自我介绍:</td><td class='f_two'>$dir_introduce</td></tr>
+<tr><td class='f_one'>注册时间:</td><td class='f_one'>$show_regdate</td></tr>
+$printonlinetime
+<tr><td class='f_one'>发贴数:</td><td class='f_one'>$dir_fatie</td></tr>
+<tr><td class='f_two'>威望:</td><td class='f_two'>$dir_weiwang</td></tr>
+<tr><td class='f_one'>金钱:</td><td class='f_one'>$dir_money</td></tr>
+<tr><td width=40% class='f_two'>平均每日发贴:</td><td class='f_two'>$averagepost 篇 (其中今日$dir_todaypost 篇)</td></tr>
+<tr><td class='f_one'>上次登陆时间:</td><td class='f_one'>$lasttime </td></tr>
+$printlastpost
+<tr><td class='f_two'>联系:</td><td class='f_two'>&nbsp;<a href="message.php?action=write&msgid=$dir_name">消息</a>&nbsp;<a href="sendemail.php?username=$dir_name">E-mail</a> </td></tr>
+</table><br><tr><td colspan=2><center><input type=submit value="返回" onclick="javascript:history.go(-1)"></center></td>
+</tr></table>
+<!--
+EOT;
+?>-->

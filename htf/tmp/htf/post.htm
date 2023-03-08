@@ -1,0 +1,313 @@
+<!--
+<?php print <<<EOT
+-->
+
+$msg_guide
+<script language="JavaScript" src="require/postcode.js"></script>
+<table border=0 cellPadding=0 cellSpacing=0 width=$tablewidth align=center>
+<tr><td>
+<!-- 
+EOT;
+if($action=='modify'){print <<<EOT
+<!---->
+<form method=post name=form action=post.php?>
+<table border=0 cellPadding=0 cellSpacing=1 width="100%"  $i_table>
+<tr><td height="25" class=head colspan=3><span class=bold>删除帖子</span></td></tr>
+<tr><td width="95%" class='f_one'><span class=bold>&nbsp;注意: 
+	如果贴子已被回复，就只有管理组才能删除！</span></td>
+<td height="25"width="5%" align=right class='f_one'>
+<input type="submit" value="直接删除"> 
+</td></tr></table>
+<input type=hidden value=1 name=step>
+<input type=hidden value="$action" name='action'>
+<input type=hidden value="$fid" name=fid>
+<input type=hidden value="$tid" name=tid>
+<input type=hidden value="$article" name=article></form>
+<!-- 
+EOT;
+}
+print <<<EOT
+<!---->
+<form method=post name=FORM action=post.php? enctype="multipart/form-data">
+<table border=0 cellPadding=4 cellSpacing=1 width="100%"  $i_table>
+<tr><td height="20" class='head' colspan=3><span class=bold>$post_status</span>
+</td></tr>
+<tr><td width="20%" class='f_one'><span class=bold>主题</span></td>
+<td width="80%" class='f_one'>
+<input class=subject maxLength=60 name=atc_title size=60 value="$atc_title">
+</td></tr>
+<tr><td class='f_one' width="20%"><span class="bold">图标</span></td>
+<td class='f_one' width="80%">
+<input name=atc_iconid type=radio value=1><img border=0 src="$imgpath/post/emotion/1.gif">
+<input name=atc_iconid type=radio value=2><img border=0 src="$imgpath/post/emotion/2.gif">
+<input name=atc_iconid type=radio value=3><img border=0 src="$imgpath/post/emotion/3.gif">
+<input name=atc_iconid type=radio value=4><img border=0 src="$imgpath/post/emotion/4.gif">
+<input name=atc_iconid type=radio value=5><img border=0 src="$imgpath/post/emotion/5.gif">
+<input name=atc_iconid type=radio value=6><img border=0 src="$imgpath/post/emotion/6.gif">
+<input name=atc_iconid type=radio value=7><img border=0 src="$imgpath/post/emotion/7.gif"><br>
+<input name=atc_iconid type=radio value=8><img border=0 src="$imgpath/post/emotion/8.gif">
+<input name=atc_iconid type=radio value=9><img border=0 src="$imgpath/post/emotion/9.gif">
+<input name=atc_iconid type=radio value=10><img border=0 src="$imgpath/post/emotion/10.gif">
+<input name=atc_iconid type=radio value=11><img border=0 src="$imgpath/post/emotion/11.gif">
+<input name=atc_iconid type=radio value=12><img border=0 src="$imgpath/post/emotion/12.gif">
+<input name=atc_iconid type=radio value=13><img border=0 src="$imgpath/post/emotion/13.gif">
+<input name=atc_iconid type=radio value=14><img border=0 src="$imgpath/post/emotion/14.gif">
+</td></tr>
+<!-- 
+EOT;
+if(is_array($votearray) || $action=='vote'){
+print <<<EOT
+<!---->
+<tr><td class='f_one' width="20%"><span class=bold>投票选项:<br>
+每行写一个投票选项<br>最多可以有 $db_selcount 个选项<br>
+多选<input type=checkbox value='1' name=multiplevote $multi><br>
+最多选择个数<input maxlength=10 size=1 name=mostvotes value="$mostnum"></span></td>
+<td class='f_one' width="80%">
+<!-- 
+EOT;
+if($action=='modify'){
+foreach($votearray['options'] as $votes){
+print <<<EOT
+<!---->
+<input class=text maxLength=60 name='vt_selarray[]' size=60 value="$votes[0]">
+<br>
+<!-- 
+EOT;
+}}
+elseif($action=='vote'){
+print <<<EOT
+<!---->
+<textarea name=vt_select rows=5 wrap=hard cols=60>$vt_select</textarea>
+<!-- 
+EOT;
+}
+print <<<EOT
+<!---->
+</td></tr>
+<!-- 
+EOT;
+}
+print <<<EOT
+<!---->
+<tr><td valign=top class='f_one'>htf 代码<br>
+<input onclick="checkmode('2')" type=radio CHECKED value=2 name=mode> 提示插入<br>
+<input onclick="checkmode('0')" type=radio value=0 name=mode> 直接插入<br>
+<input onclick="checkmode('1')" type=radio  value=1 name=mode> 帮助信息</td>
+<td valign=top  class='f_one'>
+字体: <select onChange=showfont(this.options[this.selectedIndex].value) name=font>
+<option value="宋体" selected>宋体</option>
+<option value="楷体_GB2312">楷体</option>
+<option value="新宋体">新宋体</option>
+<option value="黑体">黑体</option>
+<option value="隶书">隶书</option>
+<option value="Andale Mono">Andale Mono</option>
+<option value=Arial>Arial</option>
+<option value="Arial Black">Arial Black</option>
+<option value="Book Antiqua">Book Antiqua</option>
+<option value="Century Gothic">Century Gothic</option>
+<option value="Comic Sans MS">Comic Sans MS</option>
+<option value="Courier New">Courier New</option>
+<option value=Georgia>Georgia</option>
+<option value=Impact>Impact</option>
+<option value=Tahoma>Tahoma</option>
+<option value="Times New Roman" >Times New Roman</option>
+<option value="Trebuchet MS">Trebuchet MS</option>
+<option value="Script MT Bold">Script MT Bold</option>
+<option value=Stencil>Stencil</option>
+<option value=Verdana>Verdana</option>
+<option value="Lucida Console">Lucida Console</option>
+</select>
+&nbsp;字号:<select onChange=showsize(this.options[this.selectedIndex].value) name=size>
+<option value=1>1</option>
+<option value=2>2</option>
+<option value=3>3</option>
+<option value=4>4</option>
+<option value=5>5</option>
+<option value=6>6</option>
+</select>
+&nbsp;颜色: <select onChange=showcolor(this.options[this.selectedIndex].value) name=color>
+<option value="skyblue" style="background-color:skyblue;color:skyblue" selected>天蓝</option>
+<option value="royalblue" style="color:royalblue">品蓝</option>
+<option value="blue" style="color:blue">蓝</option>
+<option value="darkblue" style="color:darkblue">暗蓝</option>
+<option value="orange" style="color:orange">橙</option>
+<option value="orangered" style="color:orangered">桔红</option>
+<option value="crimson" style="color:crimson">深红</option>
+<option value="red" style="color:red">红</option>
+<option value="firebrick" style="color:firebrick">棕</option>
+<option value="darkred" style="color:darkred">暗红</option>
+<option value="green" style="color:green">绿色</option>
+<option value="limegreen" style="color:limegreen">灰绿</option>
+<option value="seagreen" style="color:seagreen">海绿</option>
+<option value="deeppink" style="color:deeppink">粉</option>
+<option value="tomato" style="color:tomato">西红柿色</option>
+<option value="coral" style="color:coral">珊瑚色</option>
+<option value="purple" style="color:purple">紫色</option>
+<option value="indigo" style="color:indigo">靛青</option>
+<option value="burlywood" style="color:burlywood">棕木</option>
+<option value="sandybrown" style="color:sandybrown">沙褐</option>
+<option value="sienna" style="color:sienna">土黄</option>
+<option value="chocolate" style="color:chocolate">巧克力色</option>
+<option value="teal" style="color:teal">土绿</option>
+<option value="silver" style="color:silver">银</option>
+</select><br><br>
+<img onClick=bold() height=22 alt="粗体字" src="$imgpath/post/editor/bold.gif" width=23 border=0>
+<img onClick=italicize() height=22 alt="斜体字" src="$imgpath/post/editor/italicize.gif" width=23 border=0>
+<img onClick=underline() height=22 alt="下划线" src="$imgpath/post/editor/underline.gif" width=23 border=0>
+<img onClick=center() height=22 alt="居中" src="$imgpath/post/editor/center.gif" width=23 border=0>
+<img onClick=rming() height=22 alt="插入rm电影文件" src="$imgpath/post/editor/rm.gif" width=23 border=0>
+<img onClick=wmv() height=22 alt="插入wmv在线播放" src="$imgpath/post/editor/mpeg.gif" width=23 border=0>
+<img onClick=image() height=22 alt="插入图片" src="$imgpath/post/editor/image.gif" width=23 border=0>
+<img onClick=setswf() height=22 alt="插入 Flash 动画" src="$imgpath/post/editor/swf.gif" width=23 border=0>
+<img onClick=showcode() height=22 alt="插入代码" src="$imgpath/post/editor/code.gif" width=23 border=0>
+<img onClick=quoteme() height=22 alt="插入引用" src="$imgpath/post/editor/quote.gif" width=23 border=0>
+<img onClick=list() height=22 alt="插入列表" src="$imgpath/post/editor/list.gif" width=23 border=0>
+<img onClick=setfly() height=22 alt="飞行字" src="$imgpath/post/editor/fly.gif" width=23 border=0>
+<img onClick=movesign() height=22 alt="移动字" src="$imgpath/post/editor/move.gif" width=23 border=0>
+<img onClick=glow() height=22 alt="发光字" src="$imgpath/post/editor/glow.gif" width=23 border=0>
+</td></tr>
+<tr><td valign=top  class='f_one'>
+<span class=bold>文章内容</span>:<br><br>
+<font face=verdana>HTML 代码不可用</font><br>
+<font face=verdana>htf Code</font> 可用<br>
+点击 <a target=_blank href=faq.php?faqjob=1#5><span class=bold>这里</span></a> 看使用方法<br>
+<span class=bold>htf代码选项</span>:<br>
+$htfcode<br>
+<input type=checkbox name="atc_usesign" value="1" checked>使用签名<br>
+<input type=checkbox name="atc_autourl" value="1" checked>htf Code自动转换<br>
+<input name=atc_email type=checkbox  value=1 $hideemail>新回复邮件通知</td>
+<td colspan=2 align=left class='f_one'>
+<textarea onkeydown=quickpost() name=atc_content rows="20" cols="120" onfocus=getActiveText(this) onclick=getActiveText(this)  onchange=getActiveText(this) tabindex="4">
+{$atc_content}</textarea><br>
+<input type=checkbox CHECKED>推荐使用:
+[<a href=javascript:copytext('FORM.atc_content')>复制到剪贴板</a>]-- 
+[<a href=javascript:replac()>替换文本</a>]<br>
+<input type=checkbox CHECKED>使用动作:
+<SELECT onchange=Addaction(this.options[this.selectedIndex].value)>
+<OPTION value="" selected>动作</OPTION>
+<!-- 
+EOT;
+foreach($motion as $motiondb){
+print <<<EOT
+<!--动作模版-->	
+<OPTION value="/{$motiondb[0]}">{$motiondb[0]}</OPTION>
+<!--
+EOT;
+}
+print <<<EOT
+<!--动作模版-->
+</SELECT>
+--选择你要使用的动作 -- 
+[<a href="javascript:checklength(document.FORM);">查看帖子长度</a>] 最大:$db_postmax 字节<br>
+<!-- 
+EOT;
+if($action=='modify' && $admincheck==1){print <<<EOT
+<!---->
+<input type=checkbox value=1 name=E_hide $E_checked> <b>屏蔽此贴内容 !</b><br>
+<!-- 
+EOT;
+}print <<<EOT
+<!---->
+<input type=checkbox name="atc_hide" value="1" $htmlhide>
+隐藏此帖，只有用户回复了此贴才可以查看贴子内容(请勿恶意隐藏)<br>
+<input type=checkbox name="atc_requirervrc" value="1" $htmlpost>
+加密此帖，只对部分用户可见，用户威望需大于
+<input maxlength=6 size=6 name=atc_rvrc value="0">
+(不能大于你目前的威望:<font color=red>$userrvrc</font>)<br>
+<input type=checkbox name="atc_requiresell" value="1" $htmlsell>
+出售此贴，会员需付钱
+<input maxlength=6 size=6 name=atc_money value="0">
+{$db_moneyname}才能看到贴子内容(回复贴不能出售).(不能大于:<font color=red>100</font>)<br>
+表情<br>
+<!--
+EOT;
+foreach($face as $facedb){
+print <<<EOT
+<!--表情模版-->	
+<a href="javascript:addsmile('[s:$facedb]');">
+<img src=$imgpath/post/smile/$facedb border=0></a>
+<!--
+EOT;
+}
+print <<<EOT
+<!--表情模版-->
+</td></tr>
+
+
+<tr>
+	<td height="20" class='head' colspan=3>
+附件</td>
+</tr>
+
+
+<tr><td align=left class='f_one'><span class=bold>附件:</span>
+附件最大: $db_uploadmaxsize K
+<br><INPUT id=advcheck name=muti type=checkbox value=1 $disabled onclick=showmuti()>多个附件</td>
+<td id=attach1 align=left  class='f_one'>$attach
+$pt_downrvrc1<input type=file class=subject name=atc_attachment1>
+有效文件类型:$db_uploadfiletype</td>
+
+<td id=attach2 align=left  class='f_one' style="DISPLAY: none">
+$pt_downrvrc2<input type=file class=subject name=atc_attachment2>
+有效文件类型:$db_uploadfiletype<br>
+$pt_downrvrc3<input type=file class=subject name=atc_attachment3><br>
+$pt_downrvrc4<input type=file class=subject name=atc_attachment4>
+</td></tr></table>
+<br>
+<tr><td align=center>
+<input type=hidden value=2 name=step>
+<input type=hidden value="$action" name=action>
+<input type=hidden value="$fid" name=fid>
+<input type=hidden value="$tid" name=tid>
+<input type=hidden value="$article" name=article>
+<script>
+function showmuti(){
+if (document.FORM.muti.checked == true){
+		attach1.style.display = "none";
+		attach2.style.display = "";
+	}else{
+		attach1.style.display = "";
+		attach2.style.display = "none";
+	}
+}
+cnt = 0;
+function checkCnt() {
+  cnt++;
+  if (cnt==1) return true;
+  alert('Submission Processing. Please Wait');
+  return false;
+}
+function gopreview()
+{
+	document.preview.preatc.value=document.FORM.atc_content.value;
+	document.preview.submit()
+}
+</script>
+<input type="submit" value="发新话题" name="Submit"  onclick="return checkCnt();" accesskey="s"> 
+<input type=button value="预览帖子" name=Button onclick=gopreview()>         
+</td></tr></form>
+<form name=preview action="peruse.php?previewjob=preview" method=post target="preview_page">
+<input type=hidden name=preatc value="">
+</form></table>
+
+$post_reply
+
+<br>
+<script language=JavaScript>
+ie = (document.all)? true:false;
+if (ie)
+{
+	function quickpost(eventobject)
+	{
+		if((event.ctrlKey && window.event.keyCode == 13)||(event.altKey && window.event.keyCode == 83))
+		{
+			this.document.FORM.submit();
+		}
+	}
+}
+
+</script>
+
+<!--
+EOT;
+?>-->
