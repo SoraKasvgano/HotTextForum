@@ -1,7 +1,7 @@
 <?php
 define('SAFE',true);
 $ifecho=array(
-	"set_index1"   => "<!--","set_index2"   => " -->",	
+	"set_index1"   => "<!--","set_index2"   => " -->",
 	"set_view1"    => "<!--","set_view2"    => " -->",
 	"set_yes1"     => "<!--","set_yes2"     => " -->",
 	"adm_log1"     => "<!--","adm_log2"     => " -->",
@@ -13,8 +13,14 @@ $ifecho=array(
 	"anc_edit1"    => "<!--","anc_edit2"    => " -->"
 	//"anc_add1"	   => "<!--","anc_add2"     => " -->"
 	);
-$basename="admin.php";//·Åµ½ !$adminjobÀï
+$basename="admin.php";//ï¿½Åµï¿½ !$adminjobï¿½ï¿½
 require "./admin/admincp.php";
+include_once './require/security_integration.php'; // Security: CSRF + Rate Limiting
+
+// Security: Rate Limiting for admin login (handled in admincp.php, but we add global protection)
+if($_POST['admin_pwd'] && $_POST['admin_name']){
+	apply_rate_limit('admin_login', 5, 300); // 5 attempts per 5 minutes
+}
 if(!$adminjob)
 {
 	list($bbsfb,$bbsnewer,$bbstotleuser)=explode("|",readover("data/bbsnew.php"));
@@ -24,9 +30,9 @@ if(!$adminjob)
 	$bbstotleuser==0?$admin_rateperson==0:$admin_rateperson=floor($bbsatc/$bbstotleuser);
 	$sysversion=PHP_VERSION;
 	if (isset($_COOKIE))
-		$ifcookie="Í¨ ¹ý";
+		$ifcookie="Í¨ ï¿½ï¿½";
 	else
-		$ifcookie="Ê§ °Ü";
+		$ifcookie="Ê§ ï¿½ï¿½";
 	eval("dooutput(\"".gettmp('admin')."\");");
 }
 if($adminjob=='bak'){
@@ -107,6 +113,6 @@ elseif($adminjob=='setgroup'){
 elseif($adminjob=='quit'){
 	Cookie('htfadminid',"",0,'N');
 	Cookie('htfadminpwd',"",0,'N');
-	adminmsg("³É ¹¦ ÍË ³ö ¹Ü Àí<br><br><a href=index.php>½ø Èë Ê× Ò³</a>");
+	adminmsg("ï¿½ï¿½ ï¿½ï¿½ ï¿½ï¿½ ï¿½ï¿½ ï¿½ï¿½ ï¿½ï¿½<br><br><a href=index.php>ï¿½ï¿½ ï¿½ï¿½ ï¿½ï¿½ Ò³</a>");
 }
 ?>

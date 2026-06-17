@@ -1,0 +1,141 @@
+# .claudeignore - Claude Code 配置文件
+
+# 项目开发规则
+# 本文件定义了 HotTextForum 项目的开发规范和文档管理规则
+
+# ==================== 文档管理规则 ====================
+
+## 1. 文档组织结构
+# 主文档：README.md（项目概览、快速开始、核心特性）
+# 详细文档：DOCS/ 目录（升级报告、安全文档、迁移指南）
+# 避免在根目录创建多个临时性质的 Markdown 文档
+
+## 2. 文档更新原则
+# - 重大变更：更新 README.md + DOCS/ 相应文档
+# - 小改动：仅更新 DOCS/ 相应文档
+# - 禁止每次改动都新建文档（保持文档简洁）
+# - 使用 Git commit 记录详细变更历史
+
+## 3. 现有文档说明
+# README.md - 项目主文档（包含规则、快速开始、API）
+# DOCS/UPGRADE.md - PHP 8.5.7 升级详细报告
+# DOCS/SECURITY.md - 安全审计与防护机制
+# DOCS/MIGRATION.md - 响应式模板迁移指南
+
+# ==================== 代码规范 ====================
+
+## 4. PHP 代码规范
+# - 使用 PHP 8+ 语法标准
+# - 遵循 PSR-12 代码风格
+# - 所有 POST 请求必须包含 CSRF 验证
+# - 敏感操作必须有速率限制
+
+## 5. 安全规范（强制）
+# - 新页面必须引入 security_integration.php
+# - 用户输入必须使用 safeconvert() 过滤
+# - 输出必须使用 htmlspecialchars() 转义
+# - 密码必须使用 Argon2id 加密（兼容 MD5）
+
+## 6. 响应式设计规范
+# - 移动优先设计（Mobile-First）
+# - 使用 responsive.css 组件库
+# - 触摸目标最小 44x44px
+# - 支持 IE11+（自动 polyfills）
+
+# ==================== Git 忽略文件 ====================
+
+# 临时文件
+*.tmp
+*.temp
+*.bak
+*.swp
+*~
+
+# 数据目录（用户数据）
+data/user/
+data/message/
+data/cache/
+data/ip_cache.txt
+data/admin_record.php
+data/bbsatc.php
+data/bbsnew.php
+
+# Session 文件
+session/*
+!session/.gitkeep
+
+# 上传附件
+attachments/*
+!attachments/.gitkeep
+
+# 配置文件（可能包含敏感信息）
+data/config.php
+data/manager.php
+
+# 日志文件
+*.log
+data/log_*.php
+
+# 编辑器配置
+.vscode/
+.idea/
+*.sublime-project
+*.sublime-workspace
+
+# 操作系统文件
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# 已废弃的文档（避免混淆）
+UPGRADE_REPORT.md
+README_UPGRADE.md
+MODERNIZATION_PROPOSAL.md
+RESPONSIVE_GUIDE.md
+RESPONSIVE_COMPLETE.md
+htf/SECURITY_INTEGRATION_STATUS.md
+
+# ==================== 开发建议 ====================
+
+## 7. 提交规范
+# 使用清晰的 commit message:
+# - feat: 新功能
+# - fix: 修复
+# - refactor: 重构
+# - docs: 文档更新
+# - security: 安全修复
+# - style: 样式调整
+
+## 8. 测试要求
+# - 安全功能必须测试（CSRF、XSS、速率限制）
+# - 新页面必须测试响应式布局
+# - IE11 兼容性测试（关键页面）
+
+## 9. 代码审查要点
+# - 是否有 SQL 注入风险（虽然无数据库）
+# - 是否有 XSS 风险
+# - 是否有路径遍历风险
+# - 是否正确使用了速率限制
+# - 是否正确验证了 CSRF Token
+
+# ==================== Claude Code 专用规则 ====================
+
+## 10. AI 辅助开发规则
+# - 每次改动优先更新现有文档，而非创建新文档
+# - 重大功能完成后，汇总到 DOCS/ 目录
+# - 保持 README.md 简洁清晰
+# - 代码注释使用中文
+# - 文档使用中文（技术术语保留英文）
+
+## 11. 文档生成规则
+# - 不要创建 FINAL_*, *_COMPLETE, *_STATUS 等临时文档
+# - 直接更新 DOCS/ 目录中的对应文档
+# - 使用 Git 记录变更历史
+# - 保持文档结构清晰（3层目录以内）
+
+# ==================== 项目信息 ====================
+# 项目名称: HotTextForum
+# 版本: PHP 8.5.7 兼容
+# 安全评分: 9.0/10
+# 最后更新: 2026-06-17
+# 维护者: Claude Code (Anthropic)
