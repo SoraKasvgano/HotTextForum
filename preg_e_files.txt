@@ -1,0 +1,5 @@
+htf/admin/setforum.php
+htf/require/agent.php
+htf/require/bbscode.php
+htf/require/postreply.php
+htf/require/userglobal.php

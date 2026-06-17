@@ -313,7 +313,7 @@ function updatacache_f(){
 		{
 			$add='';
 			$forumdb=explode("|",$forumarray[$i]);
-			$forumdb[2]=preg_replace("/\<(.+?)\>/eis","",$forumdb[2]);//去除html标签
+			$forumdb[2]=preg_replace("/\<(.+?)\>/is","",$forumdb[2]);//去除html标签
 			if ($forumdb[1]=='category')
 				$forumcache.="<option value=''>$forumdb[2]</option>";
 			elseif($forumdb[1]!='hidden' && $db_recycle!=$forumdb[4]){

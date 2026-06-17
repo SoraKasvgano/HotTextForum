@@ -5,7 +5,7 @@ $b='#ffffff';
 $c='#ffffff';
 $htf_version="1.0.7";
 empty($db_debug) && error_reporting(0);
-unset($GLOBALS,$_ENV,$HTTP_ENV_VARS,$_REQUEST,$HTTP_POST_VARS,$HTTP_GET_VARS,$HTTP_POST_FILES,$HTTP_COOKIE_VARS);
+unset($GLOBALS,$_ENV,$HTTP_ENV_VARS,$_REQUEST,$_POST,$_GET,$_FILES,$_COOKIE);
 if(!ini_get('register_globals'))
 {
 	extract($_GET,EXTR_SKIP);
@@ -244,7 +244,7 @@ function getusergroup($username,$getpostnum='N')
 	{
 		$userinfo=readover("$userpath/$username.php");
 		$detail=explode("|",$userinfo);
-		if(ereg("^[0-9]{1,}",$detail[5]) || $getpostnum=='Y')
+		if(preg_match("/^[0-9]{1,}/",$detail[5]) || $getpostnum=='Y')
 		{
 			$lpost[0]=0;
 			$count=count($lpost);

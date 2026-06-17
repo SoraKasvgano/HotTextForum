@@ -96,16 +96,16 @@ for($i=1;$i<=4;$i++){
 			}
 		}
 		if($attach_saved){
-			if (eregi("\.(gif|jpg|png|bmp|swf)$",$atc_attachment_name) && function_exists('getimagesize') && !getimagesize($source)){
+			if (preg_match("/\.(gif|jpg|png|bmp|swf)$/i",$atc_attachment_name) && function_exists('getimagesize') && !getimagesize($source)){
 				@unlink($source);
 				showmsg("附件内容无效,请检查附件!");
 			}
 			$atc_attachment_name=str_replace('~','-',str_replace(',','，',$atc_attachment_name));/*去除,~*/
-			if (eregi("\.(gif|jpg|png|bmp)$",$atc_attachment_name)){
+			if (preg_match("/\.(gif|jpg|png|bmp)$/i",$atc_attachment_name)){
 				$htfupload.=$fileuplodeurl.','.$atc_attachment_name.',0,'.$atc_downrvrc.',img';
-			}elseif (eregi("\.(zip|rar)$",$atc_attachment_name)){
+			}elseif (preg_match("/\.(zip|rar)$/i",$atc_attachment_name)){
 				$htfupload.=$fileuplodeurl.','.$atc_attachment_name.',0,'.$atc_downrvrc.',zip';
-			}elseif (eregi("\.txt$",$atc_attachment_name)){
+			}elseif (preg_match("/\.txt$/i",$atc_attachment_name)){
 				$htfupload.=$fileuplodeurl.','.$atc_attachment_name.',0,'.$atc_downrvrc.',txt';
 			}else{
 				$htfupload.=$fileuplodeurl.','.$atc_attachment_name.',0,'.$atc_downrvrc.',zip';

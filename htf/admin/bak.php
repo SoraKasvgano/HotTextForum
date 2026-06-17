@@ -98,7 +98,7 @@ if($bakjob=='bakin')
 			$bakinfo=gets("$bakpath/system.php",1024);
 		else 
 			adminmsg("导入文件不存在...<br><br>");
-		if(!ereg("<--htfbak-->",$bakinfo)&&$action!='bakstep')
+		if(!preg_match("/<--htfbak-->/",$bakinfo)&&$action!='bakstep')
 			adminmsg("导入文件不符合 htf 备份文件格式...<br><br>");
 	}
 	if($action=="bakinall")

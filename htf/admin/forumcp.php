@@ -169,7 +169,7 @@ function listrecreat($fid)
 	$db=opendir("$dbpath/$fid/");
 	while (false!==($getfile=readdir($db)))
 	{
-		if(ereg("^[0-9]{1,}\.php$",$getfile))
+		if(preg_match("/^[0-9]{1,}\.php$/",$getfile))
 		{
 			$filearray=explode(".",$getfile);
 			$tid=$filearray[0];

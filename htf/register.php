@@ -111,7 +111,7 @@ if ($groupid=='guest' && $step==2)
 	$rg_introduce=stripslashes($rg_introduce);
 	$rg_from=stripslashes($rg_from);
 	include("data/wordsfb.php");
-	while (list($key,$value)=each($wordsfb))
+	foreach($wordsfb as $key => $value)
 	{
 		if (strpos($rg_sign,$key) !== false)
 		{
@@ -134,7 +134,7 @@ if ($groupid=='guest' && $step==2)
 		$error="信箱没有填写，请填写";
 		$reg_check=0;
 	}
-	if (!ereg("^[-a-zA-Z0-9_\.]+\@([0-9A-Za-z][0-9A-Za-z-]+\.)+[0-9A-Za-z]{1,5}$",$regemail)) 
+	if (!preg_match("/^[-a-zA-Z0-9_\.]+\@([0-9A-Za-z][0-9A-Za-z-]+\.)+[0-9A-Za-z]{1,5}$/",$regemail)) 
 	{
 		$error="信箱不符合检查标准，请确认没有错误"; 
 		$reg_check=0;
@@ -182,7 +182,7 @@ if ($groupid=='guest' && $step==2)
 		$rg_from="";
 	else
 		$rg_from=$regfrom;
-	if ($regoicq && !ereg("^[0-9]{5,}$",$regoicq)) 
+	if ($regoicq && !preg_match("/^[0-9]{5,}$/",$regoicq)) 
 	{
 		$error="OICQ号码不正确";
 		$reg_check=0;

@@ -9,7 +9,7 @@ if ($action!="unsubmit")
 	if (file_exists($wordsfbfile)) 
 	{
 		require "./$wordsfbfile";
-		while (list($key, $value) = each ($wordsfb)) 
+		foreach($wordsfb as $key => $value) 
 		{
 			$groupadmin.="$key=$value\n";
 		}

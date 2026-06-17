@@ -7,7 +7,7 @@ function expinfo($agent)
 {
 	$expser="";$expserver="";
     //$agent = $GLOBALS["HTTP_USER_AGENT"];
-	if (ereg("Mozilla",$agent) && ereg("MSIE",$agent))
+	if (preg_match("/Mozilla/",$agent) && preg_match("/MSIE/",$agent))
 	{
 		$temp = explode("(", $agent); $anc=$temp[1];
 		$temp = explode(";",$anc); $anc=$temp[1];
@@ -16,7 +16,7 @@ function expinfo($agent)
 		$expserver = " $expserver";
 		$expser = "Internet Explorer";
 	}
-	elseif (ereg("Mozilla",$agent) && !ereg("MSIE",$agent)) 
+	elseif (preg_match("/Mozilla/",$agent) && !preg_match("/MSIE/",$agent)) 
 	{
 		$temp =explode("(", $agent); $anc=$temp[0];
         $temp =explode("/", $anc); $expserver=$temp[1];
@@ -40,55 +40,55 @@ function sysinfo($agent)
 {
 	$sys="";
 	//$agent = $GLOBALS["HTTP_USER_AGENT"];
-	if (eregi('win',$agent) && eregi('nt 5\.1',$agent))
+	if (preg_match('/win/i',$agent) && preg_match('/nt 5\.1/i',$agent))
 	{
 		$sys="Windows XP";
 	}
-	elseif (eregi('win',$agent) && ereg('98',$agent)) 
+	elseif (preg_match('/win/i',$agent) && preg_match('/98/',$agent)) 
 	{
 		$sys="Windows 98";
 	}
-	elseif (eregi('win',$agent) && eregi('nt 5\.0',$agent)) 
+	elseif (preg_match('/win/i',$agent) && preg_match('/nt 5\.0/i',$agent)) 
 	{
 		$sys="Windows 2000";
 	}
-	elseif (eregi('win 9x',$agent) && strpos($agent, '4.90')) 
+	elseif (preg_match('/win 9x/i',$agent) && strpos($agent, '4.90')) 
 	{		
 		$sys="Windows ME";
 	}
-	elseif (eregi('win',$agent) && strpos($agent, '95')) 
+	elseif (preg_match('/win/i',$agent) && strpos($agent, '95')) 
 	{
 		$sys="Windows 95"; 
     }
-	elseif (eregi('win',$agent) && eregi('nt',$agent)) 
+	elseif (preg_match('/win/i',$agent) && preg_match('/nt/i',$agent)) 
 	{
 		$sys="Windows NT";
     }
-	elseif (eregi('win',$agent) && ereg('32',$agent)) 
+	elseif (preg_match('/win/i',$agent) && preg_match('/32/',$agent)) 
 	{
 		$sys="Windows 32";
 	}
-	elseif (eregi('linux',$agent)) 
+	elseif (preg_match('/linux/i',$agent)) 
 	{
 		$sys="Linux";
 	}
-	elseif (eregi('unix',$agent)) 
+	elseif (preg_match('/unix/i',$agent)) 
 	{
 		$sys="Unix";
 	}
-	elseif (eregi('ibm',$agent) && eregi('os',$agent)) 
+	elseif (preg_match('/ibm/i',$agent) && preg_match('/os/i',$agent)) 
 	{
 		$sys="IBM OS/2";
 	}
-	elseif (eregi('NetBSD',$agent)) 
+	elseif (preg_match('/NetBSD/i',$agent)) 
 	{
 		$sys="NetBSD";
 	}
-	elseif (eregi('BSD',$agent)) 
+	elseif (preg_match('/BSD/i',$agent)) 
 	{
 		$sys="BSD";
 	}
-	elseif (eregi('FreeBSD',$agent)) 
+	elseif (preg_match('/FreeBSD/i',$agent)) 
 	{
 		$sys="FreeBSD";
 	}

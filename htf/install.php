@@ -1,4 +1,4 @@
-<?
+<?php
 /*
 	[htf Board] install.php - installation of htf Board
 
@@ -12,11 +12,11 @@ $magic_quotes_gpc = get_magic_quotes_gpc();
 $register_globals = @ini_get('register_globals');
 if(!$register_globals || !$magic_quotes_gpc)
 {
-	@extract($HTTP_POST_FILES, EXTR_SKIP); 
-	@extract($HTTP_POST_VARS, EXTR_SKIP); 
-	@extract($HTTP_GET_VARS, EXTR_SKIP); 
+	@extract($_FILES, EXTR_SKIP); 
+	@extract($_POST, EXTR_SKIP); 
+	@extract($_GET, EXTR_SKIP); 
 }
-$PHP_SELF=$HTTP_SERVER_VARS['PHP_SELF'];
+$PHP_SELF=$_SERVER['PHP_SELF'];
 function readover($filename,$method="rb")
 {
 	$handle=fopen($filename,$method);
@@ -57,7 +57,7 @@ style="COLOR: #cc0000">&gt;&gt;</span> <font color="#739ACE">HTF Board
 <td class='t' valign='top' align='left' colspan='2'>
 欢迎来到 HTF Board 安装向导，安装前请仔细阅读 安装说明里的每处细节后才能开始安装。安装文件夹里同样提供了有关软件安装的说明，请您同样仔细阅读，以保证安装进程的顺利进行。
 <hr noshade align="center" width="100%" size="1">
-<?
+<?php
 if($step)
 {
 	?><b>注意:</b>
@@ -69,7 +69,7 @@ if($step)
 }?>
 </td>
 </tr>
-<?
+<?php
 if(!$step)
 {
 	$htf_licence= <<<EOT

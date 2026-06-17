@@ -83,11 +83,11 @@ function updatagroup($userfile)
 	$userinfo=readover("$userpath/$userfile");
 	$detail=explode("|",$userinfo);
 	if(empty($detail[5])) $detail[5]=0;
-	if(!ereg("^[0-9]{1,}",$detail[5])&&isset($cachearray[$detail[5]]))
+	if(!preg_match("/^[0-9]{1,}/",$detail[5])&&isset($cachearray[$detail[5]]))
 	{
 		$cachearray[$detail[5]].="$detail[1]|";
 	}
-	elseif(ereg("^[0-9]{1,}",$detail[5]))
+	elseif(preg_match("/^[0-9]{1,}/",$detail[5]))
 	{
 		if($detail[1]==$manager || file_exists("data/admin/$userfile"))
 			changegroup($detail[1],'manager');

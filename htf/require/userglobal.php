@@ -171,7 +171,7 @@ function getuseraction($id,$action)
 			$detail=explode("|", trim($forumarray[$i]));
 			if ($detail[4]==$id)
 			{
-				$detail[2]=preg_replace("/\<(.+?)\>/eis","",$detail[2]);//去除html标签
+				$detail[2]=preg_replace("/\<(.+?)\>/is","",$detail[2]);//去除html标签
 				$detail[2]=substrs($detail[2],16);
 				$whereyou=$detail[2];break;
 			}

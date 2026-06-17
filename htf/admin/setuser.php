@@ -88,7 +88,7 @@ elseif ($action=="uprongdata")
 					$writedb=implode("|",$userarray);
 					writeover("$userpath/$userfile",$writedb);
 					$badman++;
-				}elseif(!ereg("^[0-9]{1,10}",$userarray[8])){
+				}elseif(!preg_match("/^[0-9]{1,10}/",$userarray[8])){
 					$overtime=time();
 					$writedb=implode("|",$userarray);
 					writeover("$userpath/$userfile",$writedb);

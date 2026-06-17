@@ -87,18 +87,18 @@ elseif ($action=="unsubmit")
 	if ($userpath<>$datebase[0]) rename("$userpath","$datebase[0]");
 	if ($dbpath<>$datebase[1])   rename($dbpath,$datebase[1]);
 	if ($config[56] && !file_exists("{$dbpath}/$config[56]")) mkdir("{$dbpath}/$config[56]",0777);
-	if(!ereg("^http",$datebase[2]))//!file_exists("$datebase[2]")主要为了加强管理员纠错能力
+	if(!preg_match("/^http/",$datebase[2]))//!file_exists("$datebase[2]")主要为了加强管理员纠错能力
 		@rename($picpath,$datebase[2]);
 	elseif($picpath<>$datebase[2])
 		adminmsg("对不起,更改目录发生错误,您不能使用含有http 字符的图片目录或你所要更改的目录已经存在");
 	if ($config[77]>12) adminmsg("系统稳定性考虑,请不要超过 12 字节");
 	if ($attachpath<>$datebase[3]) rename($attachpath,$datebase[3]);
 	if ($msgpath<>$datebase[4]) rename($msgpath,$datebase[4]);
-	if (!ereg("^[0-9]{1,}",$datebase[5]))
+	if (!preg_match("/^[0-9]{1,}/",$datebase[5]))
 		adminmsg("图片链防盗参数必须为数字");
-	if (!ereg("^[0-9]{1,}",$config[96]))
+	if (!preg_match("/^[0-9]{1,}/",$config[96]))
 		adminmsg("新注册用户发帖控制时间必须为数字");
-	if (!ereg("^http",$datebase[6]) && $datebase[6]!='N')
+	if (!preg_match("/^http/",$datebase[6]) && $datebase[6]!='N')
 		adminmsg("使用跨台图片链必须以http开头");
 	//if (!$config[9]) $config[9]=0;
 	if (!$config[14]) $config[14]=0;
