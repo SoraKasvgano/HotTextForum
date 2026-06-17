@@ -3,14 +3,23 @@
  * BBCode Parser & Content Converter
  * Upgraded for PHP 8.5.7 compatibility
  * Security: Fixed preg_replace /e modifier and input validation
+ * Markdown support: Auto-detect and convert Markdown syntax
  */
 
 !function_exists('readover') && exit('Forbidden');
+
+// Load Markdown parser
+require_once __DIR__ . '/markdown.php';
 
 function convert($message, $allow, $type = "post")
 {
     global $picpath, $imgpath, $stylepath, $attachpath, $fid_post, $fid_hide, $fid_sell;
     global $admin_check, $tpc_author, $searchword;
+
+    // Auto-detect Markdown and convert
+    if (function_exists('is_markdown') && is_markdown($message)) {
+        return '<div class="markdown-content">' . markdown_to_html($message, true) . '</div>';
+    }
 
     // Basic HTML conversion
     $message = str_replace("<p>", "<br><br>", $message);
